@@ -44,11 +44,11 @@ metadata/_edit_use_anchors_ = true
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.665493
+anchor_left = 0.647887
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 0
-theme_override_constants/separation = 10
+theme_override_constants/separation = 20
 alignment = 1
 metadata/_edit_use_anchors_ = true
 
@@ -84,7 +84,7 @@ custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 size_flags_vertical = 1
 theme = SubResource("Theme_52atq")
-text = "100k Followers"
+text = "100k Subs"
 label_settings = SubResource("LabelSettings_fkrbf")
 horizontal_alignment = 1
 vertical_alignment = 1

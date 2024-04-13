@@ -27,6 +27,18 @@ public partial class ActivityController : Control
         _activityFeed.Text += $"[color=#ff7d46]{user}[/color] donated {amount}ᛋ!\n";
         var percentage = _donationProgress.Value + (float)amount / _maxDonations * 100;
         _donationProgress.Value += percentage;
-        _donationProgressText.Text = $"{percentage:0D}% funding reached for the Satanic Deficiency Fund";
+        var text = $"{percentage:0D}% funding reached for the Satanic Deficiency Fund";
+        if (percentage > 100) text = $"{percentage:0D}% - We did it chat!";
+        _donationProgressText.Text = text;
+    }
+
+    public void AddSubscriber(string user, int months)
+    {
+        var monthsString = months switch
+        {
+            1 => "month",
+            _ => "months"
+        };
+        _activityFeed.Text += $"[color=#ff7d46]{user}[/color] subscribed for {months} {monthsString}!\n";
     }
 }

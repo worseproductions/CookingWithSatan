@@ -1,4 +1,4 @@
-﻿
+
 <img src="titleLogo.png" style="display:grid; place-content: center; place-items: center;" alt="Logo of the game">
 
 # Cooking with Satan

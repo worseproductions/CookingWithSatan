@@ -77,7 +77,7 @@ public partial class GameController : Control
         Duration += delta;
         
         // chat logic
-        var msgPerMin = -10.446 + 4.7743 * Math.Log(Viewers);
+        var msgPerMin = -10.446 + 4.7743 * Math.Log(Viewers) * (_responseFlood ? 2 : 1);
         if (msgPerMin < 0)
         {
             msgPerMin = 0;
@@ -91,8 +91,6 @@ public partial class GameController : Control
                 _responseFlood = false;
             }
         }
-        
-        if (_responseFlood) msgPerMin *= 2;
 
         if (!(_messagesInLastMinute < msgPerMin)) return;
         _timeSinceLastMessage += delta;
@@ -108,8 +106,20 @@ public partial class GameController : Control
         {
             if (new Random().NextDouble() >= _donationChance)
             {
-                text = $"[font_size=6]HIGHLIGHTED[/font_size]\n[bgcolor=#fcf00750][color=#ff7d46]{message.User}[/color][/bgcolor]: {message.Message}\n";
-                MakeDonation(message.User, message.Message, new Random().Next(1, 10));
+                if (new Random().NextDouble() >= 0.5)
+                {
+                    // subscriber
+                    text = $"[font_size=6]HIGHLIGHTED[/font_size]\n[bgcolor=#fcf00750][color=#ff7d46]{message.User}[/color][/bgcolor]: {message.Message}\n";
+                    AddSubscriber(message.User, message.Message, new Random().Next(1, 12));
+                }
+                else
+                {
+                    // donation
+                    text = $"[font_size=6]HIGHLIGHTED[/font_size]\n[bgcolor=#fcf00750][color=#ff7d46]{message.User}[/color][/bgcolor]: {message.Message}\n";
+                    MakeDonation(message.User, message.Message, new Random().Next(1, 10));
+                }
+
+                
             }
         }
 
@@ -121,6 +131,18 @@ public partial class GameController : Control
     {
         _activityController.AddDonation(user, amount);
         DisplayServer.TtsSpeak($"{user} donated {amount} Satancoins: {message}", _voiceId);
+    }
+
+    private static void AddSubscriber(string user, string message, int months)
+    {
+        _activityController.AddSubscriber(user, months);
+        var monthsString = months switch
+        {
+            1 => "month",
+            _ => "months"
+        };
+        DisplayServer.TtsSpeak($"{user} just subscribed for {months} {monthsString}! {message}", _voiceId);
+        Followers++;
     }
 
     private static void SendMessage(string message)

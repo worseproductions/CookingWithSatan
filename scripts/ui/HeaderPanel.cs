@@ -20,6 +20,6 @@ public partial class HeaderPanel : Control
     {
         _watching.Text = $"{Util.FormatK(GameController.Viewers)} watching";
         _duration.Text = $"Live for: {Util.FormatTime(GameController.Duration)}";
-        _followers.Text = $"{Util.FormatK(GameController.Followers)} Followers";
+        _followers.Text = $"{Util.FormatK(GameController.Followers)} Subs";
     }
 }
