@@ -56,6 +56,7 @@ anchor_right = 0.804348
 anchor_bottom = 0.978261
 theme = ExtResource("1_1tyl7")
 placeholder_text = "Chat with your viewers..."
+context_menu_enabled = false
 metadata/_edit_use_anchors_ = true
 
 [node name="ChatButton" type="Button" parent="Panel"]
