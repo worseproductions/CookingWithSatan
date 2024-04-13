@@ -1,0 +1,320 @@
+[gd_resource type="JSON" format=3 uid="uid://7btl8iiprolg"]
+
+[resource]
+data = [{
+"message": "Is that... holy water in that pot? Is he purifying the souls of the damned for flavor?",
+"mood": 1.0,
+"user": "Holy_Avocado"
+}, {
+"message": "Living for this stream! Never thought I'd see Satan himself sweating over a stove!",
+"mood": 2.0,
+"user": "InfernoChef666"
+}, {
+"message": "Oh dear, that looks like it's about to burn! Maybe a little less brimstone next time, dearie?",
+"mood": -1.0,
+"user": "Gramma_Helga"
+}, {
+"message": "Finally, a cooking stream I can relate to! Any tips for getting that perfectly even char on souls?",
+"mood": 2.0,
+"user": "Azmodaddy"
+}, {
+"message": "Wait a minute... isn't that a spatula blessed by the Pope? This is pure heresy!",
+"mood": -2.0,
+"user": "Saintly_Surprise"
+}, {
+"message": "This is the content I crave! Spicy demon wings with a side of existential dread? Sign me up!",
+"mood": 2.0,
+"user": "Beelzebub_Burger"
+}, {
+"message": "Dear Lord, if even Satan struggles in the kitchen, maybe I shouldn't attempt that souffle...",
+"mood": -1.0,
+"user": "Cupid_Cant_Cook"
+}, {
+"message": "Hold on, there! Those fire hazards need to be contained! Where are the oven mitts, my liege?",
+"mood": 0.0,
+"user": "Demon_Dietician"
+}, {
+"message": "Okay, I gotta admit, that laugh after he set himself on fire was pretty funny ",
+"mood": 1.0,
+"user": "Angellica5"
+}, {
+"message": "Never thought I'd see the day the underworld's overlord fumbled a pan. Love this!",
+"mood": 2.0,
+"user": "LuciferLive"
+}, {
+"message": "Sending prayers... I mean, good vibes! Hope those burns aren't too bad, Satan ",
+"mood": 1.0,
+"user": "Heavenli_Healer"
+}, {
+"message": "Is that the sound of the smoke alarm? Don't worry, everyone, I've got the number for a certified infernal firefighter right here...",
+"mood": 0.0,
+"user": "Hades_HotLine"
+}, {
+"message": "Oh dear... maybe I should send over a casserole. This doesn't look like it's going well...",
+"mood": -1.0,
+"user": "Saint_Monica"
+}, {
+"message": "Man, I love the chaos! This is more entertaining than any cooking competition show!",
+"mood": 2.0,
+"user": "Belial_Beignets"
+}, {
+"message": "GG Lucifer! You died by fire... again. Maybe try a different recipe next time?",
+"mood": 1.0,
+"user": "Gabriel_the_Gamer"
+}, {
+"message": "Swoon! Even covered in soot, he still looks devilishly handsome ",
+"mood": 2.0,
+"user": "Lilith_Love"
+}, {
+"message": "Just a heads up, those pitchforks are for toasting marshmallows, not grilling!",
+"mood": 0.0,
+"user": "Bartleby_the_Butcher"
+}, {
+"message": "Where'd he even get that tiny chef's hat? It's adorable!",
+"mood": 1.0,
+"user": "Azazel_Azzap"
+}, {
+"message": "This is gold! Can't believe I'm watching the devil himself fail at making dinner ",
+"mood": 2.0,
+"user": "MichaelMic"
+}, {
+"message": "So... anyone else craving infernal cuisine now? Maybe I'll try some demon nachos later...",
+"mood": 1.0,
+"user": "Disciple_Disco"
+}, {
+"message": "Hold on, isn't that Leviathan's tail he's trying to boil? That poor soul!",
+"mood": -2.0,
+"user": "Lord_Lobster"
+}, {
+"message": "Love the idea of a devil's food cake, but pretty sure that recipe uses regular butter, not souls of the damned...",
+"mood": -1.0,
+"user": "Mascot_Malphas"
+}, {
+"message": "Gotta respect the hustle! Even the underworld's gotta eat,  right?",
+"mood": 1.0,
+"user": "Cherub_Chef"
+}, {
+"message": "Anyone else notice the bottle of holy water bubbling in the background?  Maybe that's his secret ingredient...",
+"mood": 1.0,
+"user": "Belial_Brews"
+}, {
+"message": "Did he just summon a bunch of imps to chop vegetables? Genius!",
+"mood": 2.0,
+"user": "Dantalion_Dabbler"
+}, {
+"message": "Okay, I'm officially terrified of what's in that cauldron. But hey, at least the kitchen looks clean!",
+"mood": 0.0,
+"user": "Pandora_Pops"
+}, {
+"message": "This is why demons order takeout. Sticking to my realm of sloth for now...",
+"mood": -1.0,
+"user": "Stolas_Stoic"
+}, {
+"message": "Don't listen to the haters, my liege! You're doing great! Just... maybe lay off the brimstone a tad...",
+"mood": 2.0,
+"user": "Lucifer_Loyal"
+}, {
+"message": "Hey! That's my tail! And it's definitely not for dinner!",
+"mood": -2.0,
+"user": "Leviathan_Lives"
+}, {
+"message": "If this whole cooking thing doesn't work out, at least he's got a captive audience for his infernal merch",
+"mood": 1.0,
+"user": "Mammon_Moneybags"
+}, {
+"message": "Wait, is that a demon sous-chef? Is that even a thing?",
+"mood": 1.0,
+"user": "Barnaby_Beats"
+}, {
+"message": "Sir, with all due respect, those flames are getting a little out of control. May I suggest using the fire extinguisher?",
+"mood": 0.0,
+"user": "Samael_Security"
+}, {
+"message": "Inspiration is striking! This fiery kitchen chaos is going to make one heck of a painting",
+"mood": 2.0,
+"user": "Asmodeus_Art"
+}, {
+"message": "Yawn. Can we fast forward to the part where he accidentally summons a horde of gremlins?",
+"mood": -1.0,
+"user": "Belphegor_Bored"
+}, {
+"message": "Honestly, even with the fire alarm and the missing tail, this stream is bringing in record numbers of viewers. Keep up the good work, boss!",
+"mood": 2.0,
+"user": "Mephistopheles_Manager"
+}, {
+"message": "Okay, that burnt offering definitely doesn't look edible. But hey, at least the entertainment value is top-notch!",
+"mood": 1.0,
+"user": "Succubus_Snacker"
+}, {
+"message": "Plot twist! Maybe he's just trying to perfect his recipe for eternal damnation. In that case, keep those flames burning!",
+"mood": 1.0,
+"user": "Purgatory_Pizza"
+}, {
+"message": "Is it wrong that I kind of want to see him try to make an omelette? Chaos is guaranteed!",
+"mood": 2.0,
+"user": "Abaddon_Abandoner"
+}, {
+"message": "Alright, who's brave enough to try whatever concoction he ends up with? I'll offer a discount on any fire-resistant cocktails for the first volunteer!",
+"mood": 1.0,
+"user": "Belzebub_Bartender"
+}, {
+"message": "Thanks for the laughs, Your Infernal Majesty! May your future culinary endeavors be slightly less... explosive!",
+"mood": 2.0,
+"user": "Lucifer_Legacy"
+}, {
+"message": "Never thought I'd see the Lord of Darkness struggle with a potato peeler. Maybe some infernal gardening lessons next?",
+"mood": 1.0,
+"user": "Agares_Agriculture"
+}, {
+"message": "Hold on a second... isn't that a cursed cookbook he's using? No wonder everything's gone wrong!",
+"mood": -1.0,
+"user": "Behemoth_Baker"
+}, {
+"message": "Didn't that cauldron belong to a coven of banished witches? This kitchen is getting more unholy by the minute...",
+"mood": -2.0,
+"user": "Belial_Bookworm"
+}, {
+"message": "Um, sir, pretty sure those glowing eggs are about to hatch into something demonic. Maybe put them down?",
+"mood": -2.0,
+"user": "Beleth_Breeder"
+}, {
+"message": "Ignore the haters, Liege! True fans know you're just experimenting with a new form of infernal cuisine!",
+"mood": 2.0,
+"user": "Lucifer_Loyal2"
+}, {
+"message": "Wait a minute, is that a grimoire full of forbidden recipes? This is getting interesting...",
+"mood": 2.0,
+"user": "Dantalion_Dabbler"
+}, {
+"message": "Okay, tail incident forgiven, but if he tries to boil any other part of me, there will be hell to pay!",
+"mood": -1.0,
+"user": "Leviathan_Lives2"
+}, {
+"message": "Just a friendly reminder, there's a lucrative market for infernal kitchenware. Aprons that don't burn, fireproof spatulas... you're sitting on a gold mine!",
+"mood": 2.0,
+"user": "Mammon_Moneybags2"
+}, {
+"message": "Someone please get this demon a devilishly catchy jingle! This stream needs a theme song!",
+"mood": 1.0,
+"user": "Mastema_Musician"
+}, {
+"message": "Finally, a cooking show with a soundtrack worthy of the underworld! Turn it up!",
+"mood": 2.0,
+"user": "Moloch_Metalhead"
+}, {
+"message": "WOOHOO! Looks like the fire alarm finally died! Time to crank up the demonic dance party music!",
+"mood": 2.0,
+"user": "Pazuzu_PartyAnimal"
+}, {
+"message": "Just a thought, but maybe using imps as taste testers isn't the best idea. Yelling chefs and crying demons are not a good look...",
+"mood": -1.0,
+"user": "Purson_Puppeteer"
+}, {
+"message": "Fascinating! This culinary chaos is like watching a war unfold. What will be the final dish... or disaster?",
+"mood": 1.0,
+"user": "Samyaza_Strategist"
+}, {
+"message": "Love the outfit, Your Majesty! The fiery accents really complement your horns. Maybe lay off the brimstone explosions though, for the sake of the curtains...",
+"mood": 1.0,
+"user": "Satan_Stylist"
+}, {
+"message": "Hold on... is that a soul grater I see?  And why is it glowing red? This is getting creepy...",
+"mood": -2.0,
+"user": "Seditch_Sleuth"
+}, {
+"message": "Just realized, if he messes up this recipe, we could all be doomed! Maybe I should offer some... infernal cooking lessons...",
+"mood": -1.0,
+"user": "Shax_Shapeshifter"
+}, {
+"message": "Okay, fine. I take it back. This is actually way more entertaining than sloth day. Maybe I'll order some takeout and join the chat...",
+"mood": 1.0,
+"user": "Stolas_Stoic2"
+}, {
+"message": "Ugh, did he just double-dip the ladle of despair in the cauldron of sorrow? That's just unsanitary...",
+"mood": -1.0,
+"user": "Succubus_Snacker2"
+}, {
+"message": "Is it just me, or is this whole stream one giant prank? If so, bravo, Lucifer! You got me!",
+"mood": 2.0,
+"user": "Triphonius_Trickster"
+}, {
+"message": "Intrigued by the use of eldritch spices in this recipe. Must translate that grimoire later for my own... culinary endeavors",
+"mood": 2.0,
+"user": "Xaphan_Xenolinguist"
+}, {
+"message": "Bone appetit, everyone! Hope you're all hungry for a heaping helping of... whatever that is...",
+"mood": 1.0,
+"user": "Cerberus_Chef"
+}, {
+"message": "Okay, on second thought, maybe I should donate a spare tentacle. This poor excuse for a meal is just insulting...",
+"mood": -2.0,
+"user": "Leviathan_Lives3"
+}, {
+"message": "Breaking news! Infernal Kitchenware Inc. stocks are soaring! Looks like everyone wants a piece of the fiery cooking craze!",
+"mood": 2.0,
+"user": "Mammon_Moneybags3"
+}, {
+"message": "Just uploaded a track titled 'Hell's Kitchen Havoc' inspired by this glorious mess. Check it out!",
+"mood": 2.0,
+"user": "Mastema_Musician2"
+}, {
+"message": "Mosh pit forming in the chat! Who's ready to headbang to the sounds of sizzling despair?",
+"mood": 2.0,
+"user": "Moloch_Metalhead2"
+}, {
+"message": "Fire alarm died round two! Looks like the party's back on! Someone get me a flaming cocktail!",
+"mood": 2.0,
+"user": "Pazuzu_PartyAnimal2"
+}, {
+"message": "Theory: The true goal is not a meal, but to summon a minor demon through sheer culinary chaos. Bold strategy, sir!",
+"mood": 1.0,
+"user": "Samyaza_Strategist2"
+}, {
+"message": "Okay, this is officially more entertaining than anything I've ever done in the sloth dimension. Maybe I'll write a demonic haiku about it...",
+"mood": 2.0,
+"user": "Stolas_Stoic3"
+}, {
+"message": "Maybe it's not about the food itself, but the journey? At least the entertainment value is off the charts!",
+"mood": 1.0,
+"user": "Succubus_Snacker3"
+}, {
+"message": "Cracked the code on the infernal spice blend! Seems to be a mix of crushed despair pods, a pinch of forbidden knowledge, and a dash of existential dread...",
+"mood": 1.0,
+"user": "Xaphan_Xenolinguist2"
+}, {
+"message": "Live sketching this culinary catastrophe! Donations appreciated to fuel my demonic paintbrush!",
+"mood": 1.0,
+"user": "Asmodeus_Art2"
+}, {
+"message": "Someone please make a compilation video of all the fire alarm screams! This is pure comedic gold!",
+"mood": 2.0,
+"user": "Barnaby_Beats2"
+}, {
+"message": "Theory: The holy water is actually enhancing the brimstone explosions. Science experiment gone wrong, or demonic prank?",
+"mood": 1.0,
+"user": "Belial_Brews2"
+}, {
+"message": "Those glowing eggs hatched! And they're adorable! Can I keep one?",
+"mood": 1.0,
+"user": "Beleth_Breeder3"
+}, {
+"message": "Wait, is that a page from the Book of Lost Recipes flapping out of the grimoire? This is getting out of hand... in the best way possible!",
+"mood": 2.0,
+"user": "Dantalion_Dabbler2"
+}, {
+"message": "Just got off the phone with the infernal firefighters. Apparently, they're used to this kind of chaos. 'Just another Tuesday in Hell,' they said...",
+"mood": 1.0,
+"user": "Hades_HotLine2"
+}, {
+"message": "Don't listen to the haters, Your Majesty! You're a pioneer of infernal cuisine! We'll all be talking about the 'Great Brimstone Blaze' for years to come!",
+"mood": 2.0,
+"user": "Lucifer_Loyal3"
+}, {
+"message": "Okay, I take it back. This is hilarious! Maybe there's a place for a bit of demonic culinary chaos in the world...",
+"mood": 1.0,
+"user": "Saintly_Surprise2"
+}, {
+"message": "Maybe I should send over a casserole after all... just in case this ends in edible flames...",
+"mood": -1.0,
+"user": "Saint_Monica2"
+}]

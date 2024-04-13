@@ -1,0 +1,120 @@
+[gd_scene load_steps=7 format=3 uid="uid://di0ns4dtjyh0t"]
+
+[ext_resource type="Script" path="res://scripts/ui/HeaderPanel.cs" id="1_1c6w4"]
+[ext_resource type="Texture2D" uid="uid://efnwhw622xq0" path="res://images/HellKickLogo.svg" id="1_6pxcu"]
+
+[sub_resource type="Theme" id="Theme_52atq"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_fkrbf"]
+outline_size = 1
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_no7ec"]
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_waogi"]
+font_size = 12
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[node name="HeaderPanel" type="Control"]
+layout_mode = 3
+anchor_left = 0.007
+anchor_top = 0.012
+anchor_right = 0.993
+anchor_bottom = 0.074
+offset_left = -0.0640001
+offset_top = 0.224
+offset_right = 0.0639648
+offset_bottom = 0.0480003
+grow_horizontal = 2
+script = ExtResource("1_1c6w4")
+
+[node name="HellkickLogo" type="TextureRect" parent="."]
+layout_mode = 2
+anchor_right = 0.126761
+anchor_bottom = 1.0
+offset_right = -1.52588e-05
+texture = ExtResource("1_6pxcu")
+expand_mode = 1
+stretch_mode = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.665493
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+theme_override_constants/separation = 10
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="WatchingLabel" type="Label" parent="HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+size_flags_vertical = 1
+theme = SubResource("Theme_52atq")
+text = "500 Watching"
+label_settings = SubResource("LabelSettings_fkrbf")
+horizontal_alignment = 1
+vertical_alignment = 1
+tab_stops = PackedFloat32Array(20)
+metadata/_edit_use_anchors_ = true
+
+[node name="DurationLabel" type="Label" parent="HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+size_flags_vertical = 1
+theme = SubResource("Theme_52atq")
+text = "Uptime: 82:04:05"
+label_settings = SubResource("LabelSettings_fkrbf")
+horizontal_alignment = 1
+vertical_alignment = 1
+tab_stops = PackedFloat32Array(20)
+metadata/_edit_use_anchors_ = true
+
+[node name="FollowersLabel" type="Label" parent="HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+size_flags_vertical = 1
+theme = SubResource("Theme_52atq")
+text = "100k Followers"
+label_settings = SubResource("LabelSettings_fkrbf")
+horizontal_alignment = 1
+vertical_alignment = 1
+tab_stops = PackedFloat32Array(20)
+max_lines_visible = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.140845
+anchor_top = -0.391305
+anchor_right = 0.533451
+anchor_bottom = 0.208695
+offset_top = 15.6522
+offset_right = -203.0
+offset_bottom = 15.6522
+text = "Sunday Stream: Cooking with Satan"
+label_settings = SubResource("LabelSettings_no7ec")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.140845
+anchor_top = 0.208695
+anchor_right = 0.302817
+anchor_bottom = 0.808695
+offset_top = 15.6522
+offset_bottom = 15.6522
+text = "Category: Just Summoning"
+label_settings = SubResource("LabelSettings_waogi")
+metadata/_edit_use_anchors_ = true

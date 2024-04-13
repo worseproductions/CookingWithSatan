@@ -11,9 +11,23 @@ config_version=5
 [application]
 
 config/name="CookingWithSatan"
-config/features=PackedStringArray("4.2", "Forward Plus")
+run/main_scene="res://scenes/stream.tscn"
+config/features=PackedStringArray("4.2", "C#", "Forward Plus")
 config/icon="res://icon.svg"
+
+[audio]
+
+general/text_to_speech=true
+
+[display]
+
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
 
 [dotnet]
 
 project/assembly_name="CookingWithSatan"
+
+[gui]
+
+theme/custom_font="res://fonts/NewRocker/NewRocker-Regular.ttf"

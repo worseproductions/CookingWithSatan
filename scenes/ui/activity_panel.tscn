@@ -1,0 +1,77 @@
+[gd_scene load_steps=5 format=3 uid="uid://rsn8ectpnyur"]
+
+[ext_resource type="Theme" uid="uid://dvb2xl7gfwr07" path="res://themes/main.tres" id="1_m4x5m"]
+[ext_resource type="Script" path="res://scripts/ActivityController.cs" id="1_nic0q"]
+
+[sub_resource type="Theme" id="Theme_oregy"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_a457x"]
+font_size = 12
+outline_size = 4
+outline_color = Color(0.486275, 0.803922, 0.376471, 1)
+
+[node name="ActivityPanel" type="Control"]
+layout_mode = 3
+anchor_left = 0.673333
+anchor_top = 0.086
+anchor_right = 0.993
+anchor_bottom = 0.395407
+offset_left = 0.319946
+offset_top = 0.271999
+offset_right = 0.0639648
+offset_bottom = -0.223999
+grow_horizontal = 2
+theme = SubResource("Theme_oregy")
+script = ExtResource("1_nic0q")
+_maxDonations = 10
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_m4x5m")
+
+[node name="ActivityFeed" type="RichTextLabel" parent="Panel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0163043
+anchor_top = 0.16
+anchor_right = 0.978261
+anchor_bottom = 0.96
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_m4x5m")
+bbcode_enabled = true
+scroll_following = true
+autowrap_mode = 0
+tab_size = 5
+context_menu_enabled = true
+metadata/_edit_use_anchors_ = true
+
+[node name="DonationProgress" type="ProgressBar" parent="Panel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.115
+theme = ExtResource("1_m4x5m")
+show_percentage = false
+metadata/_edit_use_anchors_ = true
+
+[node name="DonationProgressText" type="Label" parent="Panel/DonationProgress"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "0% funding reached for the Satanic Deficiency Fund"
+label_settings = SubResource("LabelSettings_a457x")
+horizontal_alignment = 1
+vertical_alignment = 1

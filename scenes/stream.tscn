@@ -1,0 +1,59 @@
+[gd_scene load_steps=8 format=3 uid="uid://o2chs3mjbi1i"]
+
+[ext_resource type="Texture2D" uid="uid://cb4mb1x6pbkha" path="res://images/background.png" id="1_crmqh"]
+[ext_resource type="Script" path="res://scripts/GameController.cs" id="1_n8041"]
+[ext_resource type="PackedScene" uid="uid://di0ns4dtjyh0t" path="res://scenes/ui/header_panel.tscn" id="2_jxbvy"]
+[ext_resource type="PackedScene" uid="uid://rsn8ectpnyur" path="res://scenes/ui/activity_panel.tscn" id="3_a70pw"]
+[ext_resource type="PackedScene" uid="uid://bp7bkap3askut" path="res://scenes/ui/quick_actions_panel.tscn" id="3_tef1y"]
+[ext_resource type="PackedScene" uid="uid://c4npeck8tiy1u" path="res://scenes/ui/chat_panel.tscn" id="4_rg3i4"]
+[ext_resource type="JSON" uid="uid://7btl8iiprolg" path="res://chat/messages.tres" id="7_1houl"]
+
+[node name="Control" type="Control" node_paths=PackedStringArray("ChatController", "ActivityController")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_n8041")
+ChatController = NodePath("ChatPanel")
+ActivityController = NodePath("ActivityPanel")
+_messagesJson = ExtResource("7_1houl")
+metadata/_edit_vertical_guides_ = [8.0, 1144.0]
+metadata/_edit_horizontal_guides_ = [48.0, 8.0]
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_crmqh")
+expand_mode = 1
+
+[node name="HeaderPanel" parent="." instance=ExtResource("2_jxbvy")]
+layout_mode = 1
+
+[node name="StreamPanel" type="Control" parent="."]
+layout_mode = 2
+anchors_preset = 0
+anchor_left = 0.007
+anchor_top = 0.086
+anchor_right = 0.66
+anchor_bottom = 0.753074
+offset_left = -0.0640001
+offset_top = 0.271999
+offset_right = -0.320007
+offset_bottom = 0.00799561
+grow_horizontal = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="QuickActionsPanel" parent="." instance=ExtResource("3_tef1y")]
+layout_mode = 1
+
+[node name="ActivityPanel" parent="." instance=ExtResource("3_a70pw")]
+layout_mode = 1
+
+[node name="ChatPanel" parent="." instance=ExtResource("4_rg3i4")]
+layout_mode = 1

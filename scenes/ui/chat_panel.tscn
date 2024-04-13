@@ -1,0 +1,71 @@
+[gd_scene load_steps=4 format=3 uid="uid://c4npeck8tiy1u"]
+
+[ext_resource type="Theme" uid="uid://dvb2xl7gfwr07" path="res://themes/main.tres" id="1_1tyl7"]
+[ext_resource type="Script" path="res://scripts/ChatController.cs" id="1_uv3mf"]
+
+[sub_resource type="Theme" id="Theme_oregy"]
+
+[node name="ChatPanel" type="Control"]
+layout_mode = 3
+anchor_left = 0.673333
+anchor_top = 0.419333
+anchor_right = 0.993
+anchor_bottom = 0.988
+offset_left = 0.319946
+offset_top = 0.271999
+offset_right = 0.0639648
+offset_bottom = -0.223999
+grow_horizontal = 2
+theme = SubResource("Theme_oregy")
+script = ExtResource("1_uv3mf")
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_1tyl7")
+
+[node name="Chat" type="RichTextLabel" parent="Panel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0163043
+anchor_top = 0.0217391
+anchor_right = 0.978261
+anchor_bottom = 0.891304
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_1tyl7")
+theme_override_constants/line_separation = 7
+bbcode_enabled = true
+scroll_following = true
+tab_size = 5
+context_menu_enabled = true
+metadata/_edit_use_anchors_ = true
+
+[node name="ChatInput" type="LineEdit" parent="Panel"]
+unique_name_in_owner = true
+layout_mode = 0
+anchor_left = 0.0217391
+anchor_top = 0.913043
+anchor_right = 0.804348
+anchor_bottom = 0.978261
+theme = ExtResource("1_1tyl7")
+placeholder_text = "Chat with your viewers..."
+metadata/_edit_use_anchors_ = true
+
+[node name="ChatButton" type="Button" parent="Panel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.826087
+anchor_top = 0.913043
+anchor_right = 0.978261
+anchor_bottom = 0.978261
+theme = ExtResource("1_1tyl7")
+text = "Send"
+metadata/_edit_use_anchors_ = true
