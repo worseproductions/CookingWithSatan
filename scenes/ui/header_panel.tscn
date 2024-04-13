@@ -78,7 +78,7 @@ vertical_alignment = 1
 tab_stops = PackedFloat32Array(20)
 metadata/_edit_use_anchors_ = true
 
-[node name="FollowersLabel" type="Label" parent="HBoxContainer"]
+[node name="SubsLabel" type="Label" parent="HBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(120, 0)
 layout_mode = 2

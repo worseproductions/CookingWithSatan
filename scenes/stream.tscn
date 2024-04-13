@@ -1,24 +1,18 @@
-[gd_scene load_steps=8 format=3 uid="uid://o2chs3mjbi1i"]
+[gd_scene load_steps=6 format=3 uid="uid://o2chs3mjbi1i"]
 
 [ext_resource type="Texture2D" uid="uid://cb4mb1x6pbkha" path="res://images/background.png" id="1_crmqh"]
-[ext_resource type="Script" path="res://scripts/GameController.cs" id="1_n8041"]
 [ext_resource type="PackedScene" uid="uid://di0ns4dtjyh0t" path="res://scenes/ui/header_panel.tscn" id="2_jxbvy"]
 [ext_resource type="PackedScene" uid="uid://rsn8ectpnyur" path="res://scenes/ui/activity_panel.tscn" id="3_a70pw"]
 [ext_resource type="PackedScene" uid="uid://bp7bkap3askut" path="res://scenes/ui/quick_actions_panel.tscn" id="3_tef1y"]
 [ext_resource type="PackedScene" uid="uid://c4npeck8tiy1u" path="res://scenes/ui/chat_panel.tscn" id="4_rg3i4"]
-[ext_resource type="JSON" uid="uid://7btl8iiprolg" path="res://chat/messages.tres" id="7_1houl"]
 
-[node name="Control" type="Control" node_paths=PackedStringArray("ChatController", "ActivityController")]
+[node name="Control" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_n8041")
-ChatController = NodePath("ChatPanel")
-ActivityController = NodePath("ActivityPanel")
-_messagesJson = ExtResource("7_1houl")
 metadata/_edit_vertical_guides_ = [8.0, 1144.0]
 metadata/_edit_horizontal_guides_ = [48.0, 8.0]
 
@@ -53,7 +47,9 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 1
 
 [node name="ActivityPanel" parent="." instance=ExtResource("3_a70pw")]
+unique_name_in_owner = true
 layout_mode = 1
 
 [node name="ChatPanel" parent="." instance=ExtResource("4_rg3i4")]
+unique_name_in_owner = true
 layout_mode = 1

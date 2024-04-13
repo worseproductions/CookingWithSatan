@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://bp7bkap3askut"]
+[gd_scene load_steps=6 format=3 uid="uid://bp7bkap3askut"]
 
+[ext_resource type="Script" path="res://scripts/QuickActionController.cs" id="1_47yx0"]
 [ext_resource type="Theme" uid="uid://dvb2xl7gfwr07" path="res://themes/main.tres" id="1_f5rri"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_obak5"]
@@ -45,6 +46,7 @@ offset_top = -0.192047
 offset_right = -0.320007
 offset_bottom = -0.223999
 grow_horizontal = 2
+script = ExtResource("1_47yx0")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -97,12 +99,13 @@ theme_override_constants/separation = 10
 alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="Button" type="Button" parent="Panel/HBoxContainer"]
+[node name="HypeButton" type="Button" parent="Panel/HBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 theme = ExtResource("1_f5rri")
 theme_type_variation = &"FlatButton"
-text = "Item 1"
+text = "Hype"
 
 [node name="Button2" type="Button" parent="Panel/HBoxContainer"]
 custom_minimum_size = Vector2(100, 0)

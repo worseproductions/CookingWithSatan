@@ -7,20 +7,15 @@ namespace CookingWithSatan.scripts;
 
 public partial class GameController : Control
 {
+    private ChatController _chatController;
+    private ActivityController _activityController;
+    private Json _messagesJson;
 
-    [Export] public ChatController ChatController;
-
-    [Export] public ActivityController ActivityController;
-    [Export] private Json _messagesJson;
-    [Export] private float _donationChance = 0.9f;
-
-    private static ChatController _chatController;
-    private static ActivityController _activityController;
-    
-    public static int Viewers { get; set; }
-    public static double Duration { get; set; }
-    public static int Followers { get; set; }
-    public static int ChatHappiness { get; set; }
+    [Export] public int Viewers = 10;
+    [Export] public double Duration = 0;
+    [Export] public int Subs = 0;
+    [Export] public int ChatHappiness = 0;
+    [Export] private float _donationChance = 0.5f;
     
     private struct MessageObject
     {
@@ -36,15 +31,20 @@ public partial class GameController : Control
         }
     }
     
-    private static readonly List<MessageObject> Messages = new();
+    private readonly List<MessageObject> _messages = new();
     
-    private static string _voiceId;
-    private static double _timeSinceLastMessage;
-    private static int _messagesInLastMinute;
-    private static bool _responseFlood;
-    private static double _responseFloodTime;
-    private static double _responseFloodDuration;
-    private static readonly List<string> ResponseFloodMessages = new()
+    private string _voiceId;
+    private double _timeSinceLastMessage;
+    private int _messagesInLastMinute;
+    private int _messageMultiplier;
+    private bool _multiplierActive;
+    private double _multiplierTime;
+    private double _multiplierDuration = 10;
+    private string _lastDonationMessage;
+    private bool _responseFlood;
+    private double _responseFloodTime;
+    private double _responseFloodDuration;
+    private readonly List<string> _responseFloodMessages = new()
     {
         "HELLO SATAN!!!",
         "OMG SATAN!",
@@ -52,23 +52,28 @@ public partial class GameController : Control
         "SATAN PLZ NOTICE ME!",
         "HEY HELL DADDY!"
     };
+
+    private readonly List<string> _subscribers = new();
+    
+    private double _updateViewersTime = 5;
+    private int _updateViewersInterval = 5;
     
     public override void _Ready()
     {
-        _chatController = ChatController;
-        _activityController = ActivityController;
-        
-        Viewers = 100;
-        Duration = 0;
-        Followers = 0;
-        ChatHappiness = 2;
+        var root = GetTree().Root;
+        var currentScene = root.GetChild(root.GetChildCount() - 1);
+        _chatController = currentScene.GetNode<ChatController>("%ChatPanel");
+        _activityController = currentScene.GetNode<ActivityController>("%ActivityPanel");
+        _messagesJson = ResourceLoader.Singleton.Load("res://chat/messages.tres") as Json;
         
         var voices = DisplayServer.TtsGetVoicesForLanguage("en");
         _voiceId = voices[0];
-        
+
+        if (_messagesJson == null) return;
         foreach (var messageObject in _messagesJson.Data.AsGodotArray<Dictionary>())
         {
-            Messages.Add(new MessageObject(messageObject["user"].ToString(), messageObject["message"].ToString(), messageObject["mood"].As<int>()));
+            _messages.Add(new MessageObject(messageObject["user"].ToString(), messageObject["message"].ToString(),
+                messageObject["mood"].As<int>()));
         }
     }
 
@@ -77,10 +82,31 @@ public partial class GameController : Control
         Duration += delta;
         
         // chat logic
-        var msgPerMin = -10.446 + 4.7743 * Math.Log(Viewers) * (_responseFlood ? 2 : 1);
+        ProcessChatLogic(delta);
+        ProcessViewerLogic(delta);
+    }
+
+    private void ProcessChatLogic(double delta)
+    {
+        var msgPerMin = -10.446 + 4.7743 * Math.Log(Viewers) * (_responseFlood ? 2 : 1) * _messageMultiplier;
         if (msgPerMin < 0)
         {
             msgPerMin = 0;
+        }
+
+        if (_multiplierActive)
+        {
+            _multiplierTime += delta;
+            if (_multiplierTime > _multiplierDuration)
+            {
+                _multiplierActive = false;
+                _messageMultiplier = 1;
+                _messagesInLastMinute = 0;
+            }
+        }
+        else
+        {
+            _messageMultiplier = 1;
         }
         
         if (_responseFlood)
@@ -89,6 +115,7 @@ public partial class GameController : Control
             if (_responseFloodTime > _responseFloodDuration)
             {
                 _responseFlood = false;
+                _messagesInLastMinute = 0;
             }
         }
 
@@ -97,16 +124,24 @@ public partial class GameController : Control
         if (!(_timeSinceLastMessage > 60 / msgPerMin)) return;
         _timeSinceLastMessage = 0;
         _messagesInLastMinute++;
-        var messages = Messages.FindAll(message => message.Mood <= ChatHappiness + 1 && message.Mood >= ChatHappiness - 1);
+        var messages = _messages.FindAll(message => message.Mood <= ChatHappiness + 1 && message.Mood >= ChatHappiness - 1);
         var message = messages[new Random().Next(0, messages.Count)];
         var text = "";
         if (_responseFlood)
-            message.Message = ResponseFloodMessages[new Random().Next(0, ResponseFloodMessages.Count)];
-        if (ChatHappiness == 2)
+            message.Message = _responseFloodMessages[new Random().Next(0, _responseFloodMessages.Count)];
+        if (ChatHappiness >= 0 && _lastDonationMessage != message.Message)
         {
-            if (new Random().NextDouble() >= _donationChance)
+            var happinessMultiplier = ChatHappiness switch
             {
-                if (new Random().NextDouble() >= 0.5)
+                0 => 1,
+                1 => 1.1,
+                2 => 1.2,
+                _ => 0
+            };
+            if (new Random().NextDouble() * happinessMultiplier >= _donationChance)
+            {
+                _lastDonationMessage = message.Message;
+                if (!_subscribers.Contains(message.User) && new Random().NextDouble() >= 0.5)
                 {
                     // subscriber
                     text = $"[font_size=6]HIGHLIGHTED[/font_size]\n[bgcolor=#fcf00750][color=#ff7d46]{message.User}[/color][/bgcolor]: {message.Message}\n";
@@ -118,8 +153,6 @@ public partial class GameController : Control
                     text = $"[font_size=6]HIGHLIGHTED[/font_size]\n[bgcolor=#fcf00750][color=#ff7d46]{message.User}[/color][/bgcolor]: {message.Message}\n";
                     MakeDonation(message.User, message.Message, new Random().Next(1, 10));
                 }
-
-                
             }
         }
 
@@ -127,33 +160,59 @@ public partial class GameController : Control
         SendMessage(text);
     }
 
-    private static void MakeDonation(string user, string message, int amount)
+    private void ProcessViewerLogic(double delta)
     {
-        _activityController.AddDonation(user, amount);
-        DisplayServer.TtsSpeak($"{user} donated {amount} Satancoins: {message}", _voiceId);
+        _updateViewersTime += delta;
+        if (_updateViewersTime < _updateViewersInterval) return;
+        _updateViewersTime = 0;
+        // calculate viewer cap depending on followers
+        var viewerCap = Subs * 20 + 100;
+        // calculate new viewers depending on followers, current viewers,  duration and chat happiness
+        var newViewers = (int) ((Subs * 0.1 + Viewers * 0.1 + Duration * 0.1) * (ChatHappiness == 0 ? 1 : ChatHappiness * 0.1));
+        GD.Print($"new viewers: {newViewers}");
+        Viewers += newViewers;
+        Viewers = Math.Clamp(Viewers, 0, viewerCap);
     }
 
-    private static void AddSubscriber(string user, string message, int months)
+    private void MakeDonation(string user, string message, int amount)
+    {
+        _activityController.AddDonation(user, amount);
+        var satanCoinsString = amount switch
+        {
+            1 => "Satancoins",
+            _ => "Satancoins"
+        };
+        DisplayServer.TtsSpeak($"{user} donated {amount} {satanCoinsString}: {message}", _voiceId, pitch: 0.0f);
+    }
+
+    private void AddSubscriber(string user, string message, int months)
     {
         _activityController.AddSubscriber(user, months);
+        _subscribers.Add(user);
         var monthsString = months switch
         {
             1 => "month",
             _ => "months"
         };
-        DisplayServer.TtsSpeak($"{user} just subscribed for {months} {monthsString}! {message}", _voiceId);
-        Followers++;
+        DisplayServer.TtsSpeak($"{user} just subscribed for {months} {monthsString}! {message}", _voiceId, pitch: 0.0f);
+        Subs++;
     }
 
-    private static void SendMessage(string message)
+    private void SendMessage(string message)
     {
         _chatController.AddMessage(message);
     }
 
-    public static void TriggerResponseFlood()
+    public void TriggerResponseFlood()
     {
         _responseFlood = true;
         _responseFloodTime = 0;
         _responseFloodDuration = new Random().Next(5, 10);
+    }
+    
+    public void HypeUpChat()
+    {
+        DisplayServer.TtsSpeak("Let's go chat! Hype it up!", _voiceId, pitch: 2.0F, volume: 60);
+        _messageMultiplier = 2;
     }
 }

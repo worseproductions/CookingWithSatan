@@ -4,7 +4,7 @@ namespace CookingWithSatan.scripts;
 
 public partial class ChatController : Control
 {
-    
+    private GameController _gameController;
     private Button _chatButton;
     private RichTextLabel _chat;
     private LineEdit _chatInput;
@@ -13,6 +13,7 @@ public partial class ChatController : Control
     
     public override void _Ready()
     {
+        _gameController = GetNode<GameController>("/root/GameController");
         _chatButton = GetNode<Button>("%ChatButton");
         _chat = GetNode<RichTextLabel>("%Chat");
         _chatInput = GetNode<LineEdit>("%ChatInput");
@@ -29,7 +30,7 @@ public partial class ChatController : Control
     {
         AddMessage($"[color=#a530F0]Satan[/color]: {_chatInput.Text}\n");
         _chatInput.Text = "";
-        GameController.TriggerResponseFlood();
+        _gameController.TriggerResponseFlood();
     }
 
     public override void _Process(double delta)
