@@ -13,7 +13,8 @@ public partial class ChatController : Control
     
     public override void _Ready()
     {
-        _gameController = GetNode<GameController>("/root/GameController");
+        var root = GetTree().Root;
+        _gameController = root.GetNode<GameController>("GameController");
         _chatButton = GetNode<Button>("%ChatButton");
         _chat = GetNode<RichTextLabel>("%Chat");
         _chatInput = GetNode<LineEdit>("%ChatInput");

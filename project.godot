@@ -19,10 +19,6 @@ config/icon="res://icon.svg"
 
 general/text_to_speech=true
 
-[autoload]
-
-GameController="*res://scripts/GameController.cs"
-
 [display]
 
 window/stretch/mode="canvas_items"

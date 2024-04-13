@@ -1,18 +1,20 @@
-[gd_scene load_steps=6 format=3 uid="uid://o2chs3mjbi1i"]
+[gd_scene load_steps=7 format=3 uid="uid://o2chs3mjbi1i"]
 
 [ext_resource type="Texture2D" uid="uid://cb4mb1x6pbkha" path="res://images/background.png" id="1_crmqh"]
+[ext_resource type="Script" path="res://scripts/GameController.cs" id="1_n8041"]
 [ext_resource type="PackedScene" uid="uid://di0ns4dtjyh0t" path="res://scenes/ui/header_panel.tscn" id="2_jxbvy"]
 [ext_resource type="PackedScene" uid="uid://rsn8ectpnyur" path="res://scenes/ui/activity_panel.tscn" id="3_a70pw"]
 [ext_resource type="PackedScene" uid="uid://bp7bkap3askut" path="res://scenes/ui/quick_actions_panel.tscn" id="3_tef1y"]
 [ext_resource type="PackedScene" uid="uid://c4npeck8tiy1u" path="res://scenes/ui/chat_panel.tscn" id="4_rg3i4"]
 
-[node name="Control" type="Control"]
+[node name="GameController" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_n8041")
 metadata/_edit_vertical_guides_ = [8.0, 1144.0]
 metadata/_edit_horizontal_guides_ = [48.0, 8.0]
 

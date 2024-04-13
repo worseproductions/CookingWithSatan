@@ -79,6 +79,13 @@ public partial class GameController : Control
 
     public override void _Process(double delta)
     {
+        if (_chatController == null || _activityController == null)
+        {
+            var root = GetTree().Root;
+            var currentScene = root.GetChild(root.GetChildCount() - 1);
+            _chatController = currentScene.GetNode<ChatController>("%ChatPanel");
+            _activityController = currentScene.GetNode<ActivityController>("%ActivityPanel");
+        }
         Duration += delta;
         
         // chat logic

@@ -12,7 +12,8 @@ public partial class HeaderPanel : Control
     
     public override void _Ready()
     {
-        _gameController = GetNode<GameController>("/root/GameController");
+        var root = GetTree().Root;
+        _gameController = root.GetNode<GameController>("GameController");
         _watching = GetNode<Label>("%WatchingLabel");
         _duration = GetNode<Label>("%DurationLabel");
         _subs = GetNode<Label>("%SubsLabel");
