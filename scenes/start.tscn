@@ -1,0 +1,224 @@
+[gd_scene load_steps=11 format=3 uid="uid://boq7mvcvbkpo"]
+
+[ext_resource type="Texture2D" uid="uid://cb4mb1x6pbkha" path="res://images/background.png" id="1_8cavi"]
+[ext_resource type="Script" path="res://scripts/StartController.cs" id="1_rhiek"]
+[ext_resource type="Texture2D" uid="uid://bbuud5xqu7cll" path="res://LogoGame.png" id="2_aeneg"]
+[ext_resource type="Texture2D" uid="uid://ddoc0nyw3abkx" path="res://images/WorseLogo.png" id="3_j73fn"]
+[ext_resource type="Texture2D" uid="uid://bslo7g1anv2wt" path="res://images/TitleFrame.png" id="4_bj8t4"]
+[ext_resource type="Theme" uid="uid://dvb2xl7gfwr07" path="res://themes/main.tres" id="5_55a6e"]
+[ext_resource type="Texture2D" uid="uid://fg0uwjoeu3fo" path="res://images/LudumDare.png" id="6_33yae"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ip82p"]
+font_size = 8
+font_color = Color(1, 0.227451, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dasgj"]
+bg_color = Color(1, 0.776471, 0.713726, 0.34902)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 10.0
+expand_margin_top = 10.0
+expand_margin_right = 10.0
+expand_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_job0u"]
+texture = ExtResource("1_8cavi")
+modulate_color = Color(0.2, 0.2, 0.2, 1)
+
+[node name="Start" type="Control"]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rhiek")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_8cavi")
+expand_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 0
+anchor_left = 0.840278
+anchor_top = 0.888889
+anchor_right = 0.979167
+anchor_bottom = 0.962963
+texture = ExtResource("2_aeneg")
+expand_mode = 1
+stretch_mode = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+anchor_left = 0.895833
+anchor_top = 0.851852
+anchor_right = 0.979167
+anchor_bottom = 0.888889
+text = "Sponsored by"
+horizontal_alignment = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Label4" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.844618
+anchor_top = 0.95679
+anchor_right = 0.979167
+anchor_bottom = 0.973765
+text = "the imaginary and sinister streaming platform"
+label_settings = SubResource("LabelSettings_ip82p")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+anchor_left = 0.0208333
+anchor_top = 0.851852
+anchor_right = 0.0850694
+anchor_bottom = 0.884259
+text = "Created by"
+metadata/_edit_use_anchors_ = true
+
+[node name="Label3" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.465278
+anchor_top = 0.851852
+anchor_right = 0.534722
+anchor_bottom = 0.888889
+text = "Created for"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+modulate = Color(0.945098, 0, 0.109804, 1)
+layout_mode = 0
+anchor_left = 0.0208333
+anchor_top = 0.888889
+anchor_right = 0.166667
+anchor_bottom = 0.962963
+texture = ExtResource("3_j73fn")
+expand_mode = 1
+stretch_mode = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0555556
+anchor_top = 0.0987654
+anchor_right = 0.944444
+anchor_bottom = 0.296296
+theme_override_styles/panel = SubResource("StyleBoxFlat_dasgj")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_bj8t4")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Panel2" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.277778
+anchor_top = 0.592593
+anchor_right = 0.722222
+anchor_bottom = 0.691358
+theme_override_styles/panel = SubResource("StyleBoxFlat_dasgj")
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.047619
+anchor_top = 0.222222
+anchor_right = 0.952381
+anchor_bottom = 0.777777
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 50
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="StartButton" type="Button" parent="Panel2/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme = ExtResource("5_55a6e")
+theme_override_font_sizes/font_size = 24
+text = "Start stream"
+
+[node name="ExitButton" type="Button" parent="Panel2/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme = ExtResource("5_55a6e")
+theme_override_font_sizes/font_size = 24
+text = "Exit"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(1, 0.6, 0, 1)
+layout_mode = 0
+anchor_left = 0.388889
+anchor_top = 0.888889
+anchor_right = 0.611111
+anchor_bottom = 0.962963
+texture = ExtResource("6_33yae")
+expand_mode = 1
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="LoadingPanel" type="Panel" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_job0u")
+
+[node name="LoadingLabel" type="Label" parent="LoadingPanel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.388889
+anchor_top = 0.484568
+anchor_right = 0.611111
+anchor_bottom = 0.516975
+grow_horizontal = 2
+grow_vertical = 2
+text = "Setting up torture chambers..."
+horizontal_alignment = 1
+
+[node name="LoadingBar" type="ProgressBar" parent="LoadingPanel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = 20.0
+offset_right = 128.0
+offset_bottom = 45.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("5_55a6e")
+max_value = 0.9
