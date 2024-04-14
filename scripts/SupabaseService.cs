@@ -11,7 +11,6 @@ using Supabase.Realtime.Interfaces;
 using Supabase.Realtime.PostgresChanges;
 using Client = Supabase.Client;
 using User = CookingWithSatan.scripts.dto.User;
-using Ordering = Postgrest.Constants.Ordering;
 
 namespace CookingWithSatan.scripts;
 
@@ -20,6 +19,7 @@ public partial class SupabaseService : Node
     public bool UseOnlineServices { get; set; }
     private Client Supabase { get; set; }
     public User CurrentUser { get; private set; }
+    public Leaderboard CurrentLeaderboard { get; private set; }
 
     [Signal]
     public delegate void ChatMessageReceivedEventHandler(string username, string message);
@@ -42,7 +42,7 @@ public partial class SupabaseService : Node
 
         Supabase.Auth.AddStateChangedListener(AuthEventHandler);
     }
-    
+
     #region Login Handling
 
     private async void AuthEventHandler(IGotrueClient<Supabase.Gotrue.User, Session> sender,
@@ -104,7 +104,7 @@ public partial class SupabaseService : Node
             .Set(x => x.DisplayName, username)
             .Update();
     }
-    
+
     #endregion
 
     #region Chat Handling
@@ -145,24 +145,32 @@ public partial class SupabaseService : Node
 
     #region Leaderboard
 
-    public async void AddLeaderboardScore(int score)
+    public async void AddLeaderboardScore(int viewers, int uptime, int subs)
     {
+        var existingEntry = await Supabase.From<Leaderboard>().Where(x => x.UserId == CurrentUser.Id).Single();
+        var newScore = 0.33 * viewers + 0.33 * uptime + 0.33 * subs;
+        if (existingEntry != null)
+        {
+            var oldScore = 0.33 * existingEntry.Viewers + 0.33 * existingEntry.Uptime + 0.33 * existingEntry.Subs;
+            if (newScore <= oldScore) return;
+        }
+        
         var entry = new Leaderboard
         {
             UserId = CurrentUser.Id,
-            Score = score
+            Viewers = viewers,
+            Uptime = uptime,
+            Subs = subs
         };
-
-        await Supabase
+        CurrentLeaderboard = (await Supabase
             .From<Leaderboard>()
-            .Where(x => x.UserId == CurrentUser.Id && x.Score < score)
-            .Set(x => x.Score, score)
-            .Update();
+            .OnConflict(x => x.UserId)
+            .Upsert(entry)).Model;
     }
 
     public async Task<ModeledResponse<Leaderboard>> GetLeaderboard()
     {
-        return await Supabase.From<Leaderboard>().Order("score", Ordering.Descending).Limit(10).Get();
+        return await Supabase.From<Leaderboard>().Select("*, user:users(user_id)").Get();
     }
 
     #endregion

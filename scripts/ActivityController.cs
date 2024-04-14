@@ -9,6 +9,9 @@ public partial class ActivityController : Control
     private ProgressBar _donationProgress;
     private Label _donationProgressText;
     
+    [Signal]
+    public delegate void DonationGoalReachedEventHandler();
+    
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
@@ -26,9 +29,13 @@ public partial class ActivityController : Control
     {
         _activityFeed.Text += $"[color=#ff7d46]{user}[/color] donated {amount}ᛋ!\n";
         var percentage = _donationProgress.Value + (float)amount / _maxDonations * 100;
-        _donationProgress.Value += percentage;
-        var text = $"{percentage:0D}% funding reached for the Satanic Deficiency Fund";
-        if (percentage > 100) text = $"{percentage:0D}% - We did it chat!";
+        _donationProgress.Value = percentage;
+        var text = $"{percentage:N0}% funding reached for the Satanic Deficiency Fund";
+        if (percentage > 100)
+        {
+            text = $"{percentage:N0}% - We did it chat!";
+            EmitSignal(SignalName.DonationGoalReached);
+        }
         _donationProgressText.Text = text;
     }
 

@@ -22,6 +22,7 @@ general/text_to_speech=true
 [autoload]
 
 SupabaseService="*res://scripts/SupabaseService.cs"
+ScoreService="*res://scripts/ScoreService.cs"
 
 [display]
 

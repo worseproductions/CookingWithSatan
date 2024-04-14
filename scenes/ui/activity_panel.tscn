@@ -23,7 +23,6 @@ offset_bottom = -0.223999
 grow_horizontal = 2
 theme = SubResource("Theme_oregy")
 script = ExtResource("1_nic0q")
-_maxDonations = 10
 metadata/_edit_use_anchors_ = true
 
 [node name="Panel" type="Panel" parent="."]

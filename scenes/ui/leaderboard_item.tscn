@@ -1,0 +1,67 @@
+[gd_scene load_steps=2 format=3 uid="uid://bliepawchfmib"]
+
+[ext_resource type="Script" path="res://scripts/ui/LeaderboardItem.cs" id="1_ipjv2"]
+
+[node name="LeaderboardItem" type="Control"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 3
+anchor_right = 0.444444
+anchor_bottom = 0.0385802
+script = ExtResource("1_ipjv2")
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.96
+theme_override_constants/separation = 10
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Spacer5" type="Control" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Username" type="Label" parent="HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Username"
+
+[node name="Spacer" type="Control" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Viewers" type="Label" parent="HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+text = "Viewers"
+horizontal_alignment = 2
+
+[node name="Spacer2" type="Control" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Uptime" type="Label" parent="HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+text = "Uptime"
+horizontal_alignment = 2
+
+[node name="Spacer3" type="Control" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Subscribers" type="Label" parent="HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+text = "Subscribers"
+horizontal_alignment = 2
+
+[node name="Spacer4" type="Control" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3

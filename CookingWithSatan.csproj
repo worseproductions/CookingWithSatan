@@ -6,9 +6,6 @@
     <EnableDynamicLoading>true</EnableDynamicLoading>
   </PropertyGroup>
   <ItemGroup>
-    <Folder Include="scripts\ui\" />
-  </ItemGroup>
-  <ItemGroup>
     <PackageReference Include="supabase-csharp" Version="0.16.2" />
   </ItemGroup>
 </Project>

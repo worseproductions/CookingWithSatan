@@ -20,6 +20,7 @@ public partial class StartController : Control
     private LineEdit _emailInput;
     private LineEdit _passwordInput;
     private Button _signInOrRegisterButton;
+    private Button _cancelOnlineServicesButton;
 
     private bool _loading;
     private double _loadingTime;
@@ -27,7 +28,7 @@ public partial class StartController : Control
 
     private readonly List<string> _loadingMessages = new()
     {
-        "Setting up hellfire servers...",
+        "Connecting to hellkick servers...",
         "Summoning d(a)emons...",
         "Initializing brimstone...",
         "Damning souls for eternity...",
@@ -53,10 +54,19 @@ public partial class StartController : Control
         _usernameInput = _usernameContainer.GetNode<LineEdit>("Username");
         _saveUsernameButton = _usernameContainer.GetNode<Button>("SaveUsernameButton");
         _useOnlineServices = GetNode<CheckBox>("%OnlineServicesCheckbox");
+        _cancelOnlineServicesButton = _signInContainer.GetNode<Button>("CancelOnlineServicesButton");
 
         _loadingPanel.Visible = false;
         _startButton.Pressed += OnStartButtonPressed;
         _exitButton.Pressed += OnExitButtonPressed;
+        _cancelOnlineServicesButton.Pressed += () =>
+        {
+            _supabaseService.UseOnlineServices = false;
+            _loading = true;
+            _loadingContainer.Visible = true;
+            _signInContainer.Visible = false;
+            _usernameContainer.Visible = false;
+        };
         _signInOrRegisterButton.Pressed += async () =>
         {
             var signedUp = await _supabaseService.LoginOrSignup(_emailInput.Text, _passwordInput.Text);

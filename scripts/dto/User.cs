@@ -1,5 +1,6 @@
 ﻿using Postgrest.Attributes;
 using Postgrest.Models;
+// ReSharper disable ExplicitCallerInfoArgument
 
 namespace CookingWithSatan.scripts.dto;
 

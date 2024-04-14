@@ -2,12 +2,12 @@ using System;
 using System.Collections.Generic;
 using Godot;
 using Godot.Collections;
-using Supabase.Gotrue;
 
 namespace CookingWithSatan.scripts;
 
 public partial class GameController : Control
 {
+    private ScoreService _scoreService;
     private ChatController _chatController;
     private ActivityController _activityController;
     private Json _messagesJson;
@@ -17,7 +17,7 @@ public partial class GameController : Control
     [Export] public int Subs = 0;
     [Export] public int ChatHappiness = 0;
     [Export] private float _donationChance = 0.5f;
-    
+
     private struct MessageObject
     {
         public readonly string User;
@@ -31,9 +31,9 @@ public partial class GameController : Control
             Mood = mood;
         }
     }
-    
+
     private readonly List<MessageObject> _messages = new();
-    
+
     private string _voiceId;
     private double _timeSinceLastMessage;
     private int _messagesInLastMinute;
@@ -45,6 +45,7 @@ public partial class GameController : Control
     private bool _responseFlood;
     private double _responseFloodTime;
     private double _responseFloodDuration;
+
     private readonly List<string> _responseFloodMessages = new()
     {
         "HELLO SATAN!!!",
@@ -55,18 +56,20 @@ public partial class GameController : Control
     };
 
     private readonly List<string> _subscribers = new();
-    
+
     private double _updateViewersTime = 5;
     private int _updateViewersInterval = 5;
-    
+    private bool _donationGoalReached;
+
     public override void _Ready()
     {
-        var root = GetTree().Root;
-        var currentScene = root.GetChild(root.GetChildCount() - 1);
-        _chatController = currentScene.GetNode<ChatController>("%ChatPanel");
-        _activityController = currentScene.GetNode<ActivityController>("%ActivityPanel");
+        _scoreService = GetNode<ScoreService>("/root/ScoreService");
+        _chatController = GetNode<ChatController>("%ChatPanel");
+        _activityController = GetNode<ActivityController>("%ActivityPanel");
         _messagesJson = ResourceLoader.Singleton.Load("res://chat/messages.tres") as Json;
-        
+
+        _activityController.DonationGoalReached += OnDonationGoalReached;
+
         var voices = DisplayServer.TtsGetVoicesForLanguage("en");
         _voiceId = voices[0];
 
@@ -78,6 +81,24 @@ public partial class GameController : Control
         }
     }
 
+    private void OnDonationGoalReached()
+    {
+        const int id = 123;
+        DisplayServer.TtsSpeak(
+            "Oh my god chat thank you so much for reaching the donation goal! That's it for today, see y'all next time!",
+            _voiceId, pitch: 2, utteranceId: id);
+
+        DisplayServer.TtsSetUtteranceCallback(DisplayServer.TtsUtteranceEvent.Ended,
+            Callable.From((int idToCheck) =>
+                {
+                    if (idToCheck != id) return;
+                    DisplayServer.TtsStop();
+                    _donationGoalReached = true;
+                }
+            )
+        );
+    }
+
     public override void _Process(double delta)
     {
         if (_chatController == null || _activityController == null)
@@ -87,11 +108,33 @@ public partial class GameController : Control
             _chatController = currentScene.GetNode<ChatController>("%ChatPanel");
             _activityController = currentScene.GetNode<ActivityController>("%ActivityPanel");
         }
+
         Duration += delta;
-        
+
+        ProcessWinLoseConditions(delta);
+
         // chat logic
         ProcessChatLogic(delta);
         ProcessViewerLogic(delta);
+    }
+
+    private void ProcessWinLoseConditions(double delta)
+    {
+        if (Viewers <= 0)
+        {
+            _scoreService.Win = false;
+            _scoreService.Viewers = 0;
+            _scoreService.Uptime = (int)Duration;
+            _scoreService.Subs = Subs;
+            GetTree().ChangeSceneToFile("res://scenes/end.tscn");
+        }
+
+        if (!_donationGoalReached) return;
+        _scoreService.Win = true;
+        _scoreService.Viewers = Viewers;
+        _scoreService.Uptime = (int)Duration;
+        _scoreService.Subs = Subs;
+        GetTree().ChangeSceneToFile("res://scenes/end.tscn");
     }
 
     private void ProcessChatLogic(double delta)
@@ -116,7 +159,7 @@ public partial class GameController : Control
         {
             _messageMultiplier = 1;
         }
-        
+
         if (_responseFlood)
         {
             _responseFloodTime += delta;
@@ -132,7 +175,8 @@ public partial class GameController : Control
         if (!(_timeSinceLastMessage > 60 / msgPerMin)) return;
         _timeSinceLastMessage = 0;
         _messagesInLastMinute++;
-        var messages = _messages.FindAll(message => message.Mood <= ChatHappiness + 1 && message.Mood >= ChatHappiness - 1);
+        var messages =
+            _messages.FindAll(message => message.Mood <= ChatHappiness + 1 && message.Mood >= ChatHappiness - 1);
         var message = messages[new Random().Next(0, messages.Count)];
         var text = "";
         if (_responseFlood)
@@ -152,13 +196,15 @@ public partial class GameController : Control
                 if (!_subscribers.Contains(message.User) && new Random().NextDouble() >= 0.5)
                 {
                     // subscriber
-                    text = $"[font_size=6]HIGHLIGHTED[/font_size]\n[bgcolor=#fcf00750][color=#ff7d46]{message.User}[/color][/bgcolor]: {message.Message}\n";
+                    text =
+                        $"[font_size=6]HIGHLIGHTED[/font_size]\n[bgcolor=#fcf00750][color=#ff7d46]{message.User}[/color][/bgcolor]: {message.Message}\n";
                     AddSubscriber(message.User, message.Message, new Random().Next(1, 12));
                 }
                 else
                 {
                     // donation
-                    text = $"[font_size=6]HIGHLIGHTED[/font_size]\n[bgcolor=#fcf00750][color=#ff7d46]{message.User}[/color][/bgcolor]: {message.Message}\n";
+                    text =
+                        $"[font_size=6]HIGHLIGHTED[/font_size]\n[bgcolor=#fcf00750][color=#ff7d46]{message.User}[/color][/bgcolor]: {message.Message}\n";
                     MakeDonation(message.User, message.Message, new Random().Next(1, 10));
                 }
             }
@@ -176,7 +222,8 @@ public partial class GameController : Control
         // calculate viewer cap depending on followers
         var viewerCap = Subs * 20 + 100;
         // calculate new viewers depending on followers, current viewers,  duration and chat happiness
-        var newViewers = (int) ((Subs * 0.1 + Viewers * 0.1 + Duration * 0.1) * (ChatHappiness == 0 ? 1 : ChatHappiness * 0.1));
+        var newViewers = (int)((Subs * 0.1 + Viewers * 0.1 + Duration * 0.1) *
+                               (ChatHappiness == 0 ? 1 : ChatHappiness * 0.1));
         GD.Print($"new viewers: {newViewers}");
         Viewers += newViewers;
         Viewers = Math.Clamp(Viewers, 0, viewerCap);
@@ -187,10 +234,18 @@ public partial class GameController : Control
         _activityController.AddDonation(user, amount);
         var satanCoinsString = amount switch
         {
-            1 => "Satancoins",
+            1 => "Satancoin",
             _ => "Satancoins"
         };
-        DisplayServer.TtsSpeak($"{user} donated {amount} {satanCoinsString}: {message}", _voiceId, pitch: 0.0f);
+        message = amount > 5 ? message : "";
+        var thankYouString = amount switch
+        {
+            > 10 => "Oh my god thank you so much",
+            > 5 => "Thank you so much",
+            _ => "Thank you"
+        };
+        DisplayServer.TtsSpeak($"{user} donated {amount} {satanCoinsString}: {message}", _voiceId, pitch: 0, rate: 1.2f);
+        DisplayServer.TtsSpeak($"{thankYouString} for the {amount} {satanCoinsString} {user.Split('_')[0]}!", _voiceId, pitch: 2);
     }
 
     private void AddSubscriber(string user, string message, int months)
@@ -202,7 +257,15 @@ public partial class GameController : Control
             1 => "month",
             _ => "months"
         };
-        DisplayServer.TtsSpeak($"{user} just subscribed for {months} {monthsString}! {message}", _voiceId, pitch: 0.0f);
+        message = months > 3  ? message : "";
+        var thankYouString = months switch
+        {
+            > 6 => "Oh my god thank you so much",
+            > 3 => "Thank you so much",
+            _ => "Thank you"
+        };
+        DisplayServer.TtsSpeak($"{user} just subscribed for {months} {monthsString}! {message}", _voiceId, pitch: 0, rate: 1.2f);
+        DisplayServer.TtsSpeak($"{thankYouString} the {months} {monthsString} {user.Split('_')[0]}!", _voiceId, pitch: 2);
         Subs++;
     }
 
@@ -217,7 +280,7 @@ public partial class GameController : Control
         _responseFloodTime = 0;
         _responseFloodDuration = new Random().Next(5, 10);
     }
-    
+
     public void HypeUpChat()
     {
         DisplayServer.TtsSpeak("Let's go chat! Hype it up!", _voiceId, pitch: 2.0F, volume: 60);
