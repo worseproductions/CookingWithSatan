@@ -107,19 +107,23 @@ theme = ExtResource("1_f5rri")
 theme_type_variation = &"FlatButton"
 text = "Hype"
 
-[node name="Button2" type="Button" parent="Panel/HBoxContainer"]
+[node name="ResetIngredientsButton" type="Button" parent="Panel/HBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 theme = ExtResource("1_f5rri")
 theme_type_variation = &"FlatButton"
-text = "Item 2"
+text = "Reset
+Ingredients"
 
-[node name="Button3" type="Button" parent="Panel/HBoxContainer"]
+[node name="RecipeBookButton" type="Button" parent="Panel/HBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 theme = ExtResource("1_f5rri")
 theme_type_variation = &"FlatButton"
-text = "Item 3"
+text = "Recipe
+Book"
 
 [node name="Button4" type="Button" parent="Panel/HBoxContainer"]
 custom_minimum_size = Vector2(100, 0)
@@ -128,9 +132,11 @@ theme = ExtResource("1_f5rri")
 theme_type_variation = &"FlatButton"
 text = "Item 4"
 
-[node name="Button5" type="Button" parent="Panel/HBoxContainer"]
+[node name="EndStreamButton" type="Button" parent="Panel/HBoxContainer"]
+unique_name_in_owner = true
+modulate = Color(1, 0, 0, 1)
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 theme = ExtResource("1_f5rri")
 theme_type_variation = &"FlatButton"
-text = "Item 5"
+text = "End Stream"

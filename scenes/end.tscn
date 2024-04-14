@@ -1,0 +1,185 @@
+[gd_scene load_steps=11 format=3 uid="uid://c1hyngkpaagie"]
+
+[ext_resource type="Script" path="res://scripts/EndController.cs" id="1_4arvm"]
+[ext_resource type="Texture2D" uid="uid://cb4mb1x6pbkha" path="res://images/background.png" id="1_wc8l7"]
+[ext_resource type="PackedScene" uid="uid://bliepawchfmib" path="res://scenes/ui/leaderboard_item.tscn" id="2_p2et4"]
+[ext_resource type="Script" path="res://scripts/ui/Leaderboard.cs" id="2_u34b1"]
+[ext_resource type="PackedScene" uid="uid://430mnbvtkksl" path="res://scenes/ui/shortcut_hints.tscn" id="5_r2g1j"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_kp4ud"]
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_0144b"]
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_i15xg"]
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_2ti1d"]
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_s2lje"]
+font_size = 24
+
+[node name="End" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4arvm")
+
+[node name="Background" type="TextureRect" parent="."]
+modulate = Color(0.345098, 0.345098, 0.345098, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_wc8l7")
+expand_mode = 1
+
+[node name="LeaderboardContainer" type="Control" parent="."]
+layout_mode = 1
+anchor_left = 0.277778
+anchor_top = 0.432099
+anchor_right = 0.722222
+anchor_bottom = 0.938272
+script = ExtResource("2_u34b1")
+_leaderboardItemScene = ExtResource("2_p2et4")
+metadata/_edit_use_anchors_ = true
+
+[node name="ScrollContainer" type="ScrollContainer" parent="LeaderboardContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Leaderboard" type="VBoxContainer" parent="LeaderboardContainer/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LeaderboardHeader" type="Control" parent="LeaderboardContainer/ScrollContainer/Leaderboard"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="LeaderboardContainer/ScrollContainer/Leaderboard/LeaderboardHeader"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Spacer5" type="Control" parent="LeaderboardContainer/ScrollContainer/Leaderboard/LeaderboardHeader/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="LeaderboardContainer/ScrollContainer/Leaderboard/LeaderboardHeader/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Username"
+label_settings = SubResource("LabelSettings_kp4ud")
+
+[node name="Spacer" type="Control" parent="LeaderboardContainer/ScrollContainer/Leaderboard/LeaderboardHeader/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label2" type="Label" parent="LeaderboardContainer/ScrollContainer/Leaderboard/LeaderboardHeader/HBoxContainer"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+text = "Viewers"
+label_settings = SubResource("LabelSettings_0144b")
+horizontal_alignment = 2
+
+[node name="Spacer2" type="Control" parent="LeaderboardContainer/ScrollContainer/Leaderboard/LeaderboardHeader/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label3" type="Label" parent="LeaderboardContainer/ScrollContainer/Leaderboard/LeaderboardHeader/HBoxContainer"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+text = "Uptime"
+label_settings = SubResource("LabelSettings_i15xg")
+horizontal_alignment = 2
+
+[node name="Spacer3" type="Control" parent="LeaderboardContainer/ScrollContainer/Leaderboard/LeaderboardHeader/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label4" type="Label" parent="LeaderboardContainer/ScrollContainer/Leaderboard/LeaderboardHeader/HBoxContainer"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+text = "Subscribers"
+label_settings = SubResource("LabelSettings_2ti1d")
+horizontal_alignment = 2
+
+[node name="Spacer4" type="Control" parent="LeaderboardContainer/ScrollContainer/Leaderboard/LeaderboardHeader/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="WinLoseLabel" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+anchor_left = 0.222222
+anchor_top = 0.0987654
+anchor_right = 0.777778
+anchor_bottom = 0.197531
+text = "You lost all your viewers...
+Try to keep chat entertained the next time"
+label_settings = SubResource("LabelSettings_s2lje")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="StatsLabel" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.333333
+anchor_top = 0.259259
+anchor_right = 0.666667
+anchor_bottom = 0.402778
+text = "Stats
+Max. Viewers: 0 	(Highscore: 0)
+Time streamed: 00:00:00	(Highscore: 00:00:00)
+Subscribers: 0	(Highscore: 0)"
+tab_stops = PackedFloat32Array(95)
+metadata/_edit_use_anchors_ = true
+
+[node name="HomeButton" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+anchor_left = 0.902778
+anchor_top = 0.938272
+anchor_right = 0.986111
+anchor_bottom = 0.976852
+text = "Back to menu"
+metadata/_edit_use_anchors_ = true
+
+[node name="RetryButton" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+anchor_left = 0.805556
+anchor_top = 0.938272
+anchor_right = 0.888889
+anchor_bottom = 0.976852
+text = "Retry"
+metadata/_edit_use_anchors_ = true
+
+[node name="ShortcutHints" parent="." instance=ExtResource("5_r2g1j")]
+layout_mode = 1
+anchor_left = 0.916667
+anchor_top = 0.0123457
+anchor_right = 1.0
+anchor_bottom = 0.0740741
