@@ -52,6 +52,8 @@ public partial class GameController : Control
     [Export] private Array<Color> _chatColors = new()
     {
         new Color("#ff7d46"),
+        new Color("#00a7e7"),
+        new Color("#00b76d"),
     };
     
     [ExportGroup("Hype Multiplier")]
