@@ -13,7 +13,10 @@ config_version=5
 config/name="CookingWithSatan"
 run/main_scene="res://scenes/start.tscn"
 config/features=PackedStringArray("4.2", "C#", "Forward Plus")
+boot_splash/bg_color=Color(1, 0.490196, 0.27451, 1)
+boot_splash/image="res://images/Splash.png"
 config/icon="res://icon.svg"
+boot_splash/minimum_display_time=2000
 
 [audio]
 
@@ -23,11 +26,13 @@ general/text_to_speech=true
 
 SupabaseService="*res://scripts/SupabaseService.cs"
 ScoreService="*res://scripts/ScoreService.cs"
+GlobalInputHandler="*res://scripts/GlobalInputHandler.cs"
 
 [display]
 
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+mouse_cursor/custom_image="res://images/Cursor.png"
 
 [dotnet]
 
@@ -37,3 +42,16 @@ project/assembly_name="CookingWithSatan"
 
 theme/custom="res://themes/main.tres"
 theme/custom_font="res://fonts/NewRocker/NewRocker-Regular.ttf"
+
+[input]
+
+ui_toggle_fullscreen={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194342,"key_label":0,"unicode":0,"echo":false,"script":null)
+]
+}
+ui_toggle_sound={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194338,"key_label":0,"unicode":0,"echo":false,"script":null)
+]
+}

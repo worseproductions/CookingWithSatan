@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://boq7mvcvbkpo"]
+[gd_scene load_steps=13 format=3 uid="uid://boq7mvcvbkpo"]
 
 [ext_resource type="Texture2D" uid="uid://cb4mb1x6pbkha" path="res://images/background.png" id="1_8cavi"]
 [ext_resource type="Script" path="res://scripts/StartController.cs" id="1_rhiek"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bslo7g1anv2wt" path="res://images/TitleFrame.png" id="4_bj8t4"]
 [ext_resource type="Theme" uid="uid://dvb2xl7gfwr07" path="res://themes/main.tres" id="5_55a6e"]
 [ext_resource type="Texture2D" uid="uid://fg0uwjoeu3fo" path="res://images/LudumDare.png" id="6_33yae"]
+[ext_resource type="PackedScene" uid="uid://430mnbvtkksl" path="res://scenes/ui/shortcut_hints.tscn" id="8_vvvm3"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ip82p"]
 font_size = 8
@@ -196,6 +197,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="LoadingPanel" type="Panel" parent="."]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -340,3 +342,10 @@ grow_vertical = 2
 theme = ExtResource("5_55a6e")
 max_value = 0.9
 metadata/_edit_use_anchors_ = true
+
+[node name="ShortcutHints" parent="." instance=ExtResource("8_vvvm3")]
+layout_mode = 1
+anchor_left = 0.916667
+anchor_top = 0.0123457
+anchor_right = 1.0
+anchor_bottom = 0.0740741

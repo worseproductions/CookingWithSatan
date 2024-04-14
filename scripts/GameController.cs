@@ -7,6 +7,7 @@ namespace CookingWithSatan.scripts;
 
 public partial class GameController : Control
 {
+    private GlobalInputHandler _globalInputHandler;
     private ScoreService _scoreService;
     private ChatController _chatController;
     private ActivityController _activityController;
@@ -60,9 +61,11 @@ public partial class GameController : Control
     private double _updateViewersTime = 5;
     private int _updateViewersInterval = 5;
     private bool _donationGoalReached;
+    private bool _manuallyEndStream;
 
     public override void _Ready()
     {
+        _globalInputHandler = GetNode<GlobalInputHandler>("/root/GlobalInputHandler");
         _scoreService = GetNode<ScoreService>("/root/ScoreService");
         _chatController = GetNode<ChatController>("%ChatPanel");
         _activityController = GetNode<ActivityController>("%ActivityPanel");
@@ -84,9 +87,9 @@ public partial class GameController : Control
     private void OnDonationGoalReached()
     {
         const int id = 123;
-        DisplayServer.TtsSpeak(
+        DevilTts(
             "Oh my god chat thank you so much for reaching the donation goal! That's it for today, see y'all next time!",
-            _voiceId, pitch: 2, utteranceId: id);
+            id);
 
         DisplayServer.TtsSetUtteranceCallback(DisplayServer.TtsUtteranceEvent.Ended,
             Callable.From((int idToCheck) =>
@@ -120,7 +123,7 @@ public partial class GameController : Control
 
     private void ProcessWinLoseConditions(double delta)
     {
-        if (Viewers <= 0)
+        if (_manuallyEndStream || Viewers <= 0)
         {
             _scoreService.Win = false;
             _scoreService.Viewers = 0;
@@ -244,8 +247,8 @@ public partial class GameController : Control
             > 5 => "Thank you so much",
             _ => "Thank you"
         };
-        DisplayServer.TtsSpeak($"{user} donated {amount} {satanCoinsString}: {message}", _voiceId, pitch: 0, rate: 1.2f);
-        DisplayServer.TtsSpeak($"{thankYouString} for the {amount} {satanCoinsString} {user.Split('_')[0]}!", _voiceId, pitch: 2);
+        ChatTts($"{user.Replace('_', ' ')} donated {amount} {satanCoinsString}: {message}");
+        DevilTts($"{thankYouString} for the {amount} {satanCoinsString} {user.Replace('_', ' ')}!");
     }
 
     private void AddSubscriber(string user, string message, int months)
@@ -257,15 +260,15 @@ public partial class GameController : Control
             1 => "month",
             _ => "months"
         };
-        message = months > 3  ? message : "";
+        message = months > 3 ? message : "";
         var thankYouString = months switch
         {
             > 6 => "Oh my god thank you so much",
             > 3 => "Thank you so much",
             _ => "Thank you"
         };
-        DisplayServer.TtsSpeak($"{user} just subscribed for {months} {monthsString}! {message}", _voiceId, pitch: 0, rate: 1.2f);
-        DisplayServer.TtsSpeak($"{thankYouString} the {months} {monthsString} {user.Split('_')[0]}!", _voiceId, pitch: 2);
+        ChatTts($"{user.Replace('_', ' ')} just subscribed for {months} {monthsString}! {message}");
+        DevilTts($"{thankYouString} the {months} {monthsString} {user.Replace('_', ' ')}!");
         Subs++;
     }
 
@@ -283,7 +286,43 @@ public partial class GameController : Control
 
     public void HypeUpChat()
     {
-        DisplayServer.TtsSpeak("Let's go chat! Hype it up!", _voiceId, pitch: 2.0F, volume: 60);
+        DevilTts("Let's go chat! Hype it up!");
         _messageMultiplier = 2;
+    }
+    
+    public void ResetIngredients()
+    {
+        throw new NotImplementedException();
+    }
+    
+    public void OpenRecipeBook()
+    {
+        throw new NotImplementedException();
+    }
+
+    public void EndStream()
+    {
+        const int id = 178;
+        DevilTts("Have to wrap up early today, see you guys next time!", id);
+        DisplayServer.TtsSetUtteranceCallback(DisplayServer.TtsUtteranceEvent.Ended,
+            Callable.From((int idToCheck) =>
+            {
+                if (idToCheck != id) return;
+                DisplayServer.TtsStop();
+                _manuallyEndStream = true;
+            })
+        );
+    }
+
+    private void DevilTts(string text, int id = 0)
+    {
+        DisplayServer.TtsSpeak(text, _voiceId, pitch: 2.0F, volume: _globalInputHandler.SoundEnabled ? 50 : 0,
+            utteranceId: id);
+    }
+
+    private void ChatTts(string text, int id = 0)
+    {
+        DisplayServer.TtsSpeak(text, _voiceId, pitch: 0.0F, volume: _globalInputHandler.SoundEnabled ? 50 : 0,
+            utteranceId: id);
     }
 }

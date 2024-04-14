@@ -317,4 +317,236 @@ data = [{
 "message": "Maybe I should send over a casserole after all... just in case this ends in edible flames...",
 "mood": -1.0,
 "user": "Saint_Monica2"
+}, {
+"message": "Burning dinner? Sounds like love is in the air...",
+"mood": -1.0,
+"user": "Cupid_Cant_Cook"
+}, {
+"message": "Spicy! ",
+"mood": 2.0,
+"user": "Beelzebub_Burger"
+}, {
+"message": "LMFAO ",
+"mood": 2.0,
+"user": "Angellica5"
+}, {
+"message": "Bless this mess...",
+"mood": -1.0,
+"user": "Saint_Monica"
+}, {
+"message": "Those tongs are for flipping, not throwing!",
+"mood": 0.0,
+"user": "Bartleby_Butcher"
+}, {
+"message": "Demonic nachos for later? Yes please!",
+"mood": 1.0,
+"user": "Disciple_Disco"
+}, {
+"message": "Maybe some infernal veggies next time? ",
+"mood": 1.0,
+"user": "Agares_Agriculture"
+}, {
+"message": "Needs more metal! ",
+"mood": 1.0,
+"user": "Mastema_Musician3"
+}, {
+"message": "WOOOOO! ",
+"mood": 2.0,
+"user": "Pazuzu_PartyAnimal3"
+}, {
+"message": "Sloth approves of this level of chaos. ",
+"mood": 1.0,
+"user": "Stolas_Stoic4"
+}, {
+"message": "Intriguing spices... ",
+"mood": 1.0,
+"user": "Xaphan_Xenolinguist3"
+}, {
+"message": "On hold with fire dept... again...",
+"mood": 0.0,
+"user": "Hades_HotLine3"
+}, {
+"message": "Hail Satan! (And his questionable cooking skills)",
+"mood": 2.0,
+"user": "Lucifer_Loyal4"
+}, {
+"message": "This is demonic... entertainment!",
+"mood": 1.0,
+"user": "Saintly_Surprise3"
+}, {
+"message": "Sir, safety first! Oven mitts!",
+"mood": 0.0,
+"user": "Demon_Dietician"
+}, {
+"message": "GG Lucifer, you died by fire... again. Maybe takeout next time?",
+"mood": 1.0,
+"user": "Gabriel_the_Gamer"
+}, {
+"message": "Even covered in soot, he's still hot. #DemonicDreamboat",
+"mood": 2.0,
+"user": "Lilith_Love"
+}, {
+"message": "Sub for the burnt offering challenge!",
+"mood": 1.0,
+"user": "Mascot_Malphas"
+}, {
+"message": "Respect the hustle! Gotta eat, even in the underworld.",
+"mood": 1.0,
+"user": "Cherub_Chef"
+}, {
+"message": "Pretty sure that cauldron is cursed...",
+"mood": -1.0,
+"user": "Pandora_Pops"
+}, {
+"message": "Holy water as a secret ingredient? Bold!",
+"mood": 1.0,
+"user": "Belial_Brews"
+}, {
+"message": "Imps are the BEST kitchen helpers!",
+"mood": 2.0,
+"user": "Dantalion_Dabbler3"
+}, {
+"message": "Is that a demon sous-chef? Mind. Blown.",
+"mood": 1.0,
+"user": "Barnaby_Beats3"
+}, {
+"message": "Fire extinguisher, Your Infernal Majesty? It's right next to you...",
+"mood": 0.0,
+"user": "Samael_Security"
+}, {
+"message": "Inspiration struck! This fiery chaos is pure art!",
+"mood": 2.0,
+"user": "Asmodeus_Art"
+}, {
+"message": "Can we fast-forward to the gremlin summoning incident?",
+"mood": -1.0,
+"user": "Belphegor_Bored"
+}, {
+"message": "Record viewership! This stream is a goldmine!",
+"mood": 2.0,
+"user": "Mephistopheles_Manager"
+}, {
+"message": "Looks inedible, but the entertainment value is priceless!",
+"mood": 1.0,
+"user": "Succubus_Snacker4"
+}, {
+"message": "Sending good vibes... and maybe some antacids for the viewers.",
+"mood": 1.0,
+"user": "Heavenli_Healer"
+}, {
+"message": "That hat is SO tiny! It's adorable!",
+"mood": 1.0,
+"user": "Azazel_Azzap"
+}, {
+"message": "Can't believe I'm watching the devil struggle with a whisk. This is my new guilty pleasure.",
+"mood": 2.0,
+"user": "MichaelMic"
+}, {
+"message": "Pretty sure that's a mermaid tail, not Leviathan's. Did someone order takeout?",
+"mood": 1.0,
+"user": "Lord_Lobster"
+}, {
+"message": "Maybe use the grimoire for recipes, not summoning rituals?",
+"mood": -1.0,
+"user": "Behemoth_Baker"
+}, {
+"message": "Uh oh, those eggs are glowing... and pulsating. Maybe put them down?",
+"mood": -2.0,
+"user": "Beleth_Breeder"
+}, {
+"message": "Imp throwing contest? Now that's demonic entertainment!",
+"mood": 2.0,
+"user": "Purson_Puppeteer"
+}, {
+"message": "This is like watching a culinary kaiju battle. Brimstone vs burnt offerings. Who will win?",
+"mood": 1.0,
+"user": "Samyaza_Strategist3"
+}, {
+"message": "Love the fiery accents on the apron, Your Majesty! Maybe lay off the brimstone explosions for the curtains though...",
+"mood": 1.0,
+"user": "Satan_Stylist"
+}, {
+"message": "Wait, is that a soul-sifter? This is getting dark... even for the underworld.",
+"mood": -2.0,
+"user": "Seditch_Sleuth"
+}, {
+"message": "This is an insult to fire itself! I've seen demons with better cooking skills!",
+"mood": -2.0,
+"user": "Beelzebub_Burger"
+}, {
+"message": "Ugh, is this what passes for entertainment in Hell? I'm going back to scraping grime off fallen angels for some peace!",
+"mood": -1.0,
+"user": "Barnaby_Beats4"
+}, {
+"message": "I QUIT! This is a health hazard and a culinary war crime! Someone get Leviathan to wash this kitchen clean!",
+"mood": -2.0,
+"user": "Demon_Dietician"
+}, {
+"message": "Viewers are dropping like flies! We need a turnaround FAST! Lucifer, get it together!",
+"mood": -2.0,
+"user": "Mephistopheles_Manager"
+}, {
+"message": "Okay, this isn't funny anymore. Someone get this demon a microwave dinner and put him out of his fiery misery!",
+"mood": -1.0,
+"user": "Saintly_Surprise4"
+}, {
+"message": "Seriously? You burnt the infernal kelp AGAIN? You're lucky I'm too lazy to come up there and cook myself!",
+"mood": -2.0,
+"user": "Leviathan_Lives4"
+}, {
+"message": "This isn't summoning a demon, it's summoning a health inspector! We're all doomed!",
+"mood": -2.0,
+"user": "Samyaza_Strategist4"
+}, {
+"message": "Even I can't defend this... monstrosity. Get a grip, Lucifer! You're ruining your image!",
+"mood": -1.0,
+"user": "Lilith_Love"
+}, {
+"message": "My grimoire weeps for the misuse of infernal spices! This is culinary heresy!",
+"mood": -2.0,
+"user": "Dantalion_Dabbler4"
+}, {
+"message": "Inspiration has fled the building! This fiery mess is an insult to the underworld's aesthetics!",
+"mood": -2.0,
+"user": "Asmodeus_Art"
+}, {
+"message": "My THREE HEADS and I cannot believe this! You call this burnt offering... an offering?!",
+"mood": -2.0,
+"user": "Cerberus_Chef"
+}, {
+"message": "Infernal stocks are PLUMMETING! Who wants to invest in burnt demon cuisine?!",
+"mood": -2.0,
+"user": "Mammon_Moneybags4"
+}, {
+"message": "Fire alarm died AND the music cut out?! This party's a total inferno... of disappointment!",
+"mood": -2.0,
+"user": "Pazuzu_PartyAnimal4"
+}, {
+"message": "Those glowing eggs hatched... and they look like they want REVENGE for this culinary catastrophe!",
+"mood": -2.0,
+"user": "Beleth_Breeder4"
+}, {
+"message": "On hold with fire department... again! Can someone tell them it's just Lucifer and his burnt breakfast?",
+"mood": -2.0,
+"user": "Hades_HotLine4"
+}, {
+"message": "Your Majesty, with all due respect, this is a public relations nightmare. Perhaps takeout next time?",
+"mood": -2.0,
+"user": "Lucifer_Loyal5"
+}, {
+"message": "Maybe some stress-relief meditation instead of another culinary disaster, Your Infernal Majesty?",
+"mood": -1.0,
+"user": "Heavenli_Healer"
+}, {
+"message": "Even Leviathan would rather be stuck at the bottom of the ocean than eat that... thing you call food!",
+"mood": -2.0,
+"user": "Lord_Lobster"
+}, {
+"message": "I take back everything nice I ever said about demonic cuisine. This is just... wrong.",
+"mood": -2.0,
+"user": "Behemoth_Baker"
+}, {
+"message": "Pretty sure I saw a soul trying to escape that pot. This is a health code violation and a moral outrage!",
+"mood": -2.0,
+"user": "Seditch_Sleuth"
 }]

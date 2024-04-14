@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://c1hyngkpaagie"]
+[gd_scene load_steps=11 format=3 uid="uid://c1hyngkpaagie"]
 
 [ext_resource type="Script" path="res://scripts/EndController.cs" id="1_4arvm"]
 [ext_resource type="Texture2D" uid="uid://cb4mb1x6pbkha" path="res://images/background.png" id="1_wc8l7"]
 [ext_resource type="PackedScene" uid="uid://bliepawchfmib" path="res://scenes/ui/leaderboard_item.tscn" id="2_p2et4"]
 [ext_resource type="Script" path="res://scripts/ui/Leaderboard.cs" id="2_u34b1"]
+[ext_resource type="PackedScene" uid="uid://430mnbvtkksl" path="res://scenes/ui/shortcut_hints.tscn" id="5_r2g1j"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_kp4ud"]
 outline_size = 4
@@ -34,6 +35,7 @@ grow_vertical = 2
 script = ExtResource("1_4arvm")
 
 [node name="Background" type="TextureRect" parent="."]
+modulate = Color(0.345098, 0.345098, 0.345098, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -154,3 +156,30 @@ Time streamed: 00:00:00	(Highscore: 00:00:00)
 Subscribers: 0	(Highscore: 0)"
 tab_stops = PackedFloat32Array(95)
 metadata/_edit_use_anchors_ = true
+
+[node name="HomeButton" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+anchor_left = 0.902778
+anchor_top = 0.938272
+anchor_right = 0.986111
+anchor_bottom = 0.976852
+text = "Back to menu"
+metadata/_edit_use_anchors_ = true
+
+[node name="RetryButton" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+anchor_left = 0.805556
+anchor_top = 0.938272
+anchor_right = 0.888889
+anchor_bottom = 0.976852
+text = "Retry"
+metadata/_edit_use_anchors_ = true
+
+[node name="ShortcutHints" parent="." instance=ExtResource("5_r2g1j")]
+layout_mode = 1
+anchor_left = 0.916667
+anchor_top = 0.0123457
+anchor_right = 1.0
+anchor_bottom = 0.0740741

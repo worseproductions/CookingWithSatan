@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://430mnbvtkksl"]
+
+[ext_resource type="Script" path="res://scripts/ui/ShortcutHintController.cs" id="1_focgk"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8yopj"]
+font_size = 12
+
+[node name="ShortcutHints" type="Control"]
+layout_mode = 3
+anchor_right = 0.0833333
+anchor_bottom = 0.0617284
+script = ExtResource("1_focgk")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "F7:		Mute
+F11:	Fullscreen"
+label_settings = SubResource("LabelSettings_8yopj")
+tab_stops = PackedFloat32Array(10)

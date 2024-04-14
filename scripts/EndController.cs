@@ -8,6 +8,8 @@ public partial class EndController : Control
     private SupabaseService _supabaseService;
     private Label _winLoseLabel;
     private Label _statsLabel;
+    private Button _retryButton;
+    private Button _homeButton;
     
     public override void _Ready()
     {
@@ -15,6 +17,11 @@ public partial class EndController : Control
         _supabaseService = GetNode<SupabaseService>("/root/SupabaseService");
         _winLoseLabel = GetNode<Label>("%WinLoseLabel");
         _statsLabel = GetNode<Label>("%StatsLabel");
+        _retryButton = GetNode<Button>("%RetryButton");
+        _homeButton = GetNode<Button>("%HomeButton");
+        
+        _retryButton.Pressed += () => GetTree().ChangeSceneToFile("res://scenes/stream.tscn");
+        _homeButton.Pressed += () => GetTree().ChangeSceneToFile("res://scenes/start.tscn");
         
         _winLoseLabel.Text = _scoreService.Win ? "You reached your donation goal!" : "You lost all your viewers...\n Try to keep them entertained next time!";
         
