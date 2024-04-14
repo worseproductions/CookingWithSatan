@@ -8,7 +8,7 @@ public partial class QuickActionController : Control
     private GameController _gameController;
     private Button _hypeButton;
     private Button _resetIngredientsButton;
-    private Button _openRecipeBookButton;
+    private Button _recipeBookButton;
     private Button _endStreamButton;
     
     // Called when the node enters the scene tree for the first time.
@@ -17,12 +17,12 @@ public partial class QuickActionController : Control
         _gameController = GetNode<GameController>("/root/GameController");
         _hypeButton = GetNode<Button>("%HypeButton");
         _resetIngredientsButton = GetNode<Button>("%ResetIngredientsButton");
-        _openRecipeBookButton = GetNode<Button>("%OpenRecipeBookButton");
+        _recipeBookButton = GetNode<Button>("%RecipeBookButton");
         _endStreamButton = GetNode<Button>("%EndStreamButton");
         
         _hypeButton.Pressed += OnHypeButtonPressed;
         _resetIngredientsButton.Pressed += OnResetIngredientsButtonPressed;
-        _openRecipeBookButton.Pressed += OnOpenRecipeBookButtonPressed;
+        _recipeBookButton.Pressed += OnRecipeBookButtonPressed;
         _endStreamButton.Pressed += OnEndStreamButtonPressed;
     }
 
@@ -36,7 +36,7 @@ public partial class QuickActionController : Control
         _gameController.ResetIngredients();
     }
     
-    private void OnOpenRecipeBookButtonPressed()
+    private void OnRecipeBookButtonPressed()
     {
         _gameController.OpenRecipeBook();
     }
