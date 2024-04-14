@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://o2chs3mjbi1i"]
+[gd_scene load_steps=9 format=3 uid="uid://o2chs3mjbi1i"]
 
 [ext_resource type="Texture2D" uid="uid://cb4mb1x6pbkha" path="res://images/background.png" id="1_crmqh"]
 [ext_resource type="Script" path="res://scripts/GameController.cs" id="1_n8041"]
@@ -7,8 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://bp7bkap3askut" path="res://scenes/ui/quick_actions_panel.tscn" id="3_tef1y"]
 [ext_resource type="PackedScene" uid="uid://c4npeck8tiy1u" path="res://scenes/ui/chat_panel.tscn" id="4_rg3i4"]
 [ext_resource type="PackedScene" uid="uid://430mnbvtkksl" path="res://scenes/ui/shortcut_hints.tscn" id="7_n0b7t"]
+[ext_resource type="PackedScene" uid="uid://bwmbq5sgntujv" path="res://scenes/Cooking.tscn" id="8_2hwey"]
 
 [node name="GameController" type="Control"]
+z_index = -1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -33,20 +35,6 @@ expand_mode = 1
 layout_mode = 1
 offset_right = -95.9359
 
-[node name="StreamPanel" type="Control" parent="."]
-layout_mode = 2
-anchors_preset = 0
-anchor_left = 0.007
-anchor_top = 0.086
-anchor_right = 0.66
-anchor_bottom = 0.753074
-offset_left = -0.0640001
-offset_top = 0.271999
-offset_right = -0.320007
-offset_bottom = 0.00799561
-grow_horizontal = 2
-metadata/_edit_use_anchors_ = true
-
 [node name="QuickActionsPanel" parent="." instance=ExtResource("3_tef1y")]
 layout_mode = 1
 
@@ -64,3 +52,11 @@ anchor_left = 0.916667
 anchor_top = 0.0123457
 anchor_right = 1.0
 anchor_bottom = 0.0740741
+
+[node name="StreamPanel" parent="." instance=ExtResource("8_2hwey")]
+z_as_relative = false
+layout_mode = 1
+offset_left = 24.0
+offset_top = 58.0
+offset_right = -408.0
+offset_bottom = -159.0

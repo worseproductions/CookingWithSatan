@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://b66j3ww4mdhya"]
+[gd_scene load_steps=29 format=3 uid="uid://bwmbq5sgntujv"]
 
 [ext_resource type="Script" path="res://scripts/CookingController.cs" id="1_0l3a8"]
 [ext_resource type="Script" path="res://scripts/Ingredient.cs" id="1_2tg8c"]
@@ -43,9 +43,12 @@ script = ExtResource("1_0l3a8")
 
 [node name="SummonScreen" type="Control" parent="."]
 clip_contents = true
-anchors_preset = 0
-offset_right = 716.27
-offset_bottom = 434.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="SummoningV2" type="Sprite2D" parent="SummonScreen"]
 position = Vector2(365, 218)
@@ -54,36 +57,42 @@ texture = ExtResource("2_3x7b1")
 
 [node name="BookScreen" type="Control" parent="."]
 clip_contents = true
-anchors_preset = 0
-offset_right = 716.27
-offset_bottom = 434.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="SummoningTableOpenedZoom" type="Sprite2D" parent="BookScreen"]
 position = Vector2(375, 219)
 texture = ExtResource("2_xijqt")
 
 [node name="SummoningTableOpened" type="Sprite2D" parent="BookScreen"]
-position = Vector2(375, 226)
+position = Vector2(375, 223)
 texture = ExtResource("3_cnlj8")
 
 [node name="SummoningTableClosed" type="Sprite2D" parent="BookScreen"]
-position = Vector2(375, 226)
+position = Vector2(375, 223)
 texture = ExtResource("4_j2vp0")
 
 [node name="IngredientScreen" type="Control" parent="."]
 z_index = 1
 clip_contents = true
-anchors_preset = 0
-offset_right = 716.27
-offset_bottom = 434.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Arm_Controller" type="Control" parent="IngredientScreen"]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 0.123457
-offset_top = -0.0617284
-offset_right = 716.393
-offset_bottom = 433.938
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_4dqch")
 
@@ -126,7 +135,7 @@ scale = Vector2(17.68, 17.68)
 
 [node name="Cooking3" type="Sprite2D" parent="IngredientScreen"]
 z_index = 1
-position = Vector2(357, 221)
+position = Vector2(357, 219)
 scale = Vector2(0.405, 0.405)
 texture = ExtResource("24_0kxu7")
 
