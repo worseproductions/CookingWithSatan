@@ -433,6 +433,12 @@ public partial class GameController : Control
         TriggerPogFlood(); // TODO temporary to test pogs in chat
     }
 
+    public void SummonRecipe()
+    {
+        GD.Print("summoning recipe");
+        // TODO
+    }
+
     public void EndStream()
     {
         const int id = 178;
