@@ -43,12 +43,9 @@ script = ExtResource("1_0l3a8")
 
 [node name="SummonScreen" type="Control" parent="."]
 clip_contents = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
+offset_right = 716.27
+offset_bottom = 434.0
 
 [node name="SummoningV2" type="Sprite2D" parent="SummonScreen"]
 position = Vector2(365, 218)
@@ -57,42 +54,36 @@ texture = ExtResource("2_3x7b1")
 
 [node name="BookScreen" type="Control" parent="."]
 clip_contents = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
+offset_right = 716.27
+offset_bottom = 434.0
 
 [node name="SummoningTableOpenedZoom" type="Sprite2D" parent="BookScreen"]
 position = Vector2(375, 219)
 texture = ExtResource("2_xijqt")
 
 [node name="SummoningTableOpened" type="Sprite2D" parent="BookScreen"]
-position = Vector2(375, 223)
+position = Vector2(375, 224)
 texture = ExtResource("3_cnlj8")
 
 [node name="SummoningTableClosed" type="Sprite2D" parent="BookScreen"]
-position = Vector2(375, 223)
+position = Vector2(375, 224)
 texture = ExtResource("4_j2vp0")
 
 [node name="IngredientScreen" type="Control" parent="."]
 z_index = 1
 clip_contents = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
+offset_right = 716.27
+offset_bottom = 434.0
 
 [node name="Arm_Controller" type="Control" parent="IngredientScreen"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 3
+anchors_preset = 0
+offset_left = 0.123457
+offset_top = -0.0617284
+offset_right = 716.393
+offset_bottom = 433.938
 mouse_filter = 1
 script = ExtResource("1_4dqch")
 
