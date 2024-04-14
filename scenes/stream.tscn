@@ -16,6 +16,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_n8041")
+Viewers = 1000
+ViewerCapStart = 1000
+_chatColors = [Color(1, 0.490196, 0.27451, 1), Color(0, 0.654902, 0.905882, 1), Color(0, 0.717647, 0.427451, 1)]
 metadata/_edit_vertical_guides_ = [8.0, 1144.0]
 metadata/_edit_horizontal_guides_ = [48.0, 8.0]
 
