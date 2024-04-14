@@ -9,6 +9,7 @@ public partial class QuickActionController : Control
     private Button _hypeButton;
     private Button _resetIngredientsButton;
     private Button _recipeBookButton;
+    private Button _summonButton;
     private Button _endStreamButton;
     
     // Called when the node enters the scene tree for the first time.
@@ -18,36 +19,13 @@ public partial class QuickActionController : Control
         _hypeButton = GetNode<Button>("%HypeButton");
         _resetIngredientsButton = GetNode<Button>("%ResetIngredientsButton");
         _recipeBookButton = GetNode<Button>("%RecipeBookButton");
+        _summonButton = GetNode<Button>("%SummonButton");
         _endStreamButton = GetNode<Button>("%EndStreamButton");
         
-        _hypeButton.Pressed += OnHypeButtonPressed;
-        _resetIngredientsButton.Pressed += OnResetIngredientsButtonPressed;
-        _recipeBookButton.Pressed += OnRecipeBookButtonPressed;
-        _endStreamButton.Pressed += OnEndStreamButtonPressed;
-    }
-
-    private void OnHypeButtonPressed()
-    {
-        _gameController.HypeUpChat();
-    }
-    
-    private void OnResetIngredientsButtonPressed()
-    {
-        _gameController.ResetIngredients();
-    }
-    
-    private void OnRecipeBookButtonPressed()
-    {
-        _gameController.OpenRecipeBook();
-    }
-    
-    private void OnEndStreamButtonPressed()
-    {
-        _gameController.EndStream();
-    }
-
-    // Called every frame. 'delta' is the elapsed time since the previous frame.
-    public override void _Process(double delta)
-    {
+        _hypeButton.Pressed += () => _gameController.HypeUpChat();
+        _resetIngredientsButton.Pressed += () => _gameController.ResetIngredients();
+        _recipeBookButton.Pressed += () => _gameController.OpenRecipeBook();
+        _summonButton.Pressed += () => _gameController.SummonRecipe();
+        _endStreamButton.Pressed += () => _gameController.EndStream();
     }
 }

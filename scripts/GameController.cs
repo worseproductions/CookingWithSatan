@@ -11,6 +11,7 @@ public partial class GameController : Control
     private ScoreService _scoreService;
     private ChatController _chatController;
     private ActivityController _activityController;
+    private CookingController _cookingController;
     private Json _messagesJson;
 
     [ExportCategory("General")] [Export] public int Viewers = 10;
@@ -139,6 +140,7 @@ public partial class GameController : Control
         _scoreService = GetNode<ScoreService>("/root/ScoreService");
         _chatController = GetNode<ChatController>("%ChatPanel");
         _activityController = GetNode<ActivityController>("%ActivityPanel");
+        _cookingController = GetNode<CookingController>("%StreamPanel");
         _messagesJson = ResourceLoader.Singleton.Load("res://chat/messages.tres") as Json;
 
         _activityController.DonationGoalReached += OnDonationGoalReached;
@@ -425,12 +427,17 @@ public partial class GameController : Control
 
     public void ResetIngredients()
     {
-        TriggerFInChatFlood(); // TODO temporary to test f in chat
+        _cookingController.ResetIngredients();
     }
 
     public void OpenRecipeBook()
     {
-        TriggerPogFlood(); // TODO temporary to test pogs in chat
+        _cookingController.OpenRecipeBook();
+    }
+
+    public void SummonRecipe()
+    {
+        _cookingController.StartSummon();
     }
 
     public void EndStream()
