@@ -1,5 +1,6 @@
-[gd_scene load_steps=19 format=3 uid="uid://b66j3ww4mdhya"]
+[gd_scene load_steps=23 format=3 uid="uid://b66j3ww4mdhya"]
 
+[ext_resource type="Script" path="res://scripts/Ingredient.cs" id="1_2tg8c"]
 [ext_resource type="Script" path="res://scripts/Arm_Manager.cs" id="1_4dqch"]
 [ext_resource type="Texture2D" uid="uid://rnbkibfejo85" path="res://images/Arms/IMG_0640.png" id="1_t612d"]
 [ext_resource type="Script" path="res://scripts/Arm.cs" id="2_ufhw1"]
@@ -18,6 +19,9 @@
 [ext_resource type="Texture2D" uid="uid://buihtvy8ya3nn" path="res://images/Arms/IMG_0653.png" id="15_a3mqw"]
 [ext_resource type="Texture2D" uid="uid://bd3voy52wmugn" path="res://images/Arms/IMG_0654.png" id="16_wov3b"]
 [ext_resource type="Texture2D" uid="uid://c6dedhs3x2bi5" path="res://images/Arms/IMG_0655.png" id="17_786fl"]
+[ext_resource type="Texture2D" uid="uid://dj1lp38t72oto" path="res://images/Ingredients/Goat_alive.png" id="19_i6gig"]
+[ext_resource type="Texture2D" uid="uid://bov5wkl2nv618" path="res://images/Ingredients/Goat_dead.png" id="21_86fys"]
+[ext_resource type="Texture2D" uid="uid://jgnav6yjapcl" path="res://images/Ingredients/meat_raw.png" id="22_nxq2y"]
 
 [node name="Cooking" type="Control"]
 layout_mode = 3
@@ -27,13 +31,18 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Arm" type="Control" parent="."]
+[node name="Arm_Controller" type="Control" parent="."]
+layout_mode = 3
 anchors_preset = 0
-offset_right = 1156.0
-offset_bottom = 649.0
+offset_left = 34.0
+offset_top = -1.0
+offset_right = 1190.0
+offset_bottom = 648.0
+mouse_filter = 1
 script = ExtResource("1_4dqch")
 
-[node name="Arm" type="Sprite2D" parent="Arm"]
+[node name="Arm" type="Sprite2D" parent="Arm_Controller"]
+z_index = 1
 position = Vector2(1005, 620)
 scale = Vector2(1.047, 1.047)
 texture = ExtResource("1_t612d")
@@ -41,3 +50,28 @@ centered = false
 offset = Vector2(-105.062, -94.5559)
 script = ExtResource("2_ufhw1")
 Textures = [ExtResource("1_t612d"), ExtResource("3_grxld"), ExtResource("4_3vjbr"), ExtResource("5_ntfit"), ExtResource("6_0hf3c"), ExtResource("7_68i1y"), ExtResource("8_08buf"), ExtResource("9_sa5x5"), ExtResource("10_avjsb"), ExtResource("11_tfihr"), ExtResource("12_m27yi"), ExtResource("13_e50o7"), ExtResource("14_8cryd"), ExtResource("15_a3mqw"), ExtResource("16_wov3b"), ExtResource("17_786fl")]
+
+[node name="Ingredient" type="Node2D" parent="."]
+position = Vector2(537, 375)
+script = ExtResource("1_2tg8c")
+speed = 500.0
+Textures = [ExtResource("19_i6gig"), ExtResource("21_86fys"), ExtResource("22_nxq2y")]
+clicksNeededForState2 = 8
+clicksNeededForState3 = 16
+
+[node name="Ingredient_Sprite" type="Sprite2D" parent="Ingredient"]
+z_index = -1
+position = Vector2(-8, -8.99997)
+scale = Vector2(0.52, 0.52)
+texture = ExtResource("19_i6gig")
+
+[node name="Button" type="Button" parent="Ingredient"]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
+offset_left = -74.0
+offset_top = -75.0
+offset_right = -66.0
+offset_bottom = -67.0
+scale = Vector2(17.68, 17.68)
+
+[connection signal="button_down" from="Ingredient/Button" to="Ingredient" method="Clicked"]

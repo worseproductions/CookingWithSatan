@@ -5,7 +5,7 @@ namespace CookingWithSatan.scripts;
 public partial class Arm : Sprite2D
 {
     [Export] public Texture2D[] Textures = new Texture2D[16];
-    [Export] public float YOffset = 0; // Adjust this value to your needs
+    [Export] public float YOffset = 0;
 
     private Vector2 screenCenter;
     
