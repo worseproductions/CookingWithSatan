@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using Godot;
 using Godot.Collections;
-using Array = Godot.Collections.Array;
 
 namespace CookingWithSatan.scripts;
 
@@ -14,15 +13,19 @@ public partial class GameController : Control
     private ActivityController _activityController;
     private Json _messagesJson;
 
-    [ExportCategory("General")]
-    [Export] public int Viewers = 10;
-    
-    // Cap = Subs * ViewerCapMultiplier + 100
-    [Export] public int ViewerCapMultiplier = 20;
-    [Export] public int ViewerCapStart = 100;
+    [ExportCategory("General")] [Export] public int Viewers = 10;
     [Export] public double Duration = 0;
     [Export] public int Subs = 0;
     [Export] public int ChatHappiness = 0;
+
+    [ExportGroup("New Viewers")] [Export] private double _newViewersSubInfluence = 0.1;
+    [Export] private double _newViewersExistingViewersInfluence = 0.1;
+    [Export] private double _newViewersDurationInfluence = 0.1;
+    [Export] private double _newViewersHappinessInfluence = 0.1;
+
+    // Cap = Subs * ViewerCapMultiplier + 100
+    [Export] private int _viewerCapMultiplier = 20;
+    [Export] private int _viewerCapStart = 100;
 
     private struct MessageObject
     {
@@ -43,11 +46,11 @@ public partial class GameController : Control
     private string _voiceId;
     private double _timeSinceLastMessage;
     private int _messagesInLastMinute;
-    private int _messageMultiplier;
-    
-    [ExportCategory("Chat")]
-    
-    [Export] private float _donationChance = 0.8f;
+    private string _lastDonationMessage;
+
+    [ExportCategory("Chat")] [Export] private float _donationChance = 0.8f;
+    [Export] private double _timeBetweenMultipliers = 20;
+    private double _timeSinceLastMultiplier = 20;
 
     [Export] private Array<Color> _chatColors = new()
     {
@@ -55,21 +58,35 @@ public partial class GameController : Control
         new Color("#00a7e7"),
         new Color("#00b76d"),
     };
-    
-    [ExportGroup("Hype Multiplier")]
-    private bool _multiplierActive;
-    private double _multiplierTime;
-    private double _multiplierDuration;
-    [Export] private int _multiplierMinDuration = 5;
-    [Export] private int _multiplierMaxDuration = 10;
-    private string _lastDonationMessage;
-    
-    [ExportCategory("Response Flood")]
-    private bool _responseFlood;
+
+    [ExportGroup("Hype Multiplier")] private bool _hypeActive;
+    private double _hypeTime;
+    private double _hypeDuration;
+    [Export] private int _hypeMinDuration = 5;
+    [Export] private int _hypeMaxDuration = 10;
+
+    [Export] private Array<string> _hypeVoiceLines = new()
+    {
+        "Let's go chat! Hype it up!",
+        "Let's get some hype in the chat!",
+        "Hype it up chat!",
+        "Let's get some hype going!",
+        "Hype it up chat!"
+    };
+
+    [Export] private Array<string> _hypeResponses = new()
+    {
+        "HYPE!",
+        "LET'S GOOOOOO!",
+        "LET'S GOOO!"
+    };
+
+    [ExportGroup("Response Flood")] private bool _responseFlood;
     private double _responseFloodTime;
     private double _responseFloodDuration;
     [Export] private int _responseFloodMinDuration = 5;
     [Export] private int _responseFloodMaxDuration = 10;
+
     [Export] private Array<string> _responseFloodMessages = new()
     {
         "HELLO SATAN!!!",
@@ -79,12 +96,12 @@ public partial class GameController : Control
         "HEY HELL DADDY!"
     };
 
-    [ExportCategory("Pog")]
-    private bool _pogFlood;
+    [ExportGroup("Pog")] private bool _pogFlood;
     private double _pogFloodTime;
     private double _pogFloodDuration;
     [Export] private int _pogFloodMinDuration = 5;
     [Export] private int _pogFloodMaxDuration = 10;
+
     [Export] private Array<string> _pogFloodMessages = new()
     {
         "POGGERS",
@@ -93,13 +110,13 @@ public partial class GameController : Control
         "Pog",
         "Poggers in the chat!"
     };
-    
-    [ExportCategory("F in the chat")]
-    private bool _fInChatFlood;
+
+    [ExportGroup("F in the chat")] private bool _fInChatFlood;
     private double _fInChatFloodTime;
     private double _fInChatFloodDuration;
     [Export] private int _fInChatFloodMinDuration = 5;
     [Export] private int _fInChatFloodMaxDuration = 10;
+
     [Export] private Array<string> _fInChatFloodMessages = new()
     {
         "F",
@@ -110,7 +127,7 @@ public partial class GameController : Control
     };
 
     private readonly List<string> _subscribers = new();
-    
+
     private double _updateViewersTime = 5;
     private int _updateViewersInterval = 5;
     private bool _donationGoalReached;
@@ -138,7 +155,7 @@ public partial class GameController : Control
     }
 
     #region Processing
-    
+
     public override void _Process(double delta)
     {
         if (_chatController == null || _activityController == null)
@@ -179,56 +196,19 @@ public partial class GameController : Control
 
     private void ProcessChatLogic(double delta)
     {
-        var msgPerMin = -10.446 + 4.7743 * Math.Log(Viewers) * (_responseFlood || _pogFlood || _fInChatFlood ? 2 : 1) * _messageMultiplier;
+        var msgPerMin = -10.446 + 4.7743 * Math.Log(Viewers) *
+            (_responseFlood || _pogFlood || _fInChatFlood || _hypeActive ? 2 : 1);
         if (msgPerMin < 0)
         {
             msgPerMin = 0;
         }
 
-        if (_multiplierActive)
-        {
-            _multiplierTime += delta;
-            if (_multiplierTime > _multiplierDuration)
-            {
-                _multiplierActive = false;
-                _messageMultiplier = 1;
-                _messagesInLastMinute = 0;
-            }
-        }
-        else
-        {
-            _messageMultiplier = 1;
-        }
-
-        if (_responseFlood)
-        {
-            _responseFloodTime += delta;
-            if (_responseFloodTime > _responseFloodDuration)
-            {
-                _responseFlood = false;
-                _messagesInLastMinute = 0;
-            }
-        }
+        _timeSinceLastMultiplier += delta;
         
-        if (_pogFlood)
-        {
-            _pogFloodTime += delta;
-            if (_pogFloodTime > _pogFloodDuration)
-            {
-                _pogFlood = false;
-                _messagesInLastMinute = 0;
-            }
-        }
-        
-        if (_fInChatFlood)
-        {
-            _fInChatFloodTime += delta;
-            if (_fInChatFloodTime > _fInChatFloodDuration)
-            {
-                _fInChatFlood = false;
-                _messagesInLastMinute = 0;
-            }
-        }
+        ProcessMultiplier(ref _hypeActive, ref _hypeTime, ref _hypeDuration, delta);
+        ProcessMultiplier(ref _pogFlood, ref _pogFloodTime, ref _pogFloodDuration, delta);
+        ProcessMultiplier(ref _responseFlood, ref _responseFloodTime, ref _responseFloodDuration, delta);
+        ProcessMultiplier(ref _fInChatFlood, ref _fInChatFloodTime, ref _fInChatFloodDuration, delta);
 
         if (!(_messagesInLastMinute < msgPerMin)) return;
         _timeSinceLastMessage += delta;
@@ -240,16 +220,19 @@ public partial class GameController : Control
         var message = messages[new Random().Next(0, messages.Count)];
         var color = _chatColors[new Random().Next(0, _chatColors.Count)];
         var text = "";
-        
+
         if (_responseFlood)
             message.Message = _responseFloodMessages[new Random().Next(0, _responseFloodMessages.Count)];
-        
+
         if (_pogFlood)
             message.Message = _pogFloodMessages[new Random().Next(0, _pogFloodMessages.Count)];
-        
+
         if (_fInChatFlood)
             message.Message = _fInChatFloodMessages[new Random().Next(0, _fInChatFloodMessages.Count)];
-        
+
+        if (_hypeActive)
+            message.Message = _hypeResponses[new Random().Next(0, _hypeResponses.Count)];
+
         if (ChatHappiness >= 0 && _lastDonationMessage != message.Message)
         {
             var happinessMultiplier = ChatHappiness switch
@@ -283,41 +266,51 @@ public partial class GameController : Control
         SendMessage(text);
     }
 
+    private void ProcessMultiplier(ref bool active, ref double timer, ref double duration, double delta)
+    {
+        if (!active) return;
+        timer += delta;
+        if (!(timer > duration)) return;
+        active = false;
+        _messagesInLastMinute = 0;
+    }
+
     private void ProcessViewerLogic(double delta)
     {
         _updateViewersTime += delta;
         if (_updateViewersTime < _updateViewersInterval) return;
         _updateViewersTime = 0;
         // calculate viewer cap depending on followers
-        var viewerCap = Subs * ViewerCapMultiplier + ViewerCapStart;
+        var viewerCap = Subs * _viewerCapMultiplier + _viewerCapStart;
         // calculate new viewers depending on followers, current viewers,  duration and chat happiness
-        var newViewers = (int)((Subs * 0.1 + Viewers * 0.1 + Duration * 0.1) *
-                               (ChatHappiness == 0 ? 1 : ChatHappiness * 0.1));
+        var newViewers = (int)((Subs * _newViewersSubInfluence + Viewers * _newViewersExistingViewersInfluence +
+                                Duration * _newViewersDurationInfluence) *
+                               (ChatHappiness == 0 ? 1 : ChatHappiness * _newViewersHappinessInfluence));
         GD.Print($"new viewers: {newViewers}");
         Viewers += newViewers;
         Viewers = Math.Clamp(Viewers, 0, viewerCap);
     }
-    
+
     #endregion
-    
+
     #region Recipe Handling
-    
+
     public void SuccessfullyCookedRecipe()
     {
         ChatHappiness = Math.Clamp(ChatHappiness + 1, -2, 2);
         TriggerPogFlood();
     }
-    
+
     public void FailedToCookRecipe()
     {
         ChatHappiness = Math.Clamp(ChatHappiness + 1, -2, 2);
         TriggerFInChatFlood();
     }
-    
+
     #endregion
 
     #region Donation and Subscriber Handling
-    
+
     private void MakeDonation(string user, string message, int amount)
     {
         _activityController.AddDonation(user, amount);
@@ -357,7 +350,7 @@ public partial class GameController : Control
         DevilTts($"{thankYouString} for the {months} {monthsString} {user.Replace('_', ' ')}!");
         Subs++;
     }
-    
+
     private void OnDonationGoalReached()
     {
         const int id = 123;
@@ -375,9 +368,9 @@ public partial class GameController : Control
             )
         );
     }
-    
+
     #endregion
-    
+
     #region Chat Handling
 
     private void SendMessage(string message)
@@ -387,43 +380,54 @@ public partial class GameController : Control
 
     public void TriggerResponseFlood()
     {
+        if (_timeSinceLastMultiplier < _timeBetweenMultipliers) return;
         _responseFlood = true;
         _responseFloodTime = 0;
+        _timeSinceLastMultiplier = 0;
         _responseFloodDuration = new Random().Next(_responseFloodMinDuration, _responseFloodMaxDuration);
     }
 
-    public void TriggerPogFlood()
+    private void TriggerPogFlood()
     {
         _pogFlood = true;
         _pogFloodTime = 0;
+        _timeSinceLastMultiplier = 0;
         _pogFloodDuration = new Random().Next(_pogFloodMinDuration, _pogFloodMaxDuration);
     }
-    
-    public void TriggerFInChatFlood()
+
+    private void TriggerFInChatFlood()
     {
         _fInChatFlood = true;
         _fInChatFloodTime = 0;
+        _timeSinceLastMultiplier = 0;
         _fInChatFloodDuration = new Random().Next(_fInChatFloodMinDuration, _fInChatFloodMaxDuration);
     }
-    
+
+    private void TriggerHype()
+    {
+        if (_timeSinceLastMultiplier < _timeBetweenMultipliers) return;
+        var voiceLine = _hypeVoiceLines[new Random().Next(0, _hypeVoiceLines.Count)];
+        DevilTts(voiceLine);
+        _hypeActive = true;
+        _hypeTime = 0;
+        _timeSinceLastMultiplier = 0;
+        _hypeDuration = new Random().Next(_hypeMinDuration, _hypeMaxDuration);
+    }
+
     #endregion
 
     #region Quick Action Handlers
-    
+
     public void HypeUpChat()
     {
-        DevilTts("Let's go chat! Hype it up!");
-        _messageMultiplier = 2;
-        _multiplierActive = true;
-        _multiplierTime = 0;
-        _multiplierDuration = new Random().Next(_multiplierMinDuration, _multiplierMaxDuration);
+        TriggerHype();
     }
-    
+
     public void ResetIngredients()
     {
         TriggerFInChatFlood(); // TODO temporary to test f in chat
     }
-    
+
     public void OpenRecipeBook()
     {
         TriggerPogFlood(); // TODO temporary to test pogs in chat
@@ -442,9 +446,9 @@ public partial class GameController : Control
             })
         );
     }
-    
+
     #endregion
-    
+
     #region TTS
 
     private void DevilTts(string text, int id = 0)
@@ -458,6 +462,6 @@ public partial class GameController : Control
         DisplayServer.TtsSpeak(text, _voiceId, pitch: 0.0F, volume: _globalInputHandler.SoundEnabled ? 50 : 0,
             utteranceId: id);
     }
-    
+
     #endregion
 }
