@@ -15,7 +15,6 @@ shadow_color = Color(0.184314, 0.0156863, 0, 0.356863)
 shadow_size = 20
 
 [node name="GameController" type="Control"]
-z_index = -1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
