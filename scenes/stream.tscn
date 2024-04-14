@@ -69,6 +69,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_yu11q")
 metadata/_edit_use_anchors_ = true
 
 [node name="StreamPanel" parent="." instance=ExtResource("8_2hwey")]
+unique_name_in_owner = true
 z_as_relative = false
 layout_mode = 1
 anchors_preset = -1
