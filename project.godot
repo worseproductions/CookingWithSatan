@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 general/text_to_speech=true
 
+[autoload]
+
+SupabaseService="*res://scripts/SupabaseService.cs"
+
 [display]
 
 window/stretch/mode="canvas_items"
@@ -30,4 +34,5 @@ project/assembly_name="CookingWithSatan"
 
 [gui]
 
+theme/custom="res://themes/main.tres"
 theme/custom_font="res://fonts/NewRocker/NewRocker-Regular.ttf"
