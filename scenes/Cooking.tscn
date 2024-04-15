@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://b66j3ww4mdhya"]
+[gd_scene load_steps=42 format=3 uid="uid://b66j3ww4mdhya"]
 
 [ext_resource type="Script" path="res://scripts/CookingController.cs" id="1_0l3a8"]
 [ext_resource type="Script" path="res://scripts/Ingredient.cs" id="1_2tg8c"]
@@ -32,6 +32,11 @@
 [ext_resource type="Texture2D" uid="uid://c5jxop6l5362k" path="res://images/Ingredients/Chilli_raw.png" id="28_og2in"]
 [ext_resource type="Texture2D" uid="uid://cma35e0xwyvwq" path="res://images/Ingredients/Chilli_sliced.png" id="29_cpbmt"]
 [ext_resource type="Texture2D" uid="uid://dlxuvd65xtbpe" path="res://images/Ingredients/Salt.png" id="30_gy6dw"]
+[ext_resource type="Texture2D" uid="uid://dqkijkhtbxa5q" path="res://images/Ingredients/Salt_Broken.png" id="31_1ynsj"]
+[ext_resource type="Texture2D" uid="uid://c25qd3bsbbfvh" path="res://images/Ingredients/Salt_Cracked.png" id="33_l5uku"]
+[ext_resource type="Texture2D" uid="uid://bsul6a0elj822" path="res://images/Ingredients/Potatoe_Broken.png" id="34_couy2"]
+[ext_resource type="Texture2D" uid="uid://b7r824gho0tcs" path="res://images/Ingredients/Potatoe.png" id="35_3kddf"]
+[ext_resource type="Texture2D" uid="uid://du1x6vsb82m5b" path="res://images/Ingredients/Potatoe_Hurt.png" id="36_51ybk"]
 
 [sub_resource type="Resource" id="Resource_qtcc7"]
 script = ExtResource("26_5iotp")
@@ -46,7 +51,12 @@ Image = ExtResource("29_cpbmt")
 [sub_resource type="Resource" id="Resource_mchm4"]
 script = ExtResource("26_5iotp")
 Name = "Salt"
-Image = ExtResource("30_gy6dw")
+Image = ExtResource("31_1ynsj")
+
+[sub_resource type="Resource" id="Resource_yexu0"]
+script = ExtResource("26_5iotp")
+Name = "Potatoe"
+Image = ExtResource("34_couy2")
 
 [node name="Cooking" type="Control" node_paths=PackedStringArray("ingredientNodes")]
 layout_mode = 3
@@ -59,7 +69,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_0l3a8")
-ingredientNodes = [NodePath("IngredientScreen/Goat"), NodePath("IngredientScreen/Chilli"), NodePath("IngredientScreen/Salt"), NodePath("IngredientScreen/Ingredient4"), NodePath("IngredientScreen/Ingredient5"), NodePath("IngredientScreen/Ingredient6")]
+ingredientNodes = [NodePath("IngredientScreen/Goat"), NodePath("IngredientScreen/Chilli"), NodePath("IngredientScreen/Salt"), NodePath("IngredientScreen/Potatoe"), NodePath("IngredientScreen/Ingredient5"), NodePath("IngredientScreen/Ingredient6")]
 
 [node name="SummonScreen" type="Control" parent="."]
 clip_contents = true
@@ -181,7 +191,7 @@ position = Vector2(355, 231)
 scale = Vector2(0.56, 0.56)
 script = ExtResource("1_2tg8c")
 RecipeIngredient = SubResource("Resource_mchm4")
-Textures = [ExtResource("30_gy6dw"), ExtResource("30_gy6dw"), ExtResource("30_gy6dw")]
+Textures = [ExtResource("30_gy6dw"), ExtResource("33_l5uku"), ExtResource("31_1ynsj")]
 clicksNeededForState2 = 6
 clicksNeededForState3 = 12
 
@@ -200,23 +210,24 @@ offset_bottom = -67.0
 scale = Vector2(17.68, 17.68)
 mouse_filter = 1
 
-[node name="Ingredient4" type="Node2D" parent="IngredientScreen"]
+[node name="Potatoe" type="Node2D" parent="IngredientScreen"]
 visible = false
 z_index = 1
 z_as_relative = false
 position = Vector2(355, 231)
 scale = Vector2(0.745, 0.745)
 script = ExtResource("1_2tg8c")
-Textures = [ExtResource("19_i6gig"), ExtResource("21_86fys"), ExtResource("22_nxq2y")]
+RecipeIngredient = SubResource("Resource_yexu0")
+Textures = [ExtResource("35_3kddf"), ExtResource("36_51ybk"), ExtResource("34_couy2")]
 clicksNeededForState2 = 8
 clicksNeededForState3 = 16
 
-[node name="Ingredient_Sprite" type="Sprite2D" parent="IngredientScreen/Ingredient4"]
+[node name="Ingredient_Sprite" type="Sprite2D" parent="IngredientScreen/Potatoe"]
 position = Vector2(-8, -8.99997)
 scale = Vector2(0.52, 0.52)
-texture = ExtResource("19_i6gig")
+texture = ExtResource("35_3kddf")
 
-[node name="Button" type="Button" parent="IngredientScreen/Ingredient4"]
+[node name="Button" type="Button" parent="IngredientScreen/Potatoe"]
 modulate = Color(1, 1, 1, 0)
 self_modulate = Color(1, 1, 1, 0)
 offset_left = -74.0
@@ -286,6 +297,6 @@ texture = ExtResource("24_0kxu7")
 [connection signal="button_down" from="IngredientScreen/Goat/Button" to="IngredientScreen/Goat" method="Clicked"]
 [connection signal="button_down" from="IngredientScreen/Chilli/Button" to="IngredientScreen/Chilli" method="Clicked"]
 [connection signal="button_down" from="IngredientScreen/Salt/Button" to="IngredientScreen/Salt" method="Clicked"]
-[connection signal="button_down" from="IngredientScreen/Ingredient4/Button" to="IngredientScreen/Ingredient4" method="Clicked"]
+[connection signal="button_down" from="IngredientScreen/Potatoe/Button" to="IngredientScreen/Potatoe" method="Clicked"]
 [connection signal="button_down" from="IngredientScreen/Ingredient5/Button" to="IngredientScreen/Ingredient5" method="Clicked"]
 [connection signal="button_down" from="IngredientScreen/Ingredient6/Button" to="IngredientScreen/Ingredient6" method="Clicked"]
