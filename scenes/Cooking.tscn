@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://b66j3ww4mdhya"]
+[gd_scene load_steps=62 format=3 uid="uid://b66j3ww4mdhya"]
 
 [ext_resource type="Script" path="res://scripts/CookingController.cs" id="1_0l3a8"]
 [ext_resource type="Script" path="res://scripts/Ingredient.cs" id="1_2tg8c"]
@@ -8,14 +8,18 @@
 [ext_resource type="Script" path="res://scripts/SummonController.cs" id="2_u2e0s"]
 [ext_resource type="Script" path="res://scripts/Arm.cs" id="2_ufhw1"]
 [ext_resource type="Texture2D" uid="uid://bjvrnlxj8so02" path="res://images/summoning_table_opened_zoom.png" id="2_xijqt"]
+[ext_resource type="Resource" uid="uid://duabbgr7oq35j" path="res://recipes/baphoments_baked_goat_cheese.tres" id="3_ch3tq"]
 [ext_resource type="Texture2D" uid="uid://pec25tjk8k13" path="res://images/summoning_table_opened.png" id="3_cnlj8"]
 [ext_resource type="Texture2D" uid="uid://1olcrv7qg7q5" path="res://images/Arms/IMG_0641.png" id="3_grxld"]
-[ext_resource type="Script" path="res://scripts/resources/Recipe.cs" id="3_r1hdo"]
 [ext_resource type="Texture2D" uid="uid://bs1vlolecvgwd" path="res://images/Arms/IMG_0642.png" id="4_3vjbr"]
 [ext_resource type="Texture2D" uid="uid://bwfjfa28611sc" path="res://images/summoning_table_closed.png" id="4_j2vp0"]
+[ext_resource type="Resource" uid="uid://c4l1m3uej60i" path="res://recipes/cheese_trap_of_the_damned.tres" id="4_sf65n"]
 [ext_resource type="Texture2D" uid="uid://ba0jy6gucn0uf" path="res://images/Arms/IMG_0643.png" id="5_ntfit"]
+[ext_resource type="Resource" uid="uid://ycg86rnpo1pe" path="res://recipes/diabolic_goat_stew.tres" id="5_xuui5"]
 [ext_resource type="Texture2D" uid="uid://dwpysg7mmiy4n" path="res://images/Arms/IMG_0644.png" id="6_0hf3c"]
+[ext_resource type="Resource" uid="uid://dyqpa1megvq6h" path="res://recipes/infernal_cheese_fritters.tres" id="6_gc15g"]
 [ext_resource type="Texture2D" uid="uid://bifr3ljy0ynre" path="res://images/Arms/IMG_0645.png" id="7_68i1y"]
+[ext_resource type="Resource" uid="uid://dbturcw6423mn" path="res://recipes/inferno_salt_sprinkle.tres" id="7_yobcn"]
 [ext_resource type="Texture2D" uid="uid://yfj50kxx8qfw" path="res://images/Arms/IMG_0646.png" id="8_08buf"]
 [ext_resource type="Texture2D" uid="uid://80b3tiemlh6o" path="res://images/Arms/IMG_0647.png" id="9_sa5x5"]
 [ext_resource type="Texture2D" uid="uid://bleyi3xhafp2q" path="res://images/Arms/IMG_0648.png" id="10_avjsb"]
@@ -42,12 +46,6 @@
 [ext_resource type="Texture2D" uid="uid://b7r824gho0tcs" path="res://images/Ingredients/Potatoe.png" id="35_3kddf"]
 [ext_resource type="Texture2D" uid="uid://du1x6vsb82m5b" path="res://images/Ingredients/Potatoe_Hurt.png" id="36_51ybk"]
 [ext_resource type="Resource" uid="uid://rh0gdnhv47y8" path="res://recipes/ingredients/potato.tres" id="38_rukhj"]
-
-[sub_resource type="Resource" id="Resource_68cqb"]
-script = ExtResource("3_r1hdo")
-Ingredients = Array[Object]([null])
-Name = ""
-Description = ""
 
 [sub_resource type="Curve2D" id="Curve2D_k1mdi"]
 _data = {
@@ -136,7 +134,7 @@ offset_right = 716.27
 offset_bottom = 434.0
 mouse_filter = 2
 script = ExtResource("2_u2e0s")
-_recipes = Array[Object]([SubResource("Resource_68cqb")])
+_recipes = Array[Object]([ExtResource("3_ch3tq"), ExtResource("4_sf65n"), ExtResource("5_xuui5"), ExtResource("6_gc15g"), ExtResource("7_yobcn")])
 _failedRecipeImage = ExtResource("21_86fys")
 
 [node name="SummoningV2" type="Sprite2D" parent="SummonScreen"]
