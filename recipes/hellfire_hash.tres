@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=7 format=3 uid="uid://dctg46qbq1dhj"]
+
+[ext_resource type="Texture2D" uid="uid://c28pjkwmm1fss" path="res://images/Ingredients/Hellfire_Hash.png" id="1_7xv7f"]
+[ext_resource type="Script" path="res://scripts/resources/Recipe.cs" id="1_gxdqy"]
+[ext_resource type="Resource" uid="uid://dv4prv6q08ix7" path="res://recipes/ingredients/onion.tres" id="2_vmaec"]
+[ext_resource type="Resource" path="res://recipes/ingredients/goat.tres" id="3_ynpyk"]
+[ext_resource type="Resource" path="res://recipes/ingredients/potato.tres" id="4_u7ewn"]
+[ext_resource type="Resource" path="res://recipes/ingredients/salt.tres" id="5_32dv4"]
+
+[resource]
+script = ExtResource("1_gxdqy")
+Ingredients = Array[Object]([ExtResource("2_vmaec"), ExtResource("3_ynpyk"), ExtResource("4_u7ewn"), ExtResource("5_32dv4")])
+Name = "Hellfire Hash"
+Description = "Fiery and bold, this hash combines goated meat and crispy potatoes, topped with fried onions, seasoned with a pinch of salt to bring out the hellish heat."
+Image = ExtResource("1_7xv7f")

@@ -28,9 +28,23 @@ public partial class CookingController : Control
     {
         currentIngredients = new List<RecipeIngredient>();
         allPossibleIngredients = new List<RecipeIngredient>();
+        
+       
+        
         IngredientsScreen = GetNode<Control>("IngredientScreen");
         BookScreen = GetNode<Control>("BookScreen");
         _summonScreen = GetNode<SummonController>("SummonScreen");
+
+        int ingrCount = 0;
+        for (int i = 0; i < IngredientsScreen.GetChildCount(); i++)
+        {
+            Node child = IngredientsScreen.GetChild(i);
+            if (child is Ingredient ingredient)
+            {
+                ingredientNodes[ingrCount] = ingredient;
+                ingrCount++;
+            }
+        }
     }
 
     public void ResetIngredients()

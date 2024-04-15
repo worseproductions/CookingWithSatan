@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://b66j3ww4mdhya"]
+[gd_scene load_steps=73 format=3 uid="uid://b66j3ww4mdhya"]
 
 [ext_resource type="Script" path="res://scripts/CookingController.cs" id="1_0l3a8"]
 [ext_resource type="Script" path="res://scripts/Ingredient.cs" id="1_2tg8c"]
@@ -8,20 +8,22 @@
 [ext_resource type="Script" path="res://scripts/SummonController.cs" id="2_u2e0s"]
 [ext_resource type="Script" path="res://scripts/Arm.cs" id="2_ufhw1"]
 [ext_resource type="Texture2D" uid="uid://bjvrnlxj8so02" path="res://images/summoning_table_opened_zoom.png" id="2_xijqt"]
-[ext_resource type="Resource" uid="uid://duabbgr7oq35j" path="res://recipes/baphoments_baked_goat_cheese.tres" id="3_ch3tq"]
+[ext_resource type="Resource" uid="uid://7wk0ltcd6ja7" path="res://recipes/baphoments_baked_goat_cheese.tres" id="3_ch3tq"]
 [ext_resource type="Texture2D" uid="uid://pec25tjk8k13" path="res://images/summoning_table_opened.png" id="3_cnlj8"]
 [ext_resource type="Texture2D" uid="uid://1olcrv7qg7q5" path="res://images/Arms/IMG_0641.png" id="3_grxld"]
 [ext_resource type="Texture2D" uid="uid://bs1vlolecvgwd" path="res://images/Arms/IMG_0642.png" id="4_3vjbr"]
 [ext_resource type="Texture2D" uid="uid://bwfjfa28611sc" path="res://images/summoning_table_closed.png" id="4_j2vp0"]
-[ext_resource type="Resource" uid="uid://c4l1m3uej60i" path="res://recipes/cheese_trap_of_the_damned.tres" id="4_sf65n"]
+[ext_resource type="Resource" uid="uid://b2s6qgw4j7cgn" path="res://recipes/cheese_trap_of_the_damned.tres" id="4_sf65n"]
 [ext_resource type="Texture2D" uid="uid://ba0jy6gucn0uf" path="res://images/Arms/IMG_0643.png" id="5_ntfit"]
-[ext_resource type="Resource" uid="uid://ycg86rnpo1pe" path="res://recipes/diabolic_goat_stew.tres" id="5_xuui5"]
+[ext_resource type="Resource" uid="uid://bl2cmdc8pd2vt" path="res://recipes/diabolic_goat_stew.tres" id="5_xuui5"]
 [ext_resource type="Texture2D" uid="uid://dwpysg7mmiy4n" path="res://images/Arms/IMG_0644.png" id="6_0hf3c"]
-[ext_resource type="Resource" uid="uid://dyqpa1megvq6h" path="res://recipes/infernal_cheese_fritters.tres" id="6_gc15g"]
+[ext_resource type="Resource" uid="uid://c12fyq3nvuc42" path="res://recipes/infernal_cheese_fritters.tres" id="6_gc15g"]
 [ext_resource type="Texture2D" uid="uid://bifr3ljy0ynre" path="res://images/Arms/IMG_0645.png" id="7_68i1y"]
-[ext_resource type="Resource" uid="uid://dbturcw6423mn" path="res://recipes/inferno_salt_sprinkle.tres" id="7_yobcn"]
+[ext_resource type="Resource" uid="uid://pbak50kk8dke" path="res://recipes/inferno_salt_sprinkle.tres" id="7_yobcn"]
 [ext_resource type="Texture2D" uid="uid://yfj50kxx8qfw" path="res://images/Arms/IMG_0646.png" id="8_08buf"]
+[ext_resource type="Resource" uid="uid://dctg46qbq1dhj" path="res://recipes/hellfire_hash.tres" id="8_x3h56"]
 [ext_resource type="Texture2D" uid="uid://80b3tiemlh6o" path="res://images/Arms/IMG_0647.png" id="9_sa5x5"]
+[ext_resource type="Texture2D" uid="uid://ptyj7c0v538u" path="res://images/Ingredients/Failed_Recipe.png" id="9_xmwfr"]
 [ext_resource type="Texture2D" uid="uid://bleyi3xhafp2q" path="res://images/Arms/IMG_0648.png" id="10_avjsb"]
 [ext_resource type="Texture2D" uid="uid://b8ea5dmegcxek" path="res://images/Arms/IMG_0649.png" id="11_tfihr"]
 [ext_resource type="Texture2D" uid="uid://cdflukk1htonl" path="res://images/Arms/IMG_0650.png" id="12_m27yi"]
@@ -34,18 +36,25 @@
 [ext_resource type="Texture2D" uid="uid://bov5wkl2nv618" path="res://images/Ingredients/Goat_dead.png" id="21_86fys"]
 [ext_resource type="Texture2D" uid="uid://jgnav6yjapcl" path="res://images/Ingredients/meat_raw.png" id="22_nxq2y"]
 [ext_resource type="Texture2D" uid="uid://cqyb8b88sjysb" path="res://images/cooking_3.png" id="24_0kxu7"]
-[ext_resource type="Resource" uid="uid://blu2pw0iaoaqu" path="res://recipes/ingredients/goat.tres" id="28_8vbh8"]
+[ext_resource type="Script" path="res://scripts/resources/RecipeIngredient.cs" id="26_5iotp"]
+[ext_resource type="Resource" path="res://recipes/ingredients/goat.tres" id="28_8vbh8"]
 [ext_resource type="Texture2D" uid="uid://c5jxop6l5362k" path="res://images/Ingredients/Chilli_raw.png" id="28_og2in"]
 [ext_resource type="Texture2D" uid="uid://cma35e0xwyvwq" path="res://images/Ingredients/Chilli_sliced.png" id="29_cpbmt"]
 [ext_resource type="Texture2D" uid="uid://dlxuvd65xtbpe" path="res://images/Ingredients/Salt.png" id="30_gy6dw"]
 [ext_resource type="Texture2D" uid="uid://dqkijkhtbxa5q" path="res://images/Ingredients/Salt_Broken.png" id="31_1ynsj"]
-[ext_resource type="Resource" uid="uid://cbypv38kjr0l" path="res://recipes/ingredients/chili.tres" id="31_3qcne"]
+[ext_resource type="Resource" path="res://recipes/ingredients/chili.tres" id="31_3qcne"]
 [ext_resource type="Texture2D" uid="uid://c25qd3bsbbfvh" path="res://images/Ingredients/Salt_Cracked.png" id="33_l5uku"]
-[ext_resource type="Resource" uid="uid://dqkxliobb0fco" path="res://recipes/ingredients/salt.tres" id="34_0ndf8"]
+[ext_resource type="Resource" path="res://recipes/ingredients/salt.tres" id="34_0ndf8"]
 [ext_resource type="Texture2D" uid="uid://bsul6a0elj822" path="res://images/Ingredients/Potatoe_Broken.png" id="34_couy2"]
 [ext_resource type="Texture2D" uid="uid://b7r824gho0tcs" path="res://images/Ingredients/Potatoe.png" id="35_3kddf"]
 [ext_resource type="Texture2D" uid="uid://du1x6vsb82m5b" path="res://images/Ingredients/Potatoe_Hurt.png" id="36_51ybk"]
-[ext_resource type="Resource" uid="uid://rh0gdnhv47y8" path="res://recipes/ingredients/potato.tres" id="38_rukhj"]
+[ext_resource type="Resource" path="res://recipes/ingredients/potato.tres" id="38_rukhj"]
+[ext_resource type="Texture2D" uid="uid://h2j1gkbe4oh5" path="res://images/Ingredients/Onion.png" id="46_43f6f"]
+[ext_resource type="Texture2D" uid="uid://d22o38u4ahdc" path="res://images/Ingredients/Onion_Hurt.png" id="47_fvepb"]
+[ext_resource type="Texture2D" uid="uid://1scsivnoynp2" path="res://images/Ingredients/Onion_Broken.png" id="48_hj4an"]
+[ext_resource type="Texture2D" uid="uid://cly2qyfmooiin" path="res://images/Ingredients/Cheese_Broken.png" id="49_7vghy"]
+[ext_resource type="Texture2D" uid="uid://dv7jh7tlfhqlo" path="res://images/Ingredients/Cheese.png" id="51_vdtol"]
+[ext_resource type="Texture2D" uid="uid://bytae2nyx3obj" path="res://images/Ingredients/Cheese_Hurt.png" id="52_7cfys"]
 
 [sub_resource type="Curve2D" id="Curve2D_k1mdi"]
 _data = {
@@ -114,6 +123,16 @@ point_count = 7
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_pfaly"]
 load_path = "res://.godot/imported/meat_raw.png-325e54ef64de71e2d61ac5a38ba2c0fb.ctex"
 
+[sub_resource type="Resource" id="Resource_lylnk"]
+script = ExtResource("26_5iotp")
+Name = "Onion"
+Image = ExtResource("48_hj4an")
+
+[sub_resource type="Resource" id="Resource_7yvn2"]
+script = ExtResource("26_5iotp")
+Name = "Cheese"
+Image = ExtResource("49_7vghy")
+
 [node name="Cooking" type="Control" node_paths=PackedStringArray("ingredientNodes")]
 layout_mode = 3
 anchors_preset = 15
@@ -125,7 +144,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_0l3a8")
-ingredientNodes = [NodePath("IngredientScreen/Goat"), NodePath("IngredientScreen/Chilli"), NodePath("IngredientScreen/Salt"), NodePath("IngredientScreen/Potatoe"), NodePath("IngredientScreen/Ingredient5"), NodePath("IngredientScreen/Ingredient6")]
+ingredientNodes = [NodePath("IngredientScreen/Goat"), NodePath("IngredientScreen/Chilli"), NodePath("IngredientScreen/Salt"), NodePath("IngredientScreen/Potatoe"), NodePath("IngredientScreen/Onion"), NodePath("IngredientScreen/Cheese")]
 
 [node name="SummonScreen" type="Control" parent="."]
 clip_contents = true
@@ -134,8 +153,8 @@ offset_right = 716.27
 offset_bottom = 434.0
 mouse_filter = 2
 script = ExtResource("2_u2e0s")
-_recipes = Array[Object]([ExtResource("3_ch3tq"), ExtResource("4_sf65n"), ExtResource("5_xuui5"), ExtResource("6_gc15g"), ExtResource("7_yobcn")])
-_failedRecipeImage = ExtResource("21_86fys")
+_recipes = Array[Object]([ExtResource("3_ch3tq"), ExtResource("4_sf65n"), ExtResource("5_xuui5"), ExtResource("6_gc15g"), ExtResource("7_yobcn"), ExtResource("8_x3h56")])
+_failedRecipeImage = ExtResource("9_xmwfr")
 
 [node name="SummoningV2" type="Sprite2D" parent="SummonScreen"]
 position = Vector2(365, 218)
@@ -380,10 +399,11 @@ mouse_filter = 1
 [node name="Salt" type="Node2D" parent="IngredientScreen"]
 z_index = 1
 z_as_relative = false
-position = Vector2(355, 231)
+position = Vector2(477, 231)
 scale = Vector2(0.56, 0.56)
 script = ExtResource("1_2tg8c")
 RecipeIngredient = ExtResource("34_0ndf8")
+startSpeed = 130.0
 Textures = [ExtResource("30_gy6dw"), ExtResource("33_l5uku"), ExtResource("31_1ynsj")]
 clicksNeededForState2 = 6
 clicksNeededForState3 = 12
@@ -412,7 +432,7 @@ script = ExtResource("1_2tg8c")
 RecipeIngredient = ExtResource("38_rukhj")
 Textures = [ExtResource("35_3kddf"), ExtResource("36_51ybk"), ExtResource("34_couy2")]
 clicksNeededForState2 = 8
-clicksNeededForState3 = 16
+clicksNeededForState3 = 14
 
 [node name="Ingredient_Sprite" type="Sprite2D" parent="IngredientScreen/Potatoe"]
 position = Vector2(-8, -8.99997)
@@ -429,23 +449,25 @@ offset_bottom = -67.0
 scale = Vector2(17.68, 17.68)
 mouse_filter = 1
 
-[node name="Ingredient5" type="Node2D" parent="IngredientScreen"]
-visible = false
+[node name="Onion" type="Node2D" parent="IngredientScreen"]
 z_index = 1
 z_as_relative = false
 position = Vector2(355, 231)
-scale = Vector2(0.745, 0.745)
+scale = Vector2(0.545, 0.545)
 script = ExtResource("1_2tg8c")
-Textures = [ExtResource("19_i6gig"), ExtResource("21_86fys"), ExtResource("22_nxq2y")]
-clicksNeededForState2 = 8
-clicksNeededForState3 = 16
+RecipeIngredient = SubResource("Resource_lylnk")
+startSpeed = 180.0
+Textures = [ExtResource("46_43f6f"), ExtResource("47_fvepb"), ExtResource("48_hj4an")]
+clicksNeededForState2 = 7
+clicksNeededForState3 = 13
+speedIncreaseFactor = 1.06
 
-[node name="Ingredient_Sprite" type="Sprite2D" parent="IngredientScreen/Ingredient5"]
+[node name="Ingredient_Sprite" type="Sprite2D" parent="IngredientScreen/Onion"]
 position = Vector2(-8, -8.99997)
 scale = Vector2(0.52, 0.52)
-texture = ExtResource("19_i6gig")
+texture = ExtResource("46_43f6f")
 
-[node name="Button" type="Button" parent="IngredientScreen/Ingredient5"]
+[node name="Button" type="Button" parent="IngredientScreen/Onion"]
 modulate = Color(1, 1, 1, 0)
 self_modulate = Color(1, 1, 1, 0)
 offset_left = -74.0
@@ -455,23 +477,24 @@ offset_bottom = -67.0
 scale = Vector2(17.68, 17.68)
 mouse_filter = 1
 
-[node name="Ingredient6" type="Node2D" parent="IngredientScreen"]
-visible = false
+[node name="Cheese" type="Node2D" parent="IngredientScreen"]
 z_index = 1
 z_as_relative = false
 position = Vector2(355, 231)
-scale = Vector2(0.745, 0.745)
+scale = Vector2(0.56, 0.56)
 script = ExtResource("1_2tg8c")
-Textures = [ExtResource("19_i6gig"), ExtResource("21_86fys"), ExtResource("22_nxq2y")]
-clicksNeededForState2 = 8
-clicksNeededForState3 = 16
+RecipeIngredient = SubResource("Resource_7yvn2")
+startSpeed = 140.0
+Textures = [ExtResource("51_vdtol"), ExtResource("52_7cfys"), ExtResource("49_7vghy")]
+clicksNeededForState2 = 5
+clicksNeededForState3 = 9
 
-[node name="Ingredient_Sprite" type="Sprite2D" parent="IngredientScreen/Ingredient6"]
+[node name="Ingredient_Sprite" type="Sprite2D" parent="IngredientScreen/Cheese"]
 position = Vector2(-8, -8.99997)
 scale = Vector2(0.52, 0.52)
-texture = ExtResource("19_i6gig")
+texture = ExtResource("51_vdtol")
 
-[node name="Button" type="Button" parent="IngredientScreen/Ingredient6"]
+[node name="Button" type="Button" parent="IngredientScreen/Cheese"]
 modulate = Color(1, 1, 1, 0)
 self_modulate = Color(1, 1, 1, 0)
 offset_left = -74.0
@@ -490,5 +513,5 @@ texture = ExtResource("24_0kxu7")
 [connection signal="button_down" from="IngredientScreen/Chilli/Button" to="IngredientScreen/Chilli" method="Clicked"]
 [connection signal="button_down" from="IngredientScreen/Salt/Button" to="IngredientScreen/Salt" method="Clicked"]
 [connection signal="button_down" from="IngredientScreen/Potatoe/Button" to="IngredientScreen/Potatoe" method="Clicked"]
-[connection signal="button_down" from="IngredientScreen/Ingredient5/Button" to="IngredientScreen/Ingredient5" method="Clicked"]
-[connection signal="button_down" from="IngredientScreen/Ingredient6/Button" to="IngredientScreen/Ingredient6" method="Clicked"]
+[connection signal="button_down" from="IngredientScreen/Onion/Button" to="IngredientScreen/Onion" method="Clicked"]
+[connection signal="button_down" from="IngredientScreen/Cheese/Button" to="IngredientScreen/Cheese" method="Clicked"]

@@ -1,14 +1,13 @@
-[gd_resource type="Resource" script_class="Recipe" load_steps=5 format=3 uid="uid://c4l1m3uej60i"]
+[gd_resource type="Resource" script_class="Recipe" load_steps=5 format=3 uid="uid://b2s6qgw4j7cgn"]
 
-[ext_resource type="Resource" uid="uid://cv21h61q751aq" path="res://recipes/ingredients/cheese.tres" id="1_byagj"]
-[ext_resource type="Resource" uid="uid://cbypv38kjr0l" path="res://recipes/ingredients/chili.tres" id="4_avy04"]
+[ext_resource type="Resource" uid="uid://cd8v3uxk5yw8u" path="res://recipes/ingredients/cheese.tres" id="1_byagj"]
+[ext_resource type="Texture2D" uid="uid://drqaqq6flewmn" path="res://images/Ingredients/Cheese_Trap_of_the_Damned.png" id="1_fdlw7"]
+[ext_resource type="Resource" path="res://recipes/ingredients/chili.tres" id="4_avy04"]
 [ext_resource type="Script" path="res://scripts/resources/Recipe.cs" id="6_y51tx"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_s0pl2"]
 
 [resource]
 script = ExtResource("6_y51tx")
 Ingredients = Array[Object]([ExtResource("1_byagj"), ExtResource("4_avy04")])
 Name = "Cheese Trap of the Damned"
-Description = "An irresistible trap of creamy cheese infused with explosive bits of chilli, creating a deceptively simple yet fiendishly addictive treat."
-Image = SubResource("PlaceholderTexture2D_s0pl2")
+Description = " An irresistible trap of creamy cheese infused with explosive bits of chilli, creating a deceptively simple yet fiendishly addictive treat."
+Image = ExtResource("1_fdlw7")
