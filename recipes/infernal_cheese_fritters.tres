@@ -1,10 +1,10 @@
-[gd_resource type="Resource" script_class="Recipe" load_steps=6 format=3 uid="uid://c12fyq3nvuc42"]
+[gd_resource type="Resource" script_class="Recipe" load_steps=6 format=3 uid="uid://dyqpa1megvq6h"]
 
 [ext_resource type="Script" path="res://scripts/resources/Recipe.cs" id="1_3bjn8"]
 [ext_resource type="Texture2D" uid="uid://c8f3ak3o6vg2d" path="res://images/Ingredients/Infernal_Cheese_Fritters.png" id="1_75dwc"]
-[ext_resource type="Resource" uid="uid://cd8v3uxk5yw8u" path="res://recipes/ingredients/cheese.tres" id="1_g6g4f"]
-[ext_resource type="Resource" path="res://recipes/ingredients/potato.tres" id="2_xk7h3"]
-[ext_resource type="Resource" path="res://recipes/ingredients/chili.tres" id="3_5668g"]
+[ext_resource type="Resource" uid="uid://cv21h61q751aq" path="res://recipes/ingredients/cheese.tres" id="1_g6g4f"]
+[ext_resource type="Resource" uid="uid://rh0gdnhv47y8" path="res://recipes/ingredients/potato.tres" id="2_xk7h3"]
+[ext_resource type="Resource" uid="uid://cbypv38kjr0l" path="res://recipes/ingredients/chili.tres" id="3_5668g"]
 
 [resource]
 script = ExtResource("1_3bjn8")

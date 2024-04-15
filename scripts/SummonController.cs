@@ -12,15 +12,15 @@ public partial class SummonController : Control
     private bool _animationRunning;
     private double _animationTimer;
     private List<PathFollow2D> _ingredientPaths;
-    
+
     [Export] private Array<Recipe> _recipes;
     private Recipe _currentRecipe;
     private Control _recipeContainer;
     [Export] private Texture2D _failedRecipeImage;
-    
+
     [Signal]
     public delegate void RecipeFailedEventHandler();
-    
+
     [Signal]
     public delegate void RecipeSuccessEventHandler(Recipe recipe);
 
@@ -28,6 +28,7 @@ public partial class SummonController : Control
     public override void _Ready()
     {
         _recipeContainer = GetNode<Control>("RecipeContainer");
+        _recipeContainer.Visible = false;
         _ingredientPaths = new List<PathFollow2D>();
         foreach (var child in GetNode("IngredientPaths").GetChildren())
         {
@@ -36,6 +37,7 @@ public partial class SummonController : Control
                 _ingredientPaths.Add(path.GetChild<PathFollow2D>(0));
             }
         }
+
         _animationRunning = true;
     }
 
@@ -48,43 +50,66 @@ public partial class SummonController : Control
         {
             path.ProgressRatio = (float)(_animationTimer / _animationDuration);
         }
+
         if (!(_animationTimer >= _animationDuration)) return;
         foreach (var path in _ingredientPaths)
         {
             path.GetChild<GpuParticles2D>(1).Emitting = false;
         }
 
+        var textureRect = _recipeContainer.GetChild<TextureRect>(0);
+        var label = _recipeContainer.GetChild<Label>(1);
+        _recipeContainer.Visible = true;
         if (_currentRecipe == null)
         {
-            _recipeContainer.GetChild<TextureRect>(0).Texture = _failedRecipeImage;
-            _recipeContainer.GetChild<Label>(1).Text = "You failed";
+            textureRect.Texture = _failedRecipeImage;
+            label.Text = "You failed";
             EmitSignal(SignalName.RecipeFailed);
         }
         else
         {
-            _recipeContainer.GetChild<TextureRect>(0).Texture = _currentRecipe.Image;
-            _recipeContainer.GetChild<Label>(1).Text = _currentRecipe.Name;
+            textureRect.Texture = _currentRecipe.Image;
+            label.Text = _currentRecipe.Name;
             EmitSignal(SignalName.RecipeSuccess, _currentRecipe);
         }
+
         _animationRunning = false;
         _animationTimer = 0;
     }
 
     public void StartSummon(List<RecipeIngredient> currentIngredients)
     {
+        _recipeContainer.Visible = false;
         var matchingRecipes = from recipe in _recipes
             where !recipe.Ingredients.Except(currentIngredients).Any()
             select recipe;
-        
-        _currentRecipe = matchingRecipes.ToList().First();
-        
+        var recipeList = matchingRecipes.ToList();
+        if (recipeList.Count == 0)
+        {
+            _currentRecipe = null;
+        }
+        else
+        {
+            _currentRecipe = recipeList.First();
+        }
+
         for (var index = 0; index < _ingredientPaths.Count; index++)
         {
             var path = _ingredientPaths[index];
             path.Progress = 0;
             var sprite = path.GetChild<Sprite2D>(0);
-            sprite.Texture = currentIngredients[index].Image as Texture2D;
+            if (index >= currentIngredients.Count)
+            {
+                path.Visible = false;
+            }
+            else
+            {
+                path.Visible = true;
+                sprite.Texture = currentIngredients[index].Image as Texture2D;
+            }
         }
+
+        _animationTimer = 0;
         _animationRunning = true;
     }
 }

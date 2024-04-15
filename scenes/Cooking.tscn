@@ -8,20 +8,20 @@
 [ext_resource type="Script" path="res://scripts/SummonController.cs" id="2_u2e0s"]
 [ext_resource type="Script" path="res://scripts/Arm.cs" id="2_ufhw1"]
 [ext_resource type="Texture2D" uid="uid://bjvrnlxj8so02" path="res://images/summoning_table_opened_zoom.png" id="2_xijqt"]
-[ext_resource type="Resource" uid="uid://7wk0ltcd6ja7" path="res://recipes/baphoments_baked_goat_cheese.tres" id="3_ch3tq"]
+[ext_resource type="Resource" uid="uid://duabbgr7oq35j" path="res://recipes/baphoments_baked_goat_cheese.tres" id="3_ch3tq"]
 [ext_resource type="Texture2D" uid="uid://pec25tjk8k13" path="res://images/summoning_table_opened.png" id="3_cnlj8"]
 [ext_resource type="Texture2D" uid="uid://1olcrv7qg7q5" path="res://images/Arms/IMG_0641.png" id="3_grxld"]
 [ext_resource type="Texture2D" uid="uid://bs1vlolecvgwd" path="res://images/Arms/IMG_0642.png" id="4_3vjbr"]
 [ext_resource type="Texture2D" uid="uid://bwfjfa28611sc" path="res://images/summoning_table_closed.png" id="4_j2vp0"]
-[ext_resource type="Resource" uid="uid://b2s6qgw4j7cgn" path="res://recipes/cheese_trap_of_the_damned.tres" id="4_sf65n"]
+[ext_resource type="Resource" uid="uid://c4l1m3uej60i" path="res://recipes/cheese_trap_of_the_damned.tres" id="4_sf65n"]
 [ext_resource type="Texture2D" uid="uid://ba0jy6gucn0uf" path="res://images/Arms/IMG_0643.png" id="5_ntfit"]
-[ext_resource type="Resource" uid="uid://bl2cmdc8pd2vt" path="res://recipes/diabolic_goat_stew.tres" id="5_xuui5"]
+[ext_resource type="Resource" uid="uid://ycg86rnpo1pe" path="res://recipes/diabolic_goat_stew.tres" id="5_xuui5"]
 [ext_resource type="Texture2D" uid="uid://dwpysg7mmiy4n" path="res://images/Arms/IMG_0644.png" id="6_0hf3c"]
-[ext_resource type="Resource" uid="uid://c12fyq3nvuc42" path="res://recipes/infernal_cheese_fritters.tres" id="6_gc15g"]
+[ext_resource type="Resource" uid="uid://dyqpa1megvq6h" path="res://recipes/infernal_cheese_fritters.tres" id="6_gc15g"]
 [ext_resource type="Texture2D" uid="uid://bifr3ljy0ynre" path="res://images/Arms/IMG_0645.png" id="7_68i1y"]
-[ext_resource type="Resource" uid="uid://pbak50kk8dke" path="res://recipes/inferno_salt_sprinkle.tres" id="7_yobcn"]
+[ext_resource type="Resource" uid="uid://dbturcw6423mn" path="res://recipes/inferno_salt_sprinkle.tres" id="7_yobcn"]
 [ext_resource type="Texture2D" uid="uid://yfj50kxx8qfw" path="res://images/Arms/IMG_0646.png" id="8_08buf"]
-[ext_resource type="Resource" uid="uid://dctg46qbq1dhj" path="res://recipes/hellfire_hash.tres" id="8_x3h56"]
+[ext_resource type="Resource" path="res://recipes/hellfire_hash.tres" id="8_x3h56"]
 [ext_resource type="Texture2D" uid="uid://80b3tiemlh6o" path="res://images/Arms/IMG_0647.png" id="9_sa5x5"]
 [ext_resource type="Texture2D" uid="uid://ptyj7c0v538u" path="res://images/Ingredients/Failed_Recipe.png" id="9_xmwfr"]
 [ext_resource type="Texture2D" uid="uid://bleyi3xhafp2q" path="res://images/Arms/IMG_0648.png" id="10_avjsb"]
@@ -37,18 +37,18 @@
 [ext_resource type="Texture2D" uid="uid://jgnav6yjapcl" path="res://images/Ingredients/meat_raw.png" id="22_nxq2y"]
 [ext_resource type="Texture2D" uid="uid://cqyb8b88sjysb" path="res://images/cooking_3.png" id="24_0kxu7"]
 [ext_resource type="Script" path="res://scripts/resources/RecipeIngredient.cs" id="26_5iotp"]
-[ext_resource type="Resource" path="res://recipes/ingredients/goat.tres" id="28_8vbh8"]
+[ext_resource type="Resource" uid="uid://blu2pw0iaoaqu" path="res://recipes/ingredients/goat.tres" id="28_8vbh8"]
 [ext_resource type="Texture2D" uid="uid://c5jxop6l5362k" path="res://images/Ingredients/Chilli_raw.png" id="28_og2in"]
 [ext_resource type="Texture2D" uid="uid://cma35e0xwyvwq" path="res://images/Ingredients/Chilli_sliced.png" id="29_cpbmt"]
 [ext_resource type="Texture2D" uid="uid://dlxuvd65xtbpe" path="res://images/Ingredients/Salt.png" id="30_gy6dw"]
 [ext_resource type="Texture2D" uid="uid://dqkijkhtbxa5q" path="res://images/Ingredients/Salt_Broken.png" id="31_1ynsj"]
-[ext_resource type="Resource" path="res://recipes/ingredients/chili.tres" id="31_3qcne"]
+[ext_resource type="Resource" uid="uid://cbypv38kjr0l" path="res://recipes/ingredients/chili.tres" id="31_3qcne"]
 [ext_resource type="Texture2D" uid="uid://c25qd3bsbbfvh" path="res://images/Ingredients/Salt_Cracked.png" id="33_l5uku"]
-[ext_resource type="Resource" path="res://recipes/ingredients/salt.tres" id="34_0ndf8"]
+[ext_resource type="Resource" uid="uid://dqkxliobb0fco" path="res://recipes/ingredients/salt.tres" id="34_0ndf8"]
 [ext_resource type="Texture2D" uid="uid://bsul6a0elj822" path="res://images/Ingredients/Potatoe_Broken.png" id="34_couy2"]
 [ext_resource type="Texture2D" uid="uid://b7r824gho0tcs" path="res://images/Ingredients/Potatoe.png" id="35_3kddf"]
 [ext_resource type="Texture2D" uid="uid://du1x6vsb82m5b" path="res://images/Ingredients/Potatoe_Hurt.png" id="36_51ybk"]
-[ext_resource type="Resource" path="res://recipes/ingredients/potato.tres" id="38_rukhj"]
+[ext_resource type="Resource" uid="uid://rh0gdnhv47y8" path="res://recipes/ingredients/potato.tres" id="38_rukhj"]
 [ext_resource type="Texture2D" uid="uid://h2j1gkbe4oh5" path="res://images/Ingredients/Onion.png" id="46_43f6f"]
 [ext_resource type="Texture2D" uid="uid://d22o38u4ahdc" path="res://images/Ingredients/Onion_Hurt.png" id="47_fvepb"]
 [ext_resource type="Texture2D" uid="uid://1scsivnoynp2" path="res://images/Ingredients/Onion_Broken.png" id="48_hj4an"]
@@ -178,8 +178,10 @@ position = Vector2(144, 120)
 loop = false
 
 [node name="Sprite2D" type="Sprite2D" parent="SummonScreen/IngredientPaths/Path2D/PathFollow2D"]
-scale = Vector2(0.0647699, 0.0647699)
-texture = ExtResource("22_nxq2y")
+position = Vector2(6.7541, -10.8125)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("30_gy6dw")
+region_rect = Rect2(0, -128, 571, 541)
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="SummonScreen/IngredientPaths/Path2D/PathFollow2D"]
 process_material = SubResource("ParticleProcessMaterial_g622k")
@@ -194,7 +196,7 @@ rotation = -1.2598
 loop = false
 
 [node name="Sprite2D" type="Sprite2D" parent="SummonScreen/IngredientPaths/Path2D2/PathFollow2D"]
-scale = Vector2(0.0647699, 0.0647699)
+scale = Vector2(0.15, 0.15)
 texture = SubResource("CompressedTexture2D_saywp")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="SummonScreen/IngredientPaths/Path2D2/PathFollow2D"]
@@ -209,7 +211,7 @@ position = Vector2(48, 64)
 loop = false
 
 [node name="Sprite2D" type="Sprite2D" parent="SummonScreen/IngredientPaths/Path2D3/PathFollow2D"]
-scale = Vector2(0.0647699, 0.0647699)
+scale = Vector2(0.15, 0.15)
 texture = SubResource("CompressedTexture2D_hju6o")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="SummonScreen/IngredientPaths/Path2D3/PathFollow2D"]
@@ -225,7 +227,7 @@ rotation = 0.0996687
 loop = false
 
 [node name="Sprite2D" type="Sprite2D" parent="SummonScreen/IngredientPaths/Path2D4/PathFollow2D"]
-scale = Vector2(0.0647699, 0.0647699)
+scale = Vector2(0.15, 0.15)
 texture = SubResource("CompressedTexture2D_i31nm")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="SummonScreen/IngredientPaths/Path2D4/PathFollow2D"]
@@ -241,7 +243,7 @@ rotation = -0.665969
 loop = false
 
 [node name="Sprite2D" type="Sprite2D" parent="SummonScreen/IngredientPaths/Path2D5/PathFollow2D"]
-scale = Vector2(0.0647699, 0.0647699)
+scale = Vector2(0.15, 0.15)
 texture = SubResource("CompressedTexture2D_1b7aa")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="SummonScreen/IngredientPaths/Path2D5/PathFollow2D"]
@@ -257,7 +259,7 @@ rotation = 0.502843
 loop = false
 
 [node name="Sprite2D" type="Sprite2D" parent="SummonScreen/IngredientPaths/Path2D6/PathFollow2D"]
-scale = Vector2(0.0647699, 0.0647699)
+scale = Vector2(0.15, 0.15)
 texture = SubResource("CompressedTexture2D_pfaly")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="SummonScreen/IngredientPaths/Path2D6/PathFollow2D"]
@@ -265,6 +267,7 @@ process_material = SubResource("ParticleProcessMaterial_g622k")
 texture = SubResource("NoiseTexture2D_gy6u4")
 
 [node name="RecipeContainer" type="Control" parent="SummonScreen"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

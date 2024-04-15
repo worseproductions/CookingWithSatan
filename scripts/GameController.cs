@@ -77,6 +77,11 @@ public partial class GameController : Control
         "Hype it up chat!"
     };
 
+    private Label _speechBubbleLabel;
+    private Control _speechBubble;
+
+    private bool _showSpeechBubble;
+
     [Export] private Array<string> _hypeResponses = new()
     {
         "HYPE!",
@@ -135,9 +140,8 @@ public partial class GameController : Control
     private int _updateViewersInterval = 5;
     private bool _donationGoalReached;
     private bool _manuallyEndStream;
-    
-    [ExportCategory("Food")]
-    [Export] private int _timesUntilRecipeBecomesBoring = 3;
+
+    [ExportCategory("Food")] [Export] private int _timesUntilRecipeBecomesBoring = 3;
 
     private Recipe _lastRecipe;
     private int _timesCookedRecipe = 0;
@@ -151,14 +155,16 @@ public partial class GameController : Control
         _activityController = GetNode<ActivityController>("%ActivityPanel");
         _cookingController = GetNode<CookingController>("%StreamPanel");
         _messagesJson = ResourceLoader.Singleton.Load("res://chat/messages.tres") as Json;
-        
+        _speechBubble = GetNode<Control>("%SpeechBubble");
+        _speechBubbleLabel = GetNode<Label>("%SpeechBubble/Label");
+
         var summonController = _cookingController.GetNode<SummonController>("SummonScreen");
-        
+
         summonController.RecipeSuccess += SuccessfullyCookedRecipe;
         summonController.RecipeFailed += FailedToCookRecipe;
 
         _audioService.PlayStream(AudioService.StreamType.Game);
-        
+
         _activityController.DonationGoalReached += OnDonationGoalReached;
 
         var voices = DisplayServer.TtsGetVoicesForLanguage("en");
@@ -170,6 +176,11 @@ public partial class GameController : Control
             _messages.Add(new MessageObject(messageObject["user"].ToString(), messageObject["message"].ToString(),
                 messageObject["mood"].As<int>()));
         }
+
+        DisplayServer.TtsSetUtteranceCallback(DisplayServer.TtsUtteranceEvent.Ended, Callable.From((int id) =>
+        {
+            if (id == 1) _showSpeechBubble = false;
+        }));
     }
 
     #region Processing
@@ -214,6 +225,16 @@ public partial class GameController : Control
 
     private void ProcessChatLogic(double delta)
     {
+        if (!_speechBubble.Visible && _showSpeechBubble)
+        {
+            _speechBubble.Visible = true;
+        }
+
+        if (_speechBubble.Visible && !_showSpeechBubble)
+        {
+            _speechBubble.Visible = false;
+        }
+
         var msgPerMin = -10.446 + 4.7743 * Math.Log(Viewers) *
             (_responseFlood || _pogFlood || _fInChatFlood || _hypeActive ? 2 : 1);
         if (msgPerMin < 0)
@@ -222,7 +243,7 @@ public partial class GameController : Control
         }
 
         _timeSinceLastMultiplier += delta;
-        
+
         ProcessMultiplier(ref _hypeActive, ref _hypeTime, ref _hypeDuration, delta);
         ProcessMultiplier(ref _pogFlood, ref _pogFloodTime, ref _pogFloodDuration, delta);
         ProcessMultiplier(ref _responseFlood, ref _responseFloodTime, ref _responseFloodDuration, delta);
@@ -303,7 +324,9 @@ public partial class GameController : Control
         // calculate new viewers depending on followers, current viewers,  duration and chat happiness
         var newViewers = (int)((Subs * _newViewersSubInfluence + Viewers * _newViewersExistingViewersInfluence +
                                 Duration * _newViewersDurationInfluence) *
-                               (ChatHappiness == 0 ? 1 : ChatHappiness * _newViewersHappinessInfluence));
+                               (ChatHappiness == 0
+                                   ? new Random().NextDouble() >= 0.5 ? 1 : -1
+                                   : ChatHappiness * _newViewersHappinessInfluence));
         GD.Print($"new viewers: {newViewers}");
         Viewers += newViewers;
         Viewers = Math.Clamp(Viewers, 0, viewerCap);
@@ -315,7 +338,7 @@ public partial class GameController : Control
 
     public void SuccessfullyCookedRecipe(Recipe recipe)
     {
-        if (recipe.Name == _lastRecipe.Name)
+        if (_lastRecipe != null && recipe.Name == _lastRecipe.Name)
         {
             _timesCookedRecipe++;
             if (_timesCookedRecipe >= _timesUntilRecipeBecomesBoring)
@@ -328,6 +351,7 @@ public partial class GameController : Control
             _lastRecipe = recipe;
             _timesCookedRecipe = 1;
         }
+
         ChatHappiness = Math.Clamp(ChatHappiness + 1, -2, 2);
         TriggerPogFlood();
     }
@@ -358,7 +382,7 @@ public partial class GameController : Control
             _ => "Thank you"
         };
         ChatTts($"{user.Replace('_', ' ')} donated {amount} {satanCoinsString}: {message}");
-        DevilTts($"{thankYouString} for the {amount} {satanCoinsString} {user.Replace('_', ' ')}!");
+        DevilTts($"{thankYouString} for the {amount} {satanCoinsString} {user.Replace('_', ' ')}!", 1);
     }
 
     private void AddSubscriber(string user, string message, int months)
@@ -395,6 +419,7 @@ public partial class GameController : Control
                     if (idToCheck != id) return;
                     DisplayServer.TtsStop();
                     _donationGoalReached = true;
+                    _showSpeechBubble = false;
                 }
             )
         );
@@ -438,7 +463,7 @@ public partial class GameController : Control
     {
         if (_timeSinceLastMultiplier < _timeBetweenMultipliers) return;
         var voiceLine = _hypeVoiceLines[new Random().Next(0, _hypeVoiceLines.Count)];
-        DevilTts(voiceLine);
+        DevilTts(voiceLine, 1);
         _hypeActive = true;
         _hypeTime = 0;
         _timeSinceLastMultiplier = 0;
@@ -490,6 +515,8 @@ public partial class GameController : Control
 
     private void DevilTts(string text, int id = 0)
     {
+        _showSpeechBubble = true;
+        _speechBubbleLabel.Text = text;
         DisplayServer.TtsSpeak(text, _voiceId, pitch: 2.0F, volume: _globalInputHandler.SoundEnabled ? 50 : 0,
             utteranceId: id);
     }

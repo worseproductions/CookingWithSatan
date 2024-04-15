@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://o2chs3mjbi1i"]
+[gd_scene load_steps=12 format=3 uid="uid://o2chs3mjbi1i"]
 
 [ext_resource type="Texture2D" uid="uid://cb4mb1x6pbkha" path="res://images/background.png" id="1_crmqh"]
 [ext_resource type="Script" path="res://scripts/GameController.cs" id="1_n8041"]
@@ -8,11 +8,16 @@
 [ext_resource type="PackedScene" uid="uid://c4npeck8tiy1u" path="res://scenes/ui/chat_panel.tscn" id="4_rg3i4"]
 [ext_resource type="PackedScene" uid="uid://430mnbvtkksl" path="res://scenes/ui/shortcut_hints.tscn" id="7_n0b7t"]
 [ext_resource type="PackedScene" uid="uid://b66j3ww4mdhya" path="res://scenes/Cooking.tscn" id="8_2hwey"]
+[ext_resource type="Texture2D" uid="uid://bsdkmwboim2mg" path="res://images/speech_bubble.png" id="9_pnair"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yu11q"]
 bg_color = Color(0.458824, 0.458824, 0.458824, 0)
 shadow_color = Color(0.184314, 0.0156863, 0, 0.356863)
 shadow_size = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_i2skv"]
+font_size = 12
+font_color = Color(0.105882, 0.105882, 0.105882, 1)
 
 [node name="GameController" type="Control"]
 layout_mode = 3
@@ -22,6 +27,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_n8041")
+_newViewersHappinessInfluence = 1.1
 metadata/_edit_vertical_guides_ = [8.0, 1144.0]
 metadata/_edit_horizontal_guides_ = [48.0, 8.0]
 
@@ -81,3 +87,36 @@ offset_right = 0.0
 offset_bottom = -3.05176e-05
 ingredientNodes = [null, null, null, null, null, null]
 metadata/_edit_use_anchors_ = true
+
+[node name="SpeechBubble" type="Control" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="SpeechBubble"]
+layout_mode = 0
+offset_left = 417.0
+offset_top = 312.0
+offset_right = 816.0
+offset_bottom = 513.0
+mouse_filter = 2
+texture = ExtResource("9_pnair")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="SpeechBubble"]
+layout_mode = 0
+offset_left = 528.0
+offset_top = 371.0
+offset_right = 702.0
+offset_bottom = 451.0
+label_settings = SubResource("LabelSettings_i2skv")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
