@@ -22,7 +22,7 @@ public partial class CookingController : Control
     private bool restoreIngredientScreen = true;
     private Control IngredientsScreen;
     private Control BookScreen;
-    private Control SummonScreen;
+    private SummonController _summonScreen;
 
     public override void _Ready()
     {
@@ -30,7 +30,7 @@ public partial class CookingController : Control
         allPossibleIngredients = new List<RecipeIngredient>();
         IngredientsScreen = GetNode<Control>("IngredientScreen");
         BookScreen = GetNode<Control>("BookScreen");
-        SummonScreen = GetNode<Control>("SummonScreen");
+        _summonScreen = GetNode<SummonController>("SummonScreen");
     }
 
     public void ResetIngredients()
@@ -45,7 +45,7 @@ public partial class CookingController : Control
             }
             case CookingStates.Summon:
             {
-                SummonScreen.Visible = false;
+                _summonScreen.Visible = false;
                 IngredientsScreen.Visible = true;
                 break;
             }
@@ -78,7 +78,8 @@ public partial class CookingController : Control
             }
         }
         IngredientsScreen.Visible = false;
-        SummonScreen.Visible = true;
+        _summonScreen.Visible = true;
+        _summonScreen.StartSummon(currentIngredients);
         //TODO: start summon animation
     }
 
@@ -96,14 +97,14 @@ public partial class CookingController : Control
                 }
                 else
                 {
-                    SummonScreen.Visible = true;
+                    _summonScreen.Visible = true;
                     currentState = CookingStates.Summon;
                 }
                 break;
             }
             case CookingStates.Summon:
             {
-                SummonScreen.Visible = false;
+                _summonScreen.Visible = false;
                 BookScreen.Visible = true;
                 restoreIngredientScreen = false;
                 currentState = CookingStates.Book;

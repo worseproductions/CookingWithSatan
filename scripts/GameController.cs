@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using CookingWithSatan.scripts.resources;
 using Godot;
 using Godot.Collections;
 
@@ -8,6 +9,7 @@ namespace CookingWithSatan.scripts;
 public partial class GameController : Control
 {
     private GlobalInputHandler _globalInputHandler;
+    private AudioService _audioService;
     private ScoreService _scoreService;
     private ChatController _chatController;
     private ActivityController _activityController;
@@ -137,12 +139,15 @@ public partial class GameController : Control
     public override void _Ready()
     {
         _globalInputHandler = GetNode<GlobalInputHandler>("/root/GlobalInputHandler");
+        _audioService = GetNode<AudioService>("/root/AudioService");
         _scoreService = GetNode<ScoreService>("/root/ScoreService");
         _chatController = GetNode<ChatController>("%ChatPanel");
         _activityController = GetNode<ActivityController>("%ActivityPanel");
         _cookingController = GetNode<CookingController>("%StreamPanel");
         _messagesJson = ResourceLoader.Singleton.Load("res://chat/messages.tres") as Json;
 
+        _audioService.PlayStream(AudioService.StreamType.Game);
+        
         _activityController.DonationGoalReached += OnDonationGoalReached;
 
         var voices = DisplayServer.TtsGetVoicesForLanguage("en");
@@ -437,6 +442,7 @@ public partial class GameController : Control
 
     public void SummonRecipe()
     {
+        _audioService.PlaySfx(AudioService.SoundEffectType.StartRitual);
         _cookingController.StartSummon();
     }
 

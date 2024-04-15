@@ -6,6 +6,8 @@ namespace CookingWithSatan.scripts;
 
 public partial class Ingredient : Node2D
 {
+    private AudioService _audioService;
+    
     [Export] public RecipeIngredient RecipeIngredient;
     public bool ingredientIsPrepared = false;
     
@@ -24,6 +26,7 @@ public partial class Ingredient : Node2D
 
     public override void _Ready()
     {
+        _audioService = GetNode<AudioService>("/root/AudioService");
         _ingredient_Sprite = GetNode<Sprite2D>("Ingredient_Sprite");
         
         if (GetParent() is Control parent)
@@ -52,6 +55,7 @@ public partial class Ingredient : Node2D
 
     public void Clicked()
     {
+        _audioService.PlaySfx(AudioService.SoundEffectType.Hit);
         timesClicked++;
         speed *= speedIncreaseFactor;
         Vector2 newVel = randomizeDirection() * speed;

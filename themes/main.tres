@@ -1,8 +1,16 @@
-[gd_resource type="Theme" load_steps=9 format=3 uid="uid://dvb2xl7gfwr07"]
+[gd_resource type="Theme" load_steps=12 format=3 uid="uid://dvb2xl7gfwr07"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0c3v5"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dycvu"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
 bg_color = Color(0.501961, 0.176471, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gy5d5"]
@@ -17,7 +25,25 @@ corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jxssj"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
 bg_color = Color(0.815686, 0.305882, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jc7ho"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.501961, 0.176471, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eb3qw"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.501961, 0.176471, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_62i5i"]
 content_margin_left = 3.0
@@ -45,6 +71,9 @@ bg_color = Color(0.486275, 0.803922, 0.376471, 1)
 corner_radius_top_left = 3
 corner_radius_top_right = 3
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jt8p5"]
+bg_color = Color(1, 1, 1, 1)
+
 [resource]
 Button/colors/font_color = Color(0.109804, 0.109804, 0.109804, 1)
 Button/colors/font_disabled_color = Color(0.290196, 0.290196, 0.290196, 0.501961)
@@ -58,6 +87,8 @@ Button/styles/disabled = SubResource("StyleBoxFlat_0c3v5")
 Button/styles/hover = SubResource("StyleBoxFlat_dycvu")
 Button/styles/normal = SubResource("StyleBoxFlat_gy5d5")
 Button/styles/pressed = SubResource("StyleBoxFlat_jxssj")
+CheckBox/styles/hover_pressed = SubResource("StyleBoxFlat_jc7ho")
+CheckButton/styles/hover_pressed = SubResource("StyleBoxFlat_eb3qw")
 LineEdit/colors/caret_color = Color(0.0784314, 0.0784314, 0.0784314, 1)
 LineEdit/colors/font_color = Color(0.0784314, 0.0784314, 0.0784314, 1)
 LineEdit/colors/font_placeholder_color = Color(0, 0, 0, 0.6)
@@ -69,3 +100,5 @@ ProgressBar/constants/outline_size = 4
 ProgressBar/styles/background = SubResource("StyleBoxFlat_hmujl")
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_w3al4")
 RichTextLabel/font_sizes/normal_font_size = 12
+TextEdit/colors/font_color = Color(0.0784314, 0.0784314, 0.0784314, 1)
+TextEdit/styles/normal = SubResource("StyleBoxFlat_jt8p5")

@@ -11,7 +11,7 @@ public partial class ChatController : Control
     private LineEdit _chatInput;
     private double _timeSinceLastMessage;
     private int _messagesInLastMinute;
-    
+
     public override void _Ready()
     {
         var root = GetTree().Root;
@@ -20,7 +20,7 @@ public partial class ChatController : Control
         _chatButton = GetNode<Button>("%ChatButton");
         _chat = GetNode<RichTextLabel>("%Chat");
         _chatInput = GetNode<LineEdit>("%ChatInput");
-        
+
         _chatInput.TextSubmitted += OnChatEditOnTextSubmitted;
         _chatButton.Pressed += OnChatButtonOnPressed;
         _ = _supabaseService.SubscribeToChat();
@@ -29,9 +29,10 @@ public partial class ChatController : Control
 
     private void OnChatEditOnTextSubmitted(string newText)
     {
+        if (newText.Length > 0)
             OnChatButtonOnPressed();
     }
-    
+
     private void OnChatButtonOnPressed()
     {
         var user = "Satan";
@@ -41,11 +42,12 @@ public partial class ChatController : Control
             user = _supabaseService.CurrentUser?.DisplayName;
             _supabaseService.SendChatMessage(message);
         }
+
         AddMessage($"[color=#a530F0]{user}[/color]: {message}\n");
         _chatInput.Text = "";
         _gameController.TriggerResponseFlood();
     }
-    
+
     private void OnChatMessageReceived(string username, string message)
     {
         AddMessage($"[color=#a530F0]{username}[/color]: {message}\n");

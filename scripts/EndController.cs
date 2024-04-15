@@ -4,6 +4,7 @@ namespace CookingWithSatan.scripts;
 
 public partial class EndController : Control
 {
+    private AudioService _audioService;
     private ScoreService _scoreService;
     private SupabaseService _supabaseService;
     private Label _winLoseLabel;
@@ -13,6 +14,7 @@ public partial class EndController : Control
     
     public override void _Ready()
     {
+        _audioService = GetNode<AudioService>("/root/AudioService");
         _scoreService = GetNode<ScoreService>("/root/ScoreService");
         _supabaseService = GetNode<SupabaseService>("/root/SupabaseService");
         _winLoseLabel = GetNode<Label>("%WinLoseLabel");
@@ -26,6 +28,8 @@ public partial class EndController : Control
         _winLoseLabel.Text = _scoreService.Win ? "You reached your donation goal!" : "You lost all your viewers...\n Try to keep them entertained next time!";
         
         _statsLabel.Text = $"Stats\nViewers: {_scoreService.Viewers}\nUptime: {_scoreService.Uptime}\nSubscribers: {_scoreService.Subs}";
+        
+        _audioService.PlayStream(AudioService.StreamType.MainMenu);
         
         if (!_supabaseService.UseOnlineServices) return;
         _supabaseService.AddLeaderboardScore(_scoreService.Viewers, _scoreService.Uptime, _scoreService.Subs);

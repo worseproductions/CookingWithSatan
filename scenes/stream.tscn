@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bp7bkap3askut" path="res://scenes/ui/quick_actions_panel.tscn" id="3_tef1y"]
 [ext_resource type="PackedScene" uid="uid://c4npeck8tiy1u" path="res://scenes/ui/chat_panel.tscn" id="4_rg3i4"]
 [ext_resource type="PackedScene" uid="uid://430mnbvtkksl" path="res://scenes/ui/shortcut_hints.tscn" id="7_n0b7t"]
-[ext_resource type="PackedScene" uid="uid://bwmbq5sgntujv" path="res://scenes/Cooking.tscn" id="8_2hwey"]
+[ext_resource type="PackedScene" uid="uid://b66j3ww4mdhya" path="res://scenes/Cooking.tscn" id="8_2hwey"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yu11q"]
 bg_color = Color(0.458824, 0.458824, 0.458824, 0)
@@ -68,7 +68,7 @@ offset_bottom = -3.05176e-05
 theme_override_styles/panel = SubResource("StyleBoxFlat_yu11q")
 metadata/_edit_use_anchors_ = true
 
-[node name="StreamPanel" parent="." instance=ExtResource("8_2hwey")]
+[node name="StreamPanel" parent="." node_paths=PackedStringArray("ingredientNodes") instance=ExtResource("8_2hwey")]
 unique_name_in_owner = true
 z_as_relative = false
 layout_mode = 1
@@ -79,4 +79,5 @@ anchor_right = 0.645833
 anchor_bottom = 0.753086
 offset_right = 0.0
 offset_bottom = -3.05176e-05
+ingredientNodes = [null, null, null, null, null, null]
 metadata/_edit_use_anchors_ = true

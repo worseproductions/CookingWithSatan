@@ -27,6 +27,7 @@ general/text_to_speech=true
 SupabaseService="*res://scripts/SupabaseService.cs"
 ScoreService="*res://scripts/ScoreService.cs"
 GlobalInputHandler="*res://scripts/GlobalInputHandler.cs"
+AudioService="*res://scenes/audio_service.tscn"
 
 [display]
 

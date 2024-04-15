@@ -7,6 +7,8 @@ public partial class GlobalInputHandler : Node
     
     public bool SoundEnabled { get; set; } = true;
     
+    [Signal] public delegate void SoundEnabledChangedEventHandler(bool enabled);
+    
     public override void _Ready()
     {
         ProcessMode = ProcessModeEnum.Always;
@@ -17,6 +19,7 @@ public partial class GlobalInputHandler : Node
         if (@event.IsActionPressed("ui_toggle_sound"))
         {
             SoundEnabled = !SoundEnabled;
+            EmitSignal(SignalName.SoundEnabledChanged, SoundEnabled);
         }
         if (!@event.IsActionPressed("ui_toggle_fullscreen")) return;
         var currentMode = DisplayServer.WindowGetMode();

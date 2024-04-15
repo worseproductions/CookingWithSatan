@@ -211,7 +211,6 @@ scale = Vector2(17.68, 17.68)
 mouse_filter = 1
 
 [node name="Potatoe" type="Node2D" parent="IngredientScreen"]
-visible = false
 z_index = 1
 z_as_relative = false
 position = Vector2(355, 231)

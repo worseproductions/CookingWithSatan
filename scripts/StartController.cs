@@ -6,6 +6,7 @@ namespace CookingWithSatan.scripts;
 public partial class StartController : Control
 {
     private SupabaseService _supabaseService;
+    private AudioService _audioService;
     private Button _startButton;
     private Button _exitButton;
     private ProgressBar _loadingBar;
@@ -40,6 +41,7 @@ public partial class StartController : Control
     {
         GetTree().Paused = true;
         _supabaseService = GetNode<SupabaseService>("/root/SupabaseService");
+        _audioService = GetNode<AudioService>("/root/AudioService");
         _startButton = GetNode<Button>("%StartButton");
         _exitButton = GetNode<Button>("%ExitButton");
         _loadingBar = GetNode<ProgressBar>("%LoadingBar");
@@ -80,6 +82,7 @@ public partial class StartController : Control
                 _loading = true;
                 _loadingContainer.Visible = true;
                 _signInContainer.Visible = false;
+                _audioService.PlayStream(AudioService.StreamType.Loading);
             }
         };
         _saveUsernameButton.Pressed += async () =>
@@ -89,6 +92,7 @@ public partial class StartController : Control
             _loading = true;
             _loadingContainer.Visible = true;
             _usernameContainer.Visible = false;
+            _audioService.PlayStream(AudioService.StreamType.Loading);
         };
     }
 
@@ -121,6 +125,7 @@ public partial class StartController : Control
             _loadingContainer.Visible = true;
             _signInContainer.Visible = false;
             _usernameContainer.Visible = false;
+            _audioService.PlayStream(AudioService.StreamType.Loading, 0);
         }
     }
 

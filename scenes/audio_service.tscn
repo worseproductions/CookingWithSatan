@@ -1,0 +1,49 @@
+[gd_scene load_steps=12 format=3 uid="uid://uwhg7ctstwpg"]
+
+[ext_resource type="Script" path="res://scripts/AudioService.cs" id="1_8h5lr"]
+[ext_resource type="AudioStream" uid="uid://c3birabkg1er2" path="res://audio/songs/ldgm1.mp3" id="2_yqgyk"]
+[ext_resource type="AudioStream" uid="uid://xccwhtr3yey2" path="res://audio/songs/ldgm3.mp3" id="3_2w5te"]
+[ext_resource type="AudioStream" uid="uid://cl54itf1jsk3b" path="res://audio/songs/ldgm2.mp3" id="4_8bssj"]
+[ext_resource type="AudioStream" uid="uid://bjh0c3p3rkd4r" path="res://audio/sfx/ldgm_sfx_5.mp3" id="5_fxea4"]
+[ext_resource type="Script" path="res://scripts/resources/SoundEffect.cs" id="5_kl3l7"]
+[ext_resource type="AudioStream" uid="uid://du5c05sfur1w1" path="res://audio/sfx/ldgm_sfx_7.mp3" id="7_d6nvy"]
+[ext_resource type="AudioStream" uid="uid://bq26qdwq74qlv" path="res://audio/sfx/gmj_sfx_bell.wav" id="8_7x1as"]
+
+[sub_resource type="Resource" id="Resource_auv4v"]
+script = ExtResource("5_kl3l7")
+Type = 0
+Stream = ExtResource("5_fxea4")
+UseGlobalVolume = false
+VolumeDb = -25
+
+[sub_resource type="Resource" id="Resource_mdgpx"]
+script = ExtResource("5_kl3l7")
+Type = 1
+Stream = ExtResource("7_d6nvy")
+UseGlobalVolume = true
+VolumeDb = 0
+
+[sub_resource type="Resource" id="Resource_j8bq6"]
+script = ExtResource("5_kl3l7")
+Type = 2
+Stream = ExtResource("8_7x1as")
+UseGlobalVolume = true
+VolumeDb = -20
+
+[node name="AudioService" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8h5lr")
+_mainMenuMusic = ExtResource("2_yqgyk")
+_gameMusic = ExtResource("3_2w5te")
+_loadingMusic = ExtResource("4_8bssj")
+_soundEffects = Array[Object]([SubResource("Resource_auv4v"), SubResource("Resource_mdgpx"), SubResource("Resource_j8bq6")])
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="SfxPlayer" type="AudioStreamPlayer" parent="."]
