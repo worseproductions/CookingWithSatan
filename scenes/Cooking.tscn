@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bwmbq5sgntujv"]
+[gd_scene load_steps=36 format=3 uid="uid://b66j3ww4mdhya"]
 
 [ext_resource type="Script" path="res://scripts/CookingController.cs" id="1_0l3a8"]
 [ext_resource type="Script" path="res://scripts/Ingredient.cs" id="1_2tg8c"]
@@ -28,8 +28,27 @@
 [ext_resource type="Texture2D" uid="uid://bov5wkl2nv618" path="res://images/Ingredients/Goat_dead.png" id="21_86fys"]
 [ext_resource type="Texture2D" uid="uid://jgnav6yjapcl" path="res://images/Ingredients/meat_raw.png" id="22_nxq2y"]
 [ext_resource type="Texture2D" uid="uid://cqyb8b88sjysb" path="res://images/cooking_3.png" id="24_0kxu7"]
+[ext_resource type="Script" path="res://scripts/resources/RecipeIngredient.cs" id="26_5iotp"]
+[ext_resource type="Texture2D" uid="uid://c5jxop6l5362k" path="res://images/Ingredients/Chilli_raw.png" id="28_og2in"]
+[ext_resource type="Texture2D" uid="uid://cma35e0xwyvwq" path="res://images/Ingredients/Chilli_sliced.png" id="29_cpbmt"]
+[ext_resource type="Texture2D" uid="uid://dlxuvd65xtbpe" path="res://images/Ingredients/Salt.png" id="30_gy6dw"]
 
-[node name="Cooking" type="Control"]
+[sub_resource type="Resource" id="Resource_qtcc7"]
+script = ExtResource("26_5iotp")
+Name = "Goat"
+Image = ExtResource("22_nxq2y")
+
+[sub_resource type="Resource" id="Resource_ix0ks"]
+script = ExtResource("26_5iotp")
+Name = "Chilli"
+Image = ExtResource("29_cpbmt")
+
+[sub_resource type="Resource" id="Resource_mchm4"]
+script = ExtResource("26_5iotp")
+Name = "Salt"
+Image = ExtResource("30_gy6dw")
+
+[node name="Cooking" type="Control" node_paths=PackedStringArray("ingredientNodes")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -40,6 +59,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_0l3a8")
+ingredientNodes = [NodePath("IngredientScreen/Goat"), NodePath("IngredientScreen/Chilli"), NodePath("IngredientScreen/Salt"), NodePath("IngredientScreen/Ingredient4"), NodePath("IngredientScreen/Ingredient5"), NodePath("IngredientScreen/Ingredient6")]
 
 [node name="SummonScreen" type="Control" parent="."]
 clip_contents = true
@@ -100,23 +120,155 @@ offset = Vector2(-105.062, -94.5559)
 script = ExtResource("2_ufhw1")
 Textures = [ExtResource("1_t612d"), ExtResource("3_grxld"), ExtResource("4_3vjbr"), ExtResource("5_ntfit"), ExtResource("6_0hf3c"), ExtResource("7_68i1y"), ExtResource("8_08buf"), ExtResource("9_sa5x5"), ExtResource("10_avjsb"), ExtResource("11_tfihr"), ExtResource("12_m27yi"), ExtResource("13_e50o7"), ExtResource("14_8cryd"), ExtResource("15_a3mqw"), ExtResource("16_wov3b"), ExtResource("17_786fl")]
 
-[node name="Ingredient" type="Node2D" parent="IngredientScreen"]
+[node name="Goat" type="Node2D" parent="IngredientScreen"]
 z_index = 1
 z_as_relative = false
 position = Vector2(355, 231)
 scale = Vector2(0.745, 0.745)
 script = ExtResource("1_2tg8c")
-speed = 500.0
+RecipeIngredient = SubResource("Resource_qtcc7")
 Textures = [ExtResource("19_i6gig"), ExtResource("21_86fys"), ExtResource("22_nxq2y")]
 clicksNeededForState2 = 8
 clicksNeededForState3 = 16
 
-[node name="Ingredient_Sprite" type="Sprite2D" parent="IngredientScreen/Ingredient"]
+[node name="Ingredient_Sprite" type="Sprite2D" parent="IngredientScreen/Goat"]
 position = Vector2(-8, -8.99997)
 scale = Vector2(0.52, 0.52)
 texture = ExtResource("19_i6gig")
 
-[node name="Button" type="Button" parent="IngredientScreen/Ingredient"]
+[node name="Button" type="Button" parent="IngredientScreen/Goat"]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
+offset_left = -74.0
+offset_top = -75.0
+offset_right = -66.0
+offset_bottom = -67.0
+scale = Vector2(17.68, 17.68)
+mouse_filter = 1
+
+[node name="Chilli" type="Node2D" parent="IngredientScreen"]
+z_index = 1
+z_as_relative = false
+position = Vector2(355, 231)
+scale = Vector2(0.45, 0.45)
+script = ExtResource("1_2tg8c")
+RecipeIngredient = SubResource("Resource_ix0ks")
+startSpeed = 120.0
+Textures = [ExtResource("28_og2in"), ExtResource("28_og2in"), ExtResource("29_cpbmt")]
+clicksNeededForState2 = 5
+clicksNeededForState3 = 8
+speedIncreaseFactor = 1.04
+
+[node name="Ingredient_Sprite" type="Sprite2D" parent="IngredientScreen/Chilli"]
+position = Vector2(-8, -8.99997)
+scale = Vector2(0.52, 0.52)
+texture = ExtResource("28_og2in")
+
+[node name="Button" type="Button" parent="IngredientScreen/Chilli"]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
+offset_left = -74.0
+offset_top = -75.0
+offset_right = -66.0
+offset_bottom = -67.0
+scale = Vector2(17.68, 17.68)
+mouse_filter = 1
+
+[node name="Salt" type="Node2D" parent="IngredientScreen"]
+z_index = 1
+z_as_relative = false
+position = Vector2(355, 231)
+scale = Vector2(0.56, 0.56)
+script = ExtResource("1_2tg8c")
+RecipeIngredient = SubResource("Resource_mchm4")
+Textures = [ExtResource("30_gy6dw"), ExtResource("30_gy6dw"), ExtResource("30_gy6dw")]
+clicksNeededForState2 = 6
+clicksNeededForState3 = 12
+
+[node name="Ingredient_Sprite" type="Sprite2D" parent="IngredientScreen/Salt"]
+position = Vector2(-8, -8.99997)
+scale = Vector2(0.52, 0.52)
+texture = ExtResource("30_gy6dw")
+
+[node name="Button" type="Button" parent="IngredientScreen/Salt"]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
+offset_left = -74.0
+offset_top = -75.0
+offset_right = -66.0
+offset_bottom = -67.0
+scale = Vector2(17.68, 17.68)
+mouse_filter = 1
+
+[node name="Ingredient4" type="Node2D" parent="IngredientScreen"]
+visible = false
+z_index = 1
+z_as_relative = false
+position = Vector2(355, 231)
+scale = Vector2(0.745, 0.745)
+script = ExtResource("1_2tg8c")
+Textures = [ExtResource("19_i6gig"), ExtResource("21_86fys"), ExtResource("22_nxq2y")]
+clicksNeededForState2 = 8
+clicksNeededForState3 = 16
+
+[node name="Ingredient_Sprite" type="Sprite2D" parent="IngredientScreen/Ingredient4"]
+position = Vector2(-8, -8.99997)
+scale = Vector2(0.52, 0.52)
+texture = ExtResource("19_i6gig")
+
+[node name="Button" type="Button" parent="IngredientScreen/Ingredient4"]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
+offset_left = -74.0
+offset_top = -75.0
+offset_right = -66.0
+offset_bottom = -67.0
+scale = Vector2(17.68, 17.68)
+mouse_filter = 1
+
+[node name="Ingredient5" type="Node2D" parent="IngredientScreen"]
+visible = false
+z_index = 1
+z_as_relative = false
+position = Vector2(355, 231)
+scale = Vector2(0.745, 0.745)
+script = ExtResource("1_2tg8c")
+Textures = [ExtResource("19_i6gig"), ExtResource("21_86fys"), ExtResource("22_nxq2y")]
+clicksNeededForState2 = 8
+clicksNeededForState3 = 16
+
+[node name="Ingredient_Sprite" type="Sprite2D" parent="IngredientScreen/Ingredient5"]
+position = Vector2(-8, -8.99997)
+scale = Vector2(0.52, 0.52)
+texture = ExtResource("19_i6gig")
+
+[node name="Button" type="Button" parent="IngredientScreen/Ingredient5"]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
+offset_left = -74.0
+offset_top = -75.0
+offset_right = -66.0
+offset_bottom = -67.0
+scale = Vector2(17.68, 17.68)
+mouse_filter = 1
+
+[node name="Ingredient6" type="Node2D" parent="IngredientScreen"]
+visible = false
+z_index = 1
+z_as_relative = false
+position = Vector2(355, 231)
+scale = Vector2(0.745, 0.745)
+script = ExtResource("1_2tg8c")
+Textures = [ExtResource("19_i6gig"), ExtResource("21_86fys"), ExtResource("22_nxq2y")]
+clicksNeededForState2 = 8
+clicksNeededForState3 = 16
+
+[node name="Ingredient_Sprite" type="Sprite2D" parent="IngredientScreen/Ingredient6"]
+position = Vector2(-8, -8.99997)
+scale = Vector2(0.52, 0.52)
+texture = ExtResource("19_i6gig")
+
+[node name="Button" type="Button" parent="IngredientScreen/Ingredient6"]
 modulate = Color(1, 1, 1, 0)
 self_modulate = Color(1, 1, 1, 0)
 offset_left = -74.0
@@ -131,4 +283,9 @@ position = Vector2(357, 218)
 scale = Vector2(0.405, 0.405)
 texture = ExtResource("24_0kxu7")
 
-[connection signal="button_down" from="IngredientScreen/Ingredient/Button" to="IngredientScreen/Ingredient" method="Clicked"]
+[connection signal="button_down" from="IngredientScreen/Goat/Button" to="IngredientScreen/Goat" method="Clicked"]
+[connection signal="button_down" from="IngredientScreen/Chilli/Button" to="IngredientScreen/Chilli" method="Clicked"]
+[connection signal="button_down" from="IngredientScreen/Salt/Button" to="IngredientScreen/Salt" method="Clicked"]
+[connection signal="button_down" from="IngredientScreen/Ingredient4/Button" to="IngredientScreen/Ingredient4" method="Clicked"]
+[connection signal="button_down" from="IngredientScreen/Ingredient5/Button" to="IngredientScreen/Ingredient5" method="Clicked"]
+[connection signal="button_down" from="IngredientScreen/Ingredient6/Button" to="IngredientScreen/Ingredient6" method="Clicked"]

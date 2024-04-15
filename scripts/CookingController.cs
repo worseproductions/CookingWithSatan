@@ -56,7 +56,6 @@ public partial class CookingController : Control
         }
         SpawnIngredients();
         currentState = CookingStates.Ingredients;
-        restoreIngredientScreen = true;
     }
 
     private void SpawnIngredients()
@@ -70,9 +69,17 @@ public partial class CookingController : Control
 
     public void StartSummon()
     {
-        currentState = CookingStates.Ingredients;
+        currentState = CookingStates.Summon;
+        foreach (Ingredient ingredientNode in ingredientNodes)
+        {
+            if (ingredientNode.ingredientIsPrepared)
+            {
+                currentIngredients.Add(ingredientNode.RecipeIngredient);
+            }
+        }
         IngredientsScreen.Visible = false;
         SummonScreen.Visible = true;
+        //TODO: start summon animation
     }
 
     public void OpenRecipeBook()
@@ -85,10 +92,12 @@ public partial class CookingController : Control
                 if (restoreIngredientScreen)
                 {
                     IngredientsScreen.Visible = true;
+                    currentState = CookingStates.Ingredients;
                 }
                 else
                 {
                     SummonScreen.Visible = true;
+                    currentState = CookingStates.Summon;
                 }
                 break;
             }
@@ -97,6 +106,7 @@ public partial class CookingController : Control
                 SummonScreen.Visible = false;
                 BookScreen.Visible = true;
                 restoreIngredientScreen = false;
+                currentState = CookingStates.Book;
                 break;
             }
             case CookingStates.Ingredients:
@@ -104,9 +114,9 @@ public partial class CookingController : Control
                 IngredientsScreen.Visible = false;
                 BookScreen.Visible = true;
                 restoreIngredientScreen = true;
+                currentState = CookingStates.Book;
                 break;
             }
         }
-        currentState = CookingStates.Ingredients;
     }
 }
