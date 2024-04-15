@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="RecipeIngredient" load_steps=3 format=3 uid="uid://blu2pw0iaoaqu"]
+
+[ext_resource type="Texture2D" uid="uid://jgnav6yjapcl" path="res://images/Ingredients/meat_raw.png" id="1_4ol70"]
+[ext_resource type="Script" path="res://scripts/resources/RecipeIngredient.cs" id="2_y4djy"]
+
+[resource]
+script = ExtResource("2_y4djy")
+Name = "Goat"
+Image = ExtResource("1_4ol70")

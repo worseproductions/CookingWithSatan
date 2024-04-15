@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=6 format=3 uid="uid://dyqpa1megvq6h"]
+
+[ext_resource type="Script" path="res://scripts/resources/Recipe.cs" id="1_3bjn8"]
+[ext_resource type="Resource" uid="uid://cv21h61q751aq" path="res://recipes/ingredients/cheese.tres" id="1_g6g4f"]
+[ext_resource type="Resource" uid="uid://rh0gdnhv47y8" path="res://recipes/ingredients/potato.tres" id="2_xk7h3"]
+[ext_resource type="Resource" uid="uid://cbypv38kjr0l" path="res://recipes/ingredients/chili.tres" id="3_5668g"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_isdjf"]
+
+[resource]
+script = ExtResource("1_3bjn8")
+Ingredients = Array[Object]([ExtResource("1_g6g4f"), ExtResource("2_xk7h3"), ExtResource("3_5668g")])
+Name = "Infernal Cheese Fritters"
+Description = "Sinful little bites of spicy, cheesy goodness, where mashed potatoes and diced chilli are mixed with cheese and fried until crispy on the outside and molten on the inside."
+Image = SubResource("PlaceholderTexture2D_isdjf")

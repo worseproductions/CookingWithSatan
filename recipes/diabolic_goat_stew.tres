@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=8 format=3 uid="uid://ycg86rnpo1pe"]
+
+[ext_resource type="Resource" uid="uid://blu2pw0iaoaqu" path="res://recipes/ingredients/goat.tres" id="1_q5gey"]
+[ext_resource type="Resource" uid="uid://rh0gdnhv47y8" path="res://recipes/ingredients/potato.tres" id="2_8a5w1"]
+[ext_resource type="Resource" uid="uid://dhlsfc6iu6ate" path="res://recipes/ingredients/onion.tres" id="3_avbjg"]
+[ext_resource type="Script" path="res://scripts/resources/Recipe.cs" id="4_5dw6w"]
+[ext_resource type="Resource" uid="uid://cbypv38kjr0l" path="res://recipes/ingredients/chili.tres" id="4_yxnia"]
+[ext_resource type="Resource" uid="uid://dqkxliobb0fco" path="res://recipes/ingredients/salt.tres" id="5_jo2hi"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_3migp"]
+
+[resource]
+script = ExtResource("4_5dw6w")
+Ingredients = Array[Object]([ExtResource("1_q5gey"), ExtResource("2_8a5w1"), ExtResource("3_avbjg"), ExtResource("4_yxnia"), ExtResource("5_jo2hi")])
+Name = "Diabolic Goat Stew"
+Description = "A devilish stew where tender goat meat simmers with spicy chillies, hearty potatoes, and onions, seasoned with just enough salt to evoke the deepest flavors from the abyss."
+Image = SubResource("PlaceholderTexture2D_3migp")

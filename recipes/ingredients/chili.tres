@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="RecipeIngredient" load_steps=3 format=3 uid="uid://cbypv38kjr0l"]
+
+[ext_resource type="Texture2D" uid="uid://cma35e0xwyvwq" path="res://images/Ingredients/Chilli_sliced.png" id="1_ejbs5"]
+[ext_resource type="Script" path="res://scripts/resources/RecipeIngredient.cs" id="2_2rmx6"]
+
+[resource]
+script = ExtResource("2_2rmx6")
+Name = "Chili"
+Image = ExtResource("1_ejbs5")

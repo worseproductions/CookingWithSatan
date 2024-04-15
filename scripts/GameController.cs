@@ -135,6 +135,12 @@ public partial class GameController : Control
     private int _updateViewersInterval = 5;
     private bool _donationGoalReached;
     private bool _manuallyEndStream;
+    
+    [ExportCategory("Food")]
+    [Export] private int _timesUntilRecipeBecomesBoring = 3;
+
+    private Recipe _lastRecipe;
+    private int _timesCookedRecipe = 0;
 
     public override void _Ready()
     {
@@ -145,6 +151,11 @@ public partial class GameController : Control
         _activityController = GetNode<ActivityController>("%ActivityPanel");
         _cookingController = GetNode<CookingController>("%StreamPanel");
         _messagesJson = ResourceLoader.Singleton.Load("res://chat/messages.tres") as Json;
+        
+        var summonController = _cookingController.GetNode<SummonController>("SummonScreen");
+        
+        summonController.RecipeSuccess += SuccessfullyCookedRecipe;
+        summonController.RecipeFailed += FailedToCookRecipe;
 
         _audioService.PlayStream(AudioService.StreamType.Game);
         
@@ -302,8 +313,21 @@ public partial class GameController : Control
 
     #region Recipe Handling
 
-    public void SuccessfullyCookedRecipe()
+    public void SuccessfullyCookedRecipe(Recipe recipe)
     {
+        if (recipe.Name == _lastRecipe.Name)
+        {
+            _timesCookedRecipe++;
+            if (_timesCookedRecipe >= _timesUntilRecipeBecomesBoring)
+            {
+                FailedToCookRecipe();
+            }
+        }
+        else
+        {
+            _lastRecipe = recipe;
+            _timesCookedRecipe = 1;
+        }
         ChatHappiness = Math.Clamp(ChatHappiness + 1, -2, 2);
         TriggerPogFlood();
     }

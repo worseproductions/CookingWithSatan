@@ -1,14 +1,16 @@
-[gd_scene load_steps=42 format=3 uid="uid://b66j3ww4mdhya"]
+[gd_scene load_steps=59 format=3 uid="uid://b66j3ww4mdhya"]
 
 [ext_resource type="Script" path="res://scripts/CookingController.cs" id="1_0l3a8"]
 [ext_resource type="Script" path="res://scripts/Ingredient.cs" id="1_2tg8c"]
 [ext_resource type="Script" path="res://scripts/Arm_Manager.cs" id="1_4dqch"]
 [ext_resource type="Texture2D" uid="uid://rnbkibfejo85" path="res://images/Arms/IMG_0640.png" id="1_t612d"]
 [ext_resource type="Texture2D" uid="uid://wqjsvu1chwto" path="res://images/summoning_v2.png" id="2_3x7b1"]
+[ext_resource type="Script" path="res://scripts/SummonController.cs" id="2_u2e0s"]
 [ext_resource type="Script" path="res://scripts/Arm.cs" id="2_ufhw1"]
 [ext_resource type="Texture2D" uid="uid://bjvrnlxj8so02" path="res://images/summoning_table_opened_zoom.png" id="2_xijqt"]
 [ext_resource type="Texture2D" uid="uid://pec25tjk8k13" path="res://images/summoning_table_opened.png" id="3_cnlj8"]
 [ext_resource type="Texture2D" uid="uid://1olcrv7qg7q5" path="res://images/Arms/IMG_0641.png" id="3_grxld"]
+[ext_resource type="Script" path="res://scripts/resources/Recipe.cs" id="3_r1hdo"]
 [ext_resource type="Texture2D" uid="uid://bs1vlolecvgwd" path="res://images/Arms/IMG_0642.png" id="4_3vjbr"]
 [ext_resource type="Texture2D" uid="uid://bwfjfa28611sc" path="res://images/summoning_table_closed.png" id="4_j2vp0"]
 [ext_resource type="Texture2D" uid="uid://ba0jy6gucn0uf" path="res://images/Arms/IMG_0643.png" id="5_ntfit"]
@@ -28,35 +30,91 @@
 [ext_resource type="Texture2D" uid="uid://bov5wkl2nv618" path="res://images/Ingredients/Goat_dead.png" id="21_86fys"]
 [ext_resource type="Texture2D" uid="uid://jgnav6yjapcl" path="res://images/Ingredients/meat_raw.png" id="22_nxq2y"]
 [ext_resource type="Texture2D" uid="uid://cqyb8b88sjysb" path="res://images/cooking_3.png" id="24_0kxu7"]
-[ext_resource type="Script" path="res://scripts/resources/RecipeIngredient.cs" id="26_5iotp"]
+[ext_resource type="Resource" uid="uid://blu2pw0iaoaqu" path="res://recipes/ingredients/goat.tres" id="28_8vbh8"]
 [ext_resource type="Texture2D" uid="uid://c5jxop6l5362k" path="res://images/Ingredients/Chilli_raw.png" id="28_og2in"]
 [ext_resource type="Texture2D" uid="uid://cma35e0xwyvwq" path="res://images/Ingredients/Chilli_sliced.png" id="29_cpbmt"]
 [ext_resource type="Texture2D" uid="uid://dlxuvd65xtbpe" path="res://images/Ingredients/Salt.png" id="30_gy6dw"]
 [ext_resource type="Texture2D" uid="uid://dqkijkhtbxa5q" path="res://images/Ingredients/Salt_Broken.png" id="31_1ynsj"]
+[ext_resource type="Resource" uid="uid://cbypv38kjr0l" path="res://recipes/ingredients/chili.tres" id="31_3qcne"]
 [ext_resource type="Texture2D" uid="uid://c25qd3bsbbfvh" path="res://images/Ingredients/Salt_Cracked.png" id="33_l5uku"]
+[ext_resource type="Resource" uid="uid://dqkxliobb0fco" path="res://recipes/ingredients/salt.tres" id="34_0ndf8"]
 [ext_resource type="Texture2D" uid="uid://bsul6a0elj822" path="res://images/Ingredients/Potatoe_Broken.png" id="34_couy2"]
 [ext_resource type="Texture2D" uid="uid://b7r824gho0tcs" path="res://images/Ingredients/Potatoe.png" id="35_3kddf"]
 [ext_resource type="Texture2D" uid="uid://du1x6vsb82m5b" path="res://images/Ingredients/Potatoe_Hurt.png" id="36_51ybk"]
+[ext_resource type="Resource" uid="uid://rh0gdnhv47y8" path="res://recipes/ingredients/potato.tres" id="38_rukhj"]
 
-[sub_resource type="Resource" id="Resource_qtcc7"]
-script = ExtResource("26_5iotp")
-Name = "Goat"
-Image = ExtResource("22_nxq2y")
+[sub_resource type="Resource" id="Resource_68cqb"]
+script = ExtResource("3_r1hdo")
+Ingredients = Array[Object]([null])
+Name = ""
+Description = ""
 
-[sub_resource type="Resource" id="Resource_ix0ks"]
-script = ExtResource("26_5iotp")
-Name = "Chilli"
-Image = ExtResource("29_cpbmt")
+[sub_resource type="Curve2D" id="Curve2D_k1mdi"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 144, 120, -74.2171, -55.083, 74.2171, 55.083, 600, 120, 52.5287, -49.685, -52.5287, 49.685, 504, 400, 15.2531, 5.26786, -15.2531, -5.26786, 248, 376, -36.9145, 39.5688, 36.9145, -39.5688, 240, 248, -16.6242, -24.576, 16.6242, 24.576, 408, 248, 0, 0, 0, 0, 384, 304)
+}
+point_count = 7
 
-[sub_resource type="Resource" id="Resource_mchm4"]
-script = ExtResource("26_5iotp")
-Name = "Salt"
-Image = ExtResource("31_1ynsj")
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_g622k"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 5, 0)
 
-[sub_resource type="Resource" id="Resource_yexu0"]
-script = ExtResource("26_5iotp")
-Name = "Potatoe"
-Image = ExtResource("34_couy2")
+[sub_resource type="Gradient" id="Gradient_2yt6k"]
+colors = PackedColorArray(0.167336, 0.600239, 1, 1, 0.70251, 0.157277, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_6djwc"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_gy6u4"]
+width = 4
+height = 4
+generate_mipmaps = false
+color_ramp = SubResource("Gradient_2yt6k")
+noise = SubResource("FastNoiseLite_6djwc")
+
+[sub_resource type="Curve2D" id="Curve2D_8kc6t"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 88, 384, -60.0749, 47.4475, 60.0749, -47.4475, 160, 160, -93.1353, -39.0784, 93.1353, 39.0784, 400, 152, 27.2739, -47.7652, -27.2739, 47.7652, 520, 264, 84.7079, 20.4769, -84.7079, -20.4769, 360, 384, -76.0212, 29.8712, 76.0212, -29.8712, 280, 248, 0, 0, 0, 0, 424, 320)
+}
+point_count = 7
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_saywp"]
+load_path = "res://.godot/imported/meat_raw.png-325e54ef64de71e2d61ac5a38ba2c0fb.ctex"
+
+[sub_resource type="Curve2D" id="Curve2D_nq5u0"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 48, 64, -60.0749, 47.4475, 60.0749, -47.4475, 208, 64, -93.1353, -39.0784, 93.1353, 39.0784, 440, 104, 27.2739, -47.7652, -27.2739, 47.7652, 624, 336, 84.7079, 20.4769, -84.7079, -20.4769, 208, 400, -76.0212, 29.8712, 76.0212, -29.8712, 368, 200, 0, 0, 0, 0, 416, 336)
+}
+point_count = 7
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_hju6o"]
+load_path = "res://.godot/imported/meat_raw.png-325e54ef64de71e2d61ac5a38ba2c0fb.ctex"
+
+[sub_resource type="Curve2D" id="Curve2D_0bjel"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 40, 160, -60.0749, 47.4475, 60.0749, -47.4475, 200, 176, -93.1353, -39.0784, 93.1353, 39.0784, 536, 72, 27.2739, -47.7652, -27.2739, 47.7652, 520, 328, 84.7079, 20.4769, -84.7079, -20.4769, 160, 400, -76.0212, 29.8712, 76.0212, -29.8712, 280, 248, 0, 0, 0, 0, 368, 344)
+}
+point_count = 7
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_i31nm"]
+load_path = "res://.godot/imported/meat_raw.png-325e54ef64de71e2d61ac5a38ba2c0fb.ctex"
+
+[sub_resource type="Curve2D" id="Curve2D_kqdmn"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 32, 264, -60.0749, 47.4475, 60.0749, -47.4475, 256, 88, -93.1353, -39.0784, 93.1353, 39.0784, 464, 208, 27.2739, -47.7652, -27.2739, 47.7652, 608, 376, 84.7079, 20.4769, -84.7079, -20.4769, 296, 384, -76.0212, 29.8712, 76.0212, -29.8712, 280, 248, 0, 0, 0, 0, 320, 336)
+}
+point_count = 7
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_1b7aa"]
+load_path = "res://.godot/imported/meat_raw.png-325e54ef64de71e2d61ac5a38ba2c0fb.ctex"
+
+[sub_resource type="Curve2D" id="Curve2D_67em3"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 64, 112, -60.0749, 47.4475, 60.0749, -47.4475, 224, 200, -93.1353, -39.0784, 93.1353, 39.0784, 408, 40, 27.2739, -47.7652, -27.2739, 47.7652, 464, 248, 84.7079, 20.4769, -84.7079, -20.4769, 344, 368, -76.0212, 29.8712, 76.0212, -29.8712, 264, 200, 0, 0, 0, 0, 328, 304)
+}
+point_count = 7
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_pfaly"]
+load_path = "res://.godot/imported/meat_raw.png-325e54ef64de71e2d61ac5a38ba2c0fb.ctex"
 
 [node name="Cooking" type="Control" node_paths=PackedStringArray("ingredientNodes")]
 layout_mode = 3
@@ -77,13 +135,150 @@ anchors_preset = 0
 offset_right = 716.27
 offset_bottom = 434.0
 mouse_filter = 2
+script = ExtResource("2_u2e0s")
+_recipes = Array[Object]([SubResource("Resource_68cqb")])
+_failedRecipeImage = ExtResource("21_86fys")
 
 [node name="SummoningV2" type="Sprite2D" parent="SummonScreen"]
 position = Vector2(365, 218)
 scale = Vector2(1.305, 1.305)
 texture = ExtResource("2_3x7b1")
 
+[node name="IngredientPaths" type="Control" parent="SummonScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Path2D" type="Path2D" parent="SummonScreen/IngredientPaths"]
+curve = SubResource("Curve2D_k1mdi")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="SummonScreen/IngredientPaths/Path2D"]
+position = Vector2(144, 120)
+loop = false
+
+[node name="Sprite2D" type="Sprite2D" parent="SummonScreen/IngredientPaths/Path2D/PathFollow2D"]
+scale = Vector2(0.0647699, 0.0647699)
+texture = ExtResource("22_nxq2y")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="SummonScreen/IngredientPaths/Path2D/PathFollow2D"]
+process_material = SubResource("ParticleProcessMaterial_g622k")
+texture = SubResource("NoiseTexture2D_gy6u4")
+
+[node name="Path2D2" type="Path2D" parent="SummonScreen/IngredientPaths"]
+curve = SubResource("Curve2D_8kc6t")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="SummonScreen/IngredientPaths/Path2D2"]
+position = Vector2(88, 384)
+rotation = -1.2598
+loop = false
+
+[node name="Sprite2D" type="Sprite2D" parent="SummonScreen/IngredientPaths/Path2D2/PathFollow2D"]
+scale = Vector2(0.0647699, 0.0647699)
+texture = SubResource("CompressedTexture2D_saywp")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="SummonScreen/IngredientPaths/Path2D2/PathFollow2D"]
+process_material = SubResource("ParticleProcessMaterial_g622k")
+texture = SubResource("NoiseTexture2D_gy6u4")
+
+[node name="Path2D3" type="Path2D" parent="SummonScreen/IngredientPaths"]
+curve = SubResource("Curve2D_nq5u0")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="SummonScreen/IngredientPaths/Path2D3"]
+position = Vector2(48, 64)
+loop = false
+
+[node name="Sprite2D" type="Sprite2D" parent="SummonScreen/IngredientPaths/Path2D3/PathFollow2D"]
+scale = Vector2(0.0647699, 0.0647699)
+texture = SubResource("CompressedTexture2D_hju6o")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="SummonScreen/IngredientPaths/Path2D3/PathFollow2D"]
+process_material = SubResource("ParticleProcessMaterial_g622k")
+texture = SubResource("NoiseTexture2D_gy6u4")
+
+[node name="Path2D4" type="Path2D" parent="SummonScreen/IngredientPaths"]
+curve = SubResource("Curve2D_0bjel")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="SummonScreen/IngredientPaths/Path2D4"]
+position = Vector2(40, 160)
+rotation = 0.0996687
+loop = false
+
+[node name="Sprite2D" type="Sprite2D" parent="SummonScreen/IngredientPaths/Path2D4/PathFollow2D"]
+scale = Vector2(0.0647699, 0.0647699)
+texture = SubResource("CompressedTexture2D_i31nm")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="SummonScreen/IngredientPaths/Path2D4/PathFollow2D"]
+process_material = SubResource("ParticleProcessMaterial_g622k")
+texture = SubResource("NoiseTexture2D_gy6u4")
+
+[node name="Path2D5" type="Path2D" parent="SummonScreen/IngredientPaths"]
+curve = SubResource("Curve2D_kqdmn")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="SummonScreen/IngredientPaths/Path2D5"]
+position = Vector2(32, 264)
+rotation = -0.665969
+loop = false
+
+[node name="Sprite2D" type="Sprite2D" parent="SummonScreen/IngredientPaths/Path2D5/PathFollow2D"]
+scale = Vector2(0.0647699, 0.0647699)
+texture = SubResource("CompressedTexture2D_1b7aa")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="SummonScreen/IngredientPaths/Path2D5/PathFollow2D"]
+process_material = SubResource("ParticleProcessMaterial_g622k")
+texture = SubResource("NoiseTexture2D_gy6u4")
+
+[node name="Path2D6" type="Path2D" parent="SummonScreen/IngredientPaths"]
+curve = SubResource("Curve2D_67em3")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="SummonScreen/IngredientPaths/Path2D6"]
+position = Vector2(64, 112)
+rotation = 0.502843
+loop = false
+
+[node name="Sprite2D" type="Sprite2D" parent="SummonScreen/IngredientPaths/Path2D6/PathFollow2D"]
+scale = Vector2(0.0647699, 0.0647699)
+texture = SubResource("CompressedTexture2D_pfaly")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="SummonScreen/IngredientPaths/Path2D6/PathFollow2D"]
+process_material = SubResource("ParticleProcessMaterial_g622k")
+texture = SubResource("NoiseTexture2D_gy6u4")
+
+[node name="RecipeContainer" type="Control" parent="SummonScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="SummonScreen/RecipeContainer"]
+layout_mode = 0
+offset_left = 280.0
+offset_top = 192.0
+offset_right = 448.0
+offset_bottom = 360.0
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="SummonScreen/RecipeContainer"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0223379
+anchor_top = 0.884793
+anchor_right = 0.999623
+anchor_bottom = 0.93318
+grow_horizontal = 2
+grow_vertical = 0
+text = "Recipe Name"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
 [node name="BookScreen" type="Control" parent="."]
+visible = false
 clip_contents = true
 anchors_preset = 0
 offset_right = 716.27
@@ -136,7 +331,7 @@ z_as_relative = false
 position = Vector2(355, 231)
 scale = Vector2(0.745, 0.745)
 script = ExtResource("1_2tg8c")
-RecipeIngredient = SubResource("Resource_qtcc7")
+RecipeIngredient = ExtResource("28_8vbh8")
 Textures = [ExtResource("19_i6gig"), ExtResource("21_86fys"), ExtResource("22_nxq2y")]
 clicksNeededForState2 = 8
 clicksNeededForState3 = 16
@@ -162,7 +357,7 @@ z_as_relative = false
 position = Vector2(355, 231)
 scale = Vector2(0.45, 0.45)
 script = ExtResource("1_2tg8c")
-RecipeIngredient = SubResource("Resource_ix0ks")
+RecipeIngredient = ExtResource("31_3qcne")
 startSpeed = 120.0
 Textures = [ExtResource("28_og2in"), ExtResource("28_og2in"), ExtResource("29_cpbmt")]
 clicksNeededForState2 = 5
@@ -190,7 +385,7 @@ z_as_relative = false
 position = Vector2(355, 231)
 scale = Vector2(0.56, 0.56)
 script = ExtResource("1_2tg8c")
-RecipeIngredient = SubResource("Resource_mchm4")
+RecipeIngredient = ExtResource("34_0ndf8")
 Textures = [ExtResource("30_gy6dw"), ExtResource("33_l5uku"), ExtResource("31_1ynsj")]
 clicksNeededForState2 = 6
 clicksNeededForState3 = 12
@@ -216,7 +411,7 @@ z_as_relative = false
 position = Vector2(355, 231)
 scale = Vector2(0.745, 0.745)
 script = ExtResource("1_2tg8c")
-RecipeIngredient = SubResource("Resource_yexu0")
+RecipeIngredient = ExtResource("38_rukhj")
 Textures = [ExtResource("35_3kddf"), ExtResource("36_51ybk"), ExtResource("34_couy2")]
 clicksNeededForState2 = 8
 clicksNeededForState3 = 16

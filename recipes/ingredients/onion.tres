@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="RecipeIngredient" load_steps=3 format=3 uid="uid://dhlsfc6iu6ate"]
+
+[ext_resource type="Script" path="res://scripts/resources/RecipeIngredient.cs" id="1_vfs86"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_al2e3"]
+load_path = "res://.godot/imported/Chilli_sliced.png-35d0829f233e9aa8c468c91c62a73844.ctex"
+
+[resource]
+script = ExtResource("1_vfs86")
+Name = "Onion"
+Image = SubResource("CompressedTexture2D_al2e3")

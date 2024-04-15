@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="RecipeIngredient" load_steps=3 format=3 uid="uid://dqkxliobb0fco"]
+
+[ext_resource type="Texture2D" uid="uid://dqkijkhtbxa5q" path="res://images/Ingredients/Salt_Broken.png" id="1_mftyh"]
+[ext_resource type="Script" path="res://scripts/resources/RecipeIngredient.cs" id="2_idx5j"]
+
+[resource]
+script = ExtResource("2_idx5j")
+Name = "Salt"
+Image = ExtResource("1_mftyh")

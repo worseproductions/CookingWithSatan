@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=6 format=3 uid="uid://duabbgr7oq35j"]
+
+[ext_resource type="Resource" uid="uid://cv21h61q751aq" path="res://recipes/ingredients/cheese.tres" id="1_7jck8"]
+[ext_resource type="Resource" uid="uid://blu2pw0iaoaqu" path="res://recipes/ingredients/goat.tres" id="1_cw4h7"]
+[ext_resource type="Resource" uid="uid://dhlsfc6iu6ate" path="res://recipes/ingredients/onion.tres" id="3_8rhd0"]
+[ext_resource type="Script" path="res://scripts/resources/Recipe.cs" id="4_nqb3h"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_vcjja"]
+
+[resource]
+script = ExtResource("4_nqb3h")
+Ingredients = Array[Object]([ExtResource("1_cw4h7"), ExtResource("1_7jck8"), ExtResource("3_8rhd0")])
+Name = "Baphomet's Baked Goat Cheese"
+Description = "This sinful delight features thinly sliced goat meat layered with onions and melted cheese, all baked to a golden perfection."
+Image = SubResource("PlaceholderTexture2D_vcjja")

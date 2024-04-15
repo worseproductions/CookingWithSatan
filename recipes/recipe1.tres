@@ -5,3 +5,4 @@
 [resource]
 script = ExtResource("1_v0nsk")
 Ingredients = Array[Object]([null])
+Name = ""

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=5 format=3 uid="uid://dbturcw6423mn"]
+
+[ext_resource type="Resource" uid="uid://cbypv38kjr0l" path="res://recipes/ingredients/chili.tres" id="4_r6u0r"]
+[ext_resource type="Resource" uid="uid://dqkxliobb0fco" path="res://recipes/ingredients/salt.tres" id="5_d2csn"]
+[ext_resource type="Script" path="res://scripts/resources/Recipe.cs" id="6_pu0tg"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_35eom"]
+
+[resource]
+script = ExtResource("6_pu0tg")
+Ingredients = Array[Object]([ExtResource("4_r6u0r"), ExtResource("5_d2csn")])
+Name = "Inferno Salt Sprinkle"
+Description = "A simple but explosively flavorful concoction, this Inferno Salt Sprinkle combines finely ground chilli with coarse sea salt."
+Image = SubResource("PlaceholderTexture2D_35eom")
