@@ -7,4 +7,9 @@ public partial class RecipeIngredient : Resource
 {
     [Export] public string Name { get; set; }
     [Export] public Texture Image { get; set; }
+
+    public override string ToString()
+    {
+        return $"{Name}";
+    }
 }

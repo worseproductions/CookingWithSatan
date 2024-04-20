@@ -80,18 +80,17 @@ public partial class SummonController : Control
     public void StartSummon(List<RecipeIngredient> currentIngredients)
     {
         _recipeContainer.Visible = false;
-        var matchingRecipes = from recipe in _recipes
-            where !recipe.Ingredients.Except(currentIngredients).Any()
-            select recipe;
+        
+        var currentIngredientsArray = new Array<RecipeIngredient>(currentIngredients.ToArray()).Select(ingredient => ingredient.Name).ToArray();
+        
+        var matchingRecipes = _recipes.Where(recipe =>
+        {
+            var ingredients = recipe.Ingredients.Select(ingredient => ingredient.Name).ToArray();
+            return currentIngredientsArray.All(ingredient => ingredients.Contains(ingredient)) &&
+                   ingredients.All(ingredient => currentIngredientsArray.Contains(ingredient));
+        });
         var recipeList = matchingRecipes.ToList();
-        if (recipeList.Count == 0)
-        {
-            _currentRecipe = null;
-        }
-        else
-        {
-            _currentRecipe = recipeList.First();
-        }
+        _currentRecipe = recipeList.Count == 0 ? null : recipeList.First();
 
         for (var index = 0; index < _ingredientPaths.Count; index++)
         {
