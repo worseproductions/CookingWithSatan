@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://bvtf385wcg4k4"]
+
+[ext_resource type="Script" path="res://scripts/Ingredient.cs" id="1_fbadx"]
+[ext_resource type="Resource" uid="uid://blu2pw0iaoaqu" path="res://recipes/ingredients/goat.tres" id="2_luu58"]
+[ext_resource type="Texture2D" uid="uid://dj1lp38t72oto" path="res://images/Ingredients/Goat_alive.png" id="3_eiwym"]
+[ext_resource type="Texture2D" uid="uid://bov5wkl2nv618" path="res://images/Ingredients/Goat_dead.png" id="4_gr5jx"]
+[ext_resource type="Texture2D" uid="uid://jgnav6yjapcl" path="res://images/Ingredients/meat_raw.png" id="5_tl8nk"]
+
+[node name="Ingredient" type="Control"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 3
+anchor_left = 0.111111
+anchor_top = 0.0987654
+anchor_right = 0.225
+anchor_bottom = 0.301235
+offset_left = 3.05176e-05
+offset_right = 40.8
+offset_bottom = 40.8
+scale = Vector2(0.745, 0.745)
+mouse_filter = 1
+script = ExtResource("1_fbadx")
+RecipeIngredient = ExtResource("2_luu58")
+Textures = [ExtResource("3_eiwym"), ExtResource("4_gr5jx"), ExtResource("5_tl8nk")]
+metadata/_edit_use_anchors_ = true
+
+[node name="IngredientSprite" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_eiwym")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Button" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1

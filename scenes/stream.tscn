@@ -74,7 +74,7 @@ offset_bottom = -3.05176e-05
 theme_override_styles/panel = SubResource("StyleBoxFlat_yu11q")
 metadata/_edit_use_anchors_ = true
 
-[node name="StreamPanel" parent="." node_paths=PackedStringArray("ingredientNodes") instance=ExtResource("8_2hwey")]
+[node name="StreamPanel" parent="." instance=ExtResource("8_2hwey")]
 unique_name_in_owner = true
 z_as_relative = false
 layout_mode = 1
@@ -83,40 +83,45 @@ anchor_left = 0.0208333
 anchor_top = 0.0987654
 anchor_right = 0.645833
 anchor_bottom = 0.753086
-offset_right = 0.0
 offset_bottom = -3.05176e-05
-ingredientNodes = [null, null, null, null, null, null]
 metadata/_edit_use_anchors_ = true
 
 [node name="SpeechBubble" type="Control" parent="."]
 unique_name_in_owner = true
-visible = false
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_left = 0.0208333
+anchor_top = 0.0987654
+anchor_right = 0.645833
+anchor_bottom = 0.753086
+offset_bottom = -3.05176e-05
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="TextureRect" type="TextureRect" parent="SpeechBubble"]
-layout_mode = 0
-offset_left = 417.0
-offset_top = 312.0
-offset_right = 816.0
-offset_bottom = 513.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.561111
+anchor_top = 0.566038
+anchor_right = 1.11528
+anchor_bottom = 1.04009
+offset_top = 1.52588e-05
 mouse_filter = 2
 texture = ExtResource("9_pnair")
 expand_mode = 1
 stretch_mode = 5
+metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="SpeechBubble"]
-layout_mode = 0
-offset_left = 528.0
-offset_top = 371.0
-offset_right = 702.0
-offset_bottom = 451.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.715278
+anchor_top = 0.705189
+anchor_right = 0.956944
+anchor_bottom = 0.893868
 label_settings = SubResource("LabelSettings_i2skv")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
+metadata/_edit_use_anchors_ = true

@@ -27,18 +27,32 @@ public partial class SummonController : Control
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
-        _recipeContainer = GetNode<Control>("RecipeContainer");
+        _recipeContainer = GetNode<Control>("%RecipeContainer");
         _recipeContainer.Visible = false;
         _ingredientPaths = new List<PathFollow2D>();
-        foreach (var child in GetNode("IngredientPaths").GetChildren())
+        
+        SetCanvasSize();
+        ItemRectChanged += SetCanvasSize;
+        
+        foreach (var child in GetNode("%IngredientPaths").GetChild(0).GetChildren())
         {
             if (child is Path2D path)
             {
                 _ingredientPaths.Add(path.GetChild<PathFollow2D>(0));
             }
         }
+    }
 
-        _animationRunning = true;
+    private void SetCanvasSize()
+    {
+        // set scale and position of canvas layer to match the stream container
+        var initialSize = new Vector2(1152, 648);
+        var newSize = GetRect().Size;
+        var scale = newSize / initialSize;
+
+        var ingredientPathsCanvasLayer = GetNode<Node2D>("%CanvasLayer");
+        ingredientPathsCanvasLayer.Scale = scale;
+        ingredientPathsCanvasLayer.GlobalPosition = GlobalPosition;
     }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.

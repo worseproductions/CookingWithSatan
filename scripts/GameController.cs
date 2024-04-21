@@ -145,6 +145,7 @@ public partial class GameController : Control
 
     private Recipe _lastRecipe;
     private int _timesCookedRecipe = 0;
+    private Array<Recipe> _unlockedRecipes = new();
 
     public override void _Ready()
     {

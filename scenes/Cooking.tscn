@@ -1,8 +1,6 @@
 [gd_scene load_steps=73 format=3 uid="uid://b66j3ww4mdhya"]
 
 [ext_resource type="Script" path="res://scripts/CookingController.cs" id="1_0l3a8"]
-[ext_resource type="Script" path="res://scripts/Ingredient.cs" id="1_2tg8c"]
-[ext_resource type="Script" path="res://scripts/Arm_Manager.cs" id="1_4dqch"]
 [ext_resource type="Texture2D" uid="uid://rnbkibfejo85" path="res://images/Arms/IMG_0640.png" id="1_t612d"]
 [ext_resource type="Texture2D" uid="uid://wqjsvu1chwto" path="res://images/summoning_v2.png" id="2_3x7b1"]
 [ext_resource type="Script" path="res://scripts/SummonController.cs" id="2_u2e0s"]
@@ -12,7 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://pec25tjk8k13" path="res://images/summoning_table_opened.png" id="3_cnlj8"]
 [ext_resource type="Texture2D" uid="uid://1olcrv7qg7q5" path="res://images/Arms/IMG_0641.png" id="3_grxld"]
 [ext_resource type="Texture2D" uid="uid://bs1vlolecvgwd" path="res://images/Arms/IMG_0642.png" id="4_3vjbr"]
-[ext_resource type="Texture2D" uid="uid://bwfjfa28611sc" path="res://images/summoning_table_closed.png" id="4_j2vp0"]
 [ext_resource type="Resource" uid="uid://c4l1m3uej60i" path="res://recipes/cheese_trap_of_the_damned.tres" id="4_sf65n"]
 [ext_resource type="Texture2D" uid="uid://ba0jy6gucn0uf" path="res://images/Arms/IMG_0643.png" id="5_ntfit"]
 [ext_resource type="Resource" uid="uid://ycg86rnpo1pe" path="res://recipes/diabolic_goat_stew.tres" id="5_xuui5"]
@@ -21,23 +18,21 @@
 [ext_resource type="Texture2D" uid="uid://bifr3ljy0ynre" path="res://images/Arms/IMG_0645.png" id="7_68i1y"]
 [ext_resource type="Resource" uid="uid://dbturcw6423mn" path="res://recipes/inferno_salt_sprinkle.tres" id="7_yobcn"]
 [ext_resource type="Texture2D" uid="uid://yfj50kxx8qfw" path="res://images/Arms/IMG_0646.png" id="8_08buf"]
-[ext_resource type="Resource" path="res://recipes/hellfire_hash.tres" id="8_x3h56"]
+[ext_resource type="Resource" uid="uid://donh0tbn4v0lu" path="res://recipes/hellfire_hash.tres" id="8_x3h56"]
 [ext_resource type="Texture2D" uid="uid://80b3tiemlh6o" path="res://images/Arms/IMG_0647.png" id="9_sa5x5"]
 [ext_resource type="Texture2D" uid="uid://ptyj7c0v538u" path="res://images/Ingredients/Failed_Recipe.png" id="9_xmwfr"]
 [ext_resource type="Texture2D" uid="uid://bleyi3xhafp2q" path="res://images/Arms/IMG_0648.png" id="10_avjsb"]
 [ext_resource type="Texture2D" uid="uid://b8ea5dmegcxek" path="res://images/Arms/IMG_0649.png" id="11_tfihr"]
 [ext_resource type="Texture2D" uid="uid://cdflukk1htonl" path="res://images/Arms/IMG_0650.png" id="12_m27yi"]
+[ext_resource type="Script" path="res://scripts/BookController.cs" id="12_x1giq"]
 [ext_resource type="Texture2D" uid="uid://bl8qkal7u652h" path="res://images/Arms/IMG_0651.png" id="13_e50o7"]
 [ext_resource type="Texture2D" uid="uid://ibw7ndss456b" path="res://images/Arms/IMG_0652.png" id="14_8cryd"]
 [ext_resource type="Texture2D" uid="uid://buihtvy8ya3nn" path="res://images/Arms/IMG_0653.png" id="15_a3mqw"]
+[ext_resource type="Script" path="res://scripts/ArmManager.cs" id="16_kasba"]
 [ext_resource type="Texture2D" uid="uid://bd3voy52wmugn" path="res://images/Arms/IMG_0654.png" id="16_wov3b"]
 [ext_resource type="Texture2D" uid="uid://c6dedhs3x2bi5" path="res://images/Arms/IMG_0655.png" id="17_786fl"]
-[ext_resource type="Texture2D" uid="uid://dj1lp38t72oto" path="res://images/Ingredients/Goat_alive.png" id="19_i6gig"]
-[ext_resource type="Texture2D" uid="uid://bov5wkl2nv618" path="res://images/Ingredients/Goat_dead.png" id="21_86fys"]
-[ext_resource type="Texture2D" uid="uid://jgnav6yjapcl" path="res://images/Ingredients/meat_raw.png" id="22_nxq2y"]
 [ext_resource type="Texture2D" uid="uid://cqyb8b88sjysb" path="res://images/cooking_3.png" id="24_0kxu7"]
 [ext_resource type="Script" path="res://scripts/resources/RecipeIngredient.cs" id="26_5iotp"]
-[ext_resource type="Resource" uid="uid://blu2pw0iaoaqu" path="res://recipes/ingredients/goat.tres" id="28_8vbh8"]
 [ext_resource type="Texture2D" uid="uid://c5jxop6l5362k" path="res://images/Ingredients/Chilli_raw.png" id="28_og2in"]
 [ext_resource type="Texture2D" uid="uid://cma35e0xwyvwq" path="res://images/Ingredients/Chilli_sliced.png" id="29_cpbmt"]
 [ext_resource type="Texture2D" uid="uid://dlxuvd65xtbpe" path="res://images/Ingredients/Salt.png" id="30_gy6dw"]
@@ -46,6 +41,7 @@
 [ext_resource type="Texture2D" uid="uid://c25qd3bsbbfvh" path="res://images/Ingredients/Salt_Cracked.png" id="33_l5uku"]
 [ext_resource type="Resource" uid="uid://dqkxliobb0fco" path="res://recipes/ingredients/salt.tres" id="34_0ndf8"]
 [ext_resource type="Texture2D" uid="uid://bsul6a0elj822" path="res://images/Ingredients/Potatoe_Broken.png" id="34_couy2"]
+[ext_resource type="PackedScene" uid="uid://bvtf385wcg4k4" path="res://scenes/ingredient.tscn" id="34_m55dq"]
 [ext_resource type="Texture2D" uid="uid://b7r824gho0tcs" path="res://images/Ingredients/Potatoe.png" id="35_3kddf"]
 [ext_resource type="Texture2D" uid="uid://du1x6vsb82m5b" path="res://images/Ingredients/Potatoe_Hurt.png" id="36_51ybk"]
 [ext_resource type="Resource" uid="uid://rh0gdnhv47y8" path="res://recipes/ingredients/potato.tres" id="38_rukhj"]
@@ -123,6 +119,22 @@ point_count = 7
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_pfaly"]
 load_path = "res://.godot/imported/meat_raw.png-325e54ef64de71e2d61ac5a38ba2c0fb.ctex"
 
+[sub_resource type="LabelSettings" id="LabelSettings_215dd"]
+font_size = 10
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_4voo4"]
+font_size = 6
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_w2uol"]
+font_size = 20
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_qa72n"]
+font_size = 14
+font_color = Color(0, 0, 0, 1)
+
 [sub_resource type="Resource" id="Resource_lylnk"]
 script = ExtResource("26_5iotp")
 Name = "Onion"
@@ -133,35 +145,52 @@ script = ExtResource("26_5iotp")
 Name = "Cheese"
 Image = ExtResource("49_7vghy")
 
-[node name="Cooking" type="Control" node_paths=PackedStringArray("ingredientNodes")]
+[node name="Cooking" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -435.73
-offset_bottom = -214.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_0l3a8")
-ingredientNodes = [NodePath("IngredientScreen/Goat"), NodePath("IngredientScreen/Chilli"), NodePath("IngredientScreen/Salt"), NodePath("IngredientScreen/Potatoe"), NodePath("IngredientScreen/Onion"), NodePath("IngredientScreen/Cheese")]
 
 [node name="SummonScreen" type="Control" parent="."]
+visible = false
 clip_contents = true
-anchors_preset = 0
-offset_right = 716.27
-offset_bottom = 434.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("2_u2e0s")
 _recipes = Array[Object]([ExtResource("3_ch3tq"), ExtResource("4_sf65n"), ExtResource("5_xuui5"), ExtResource("6_gc15g"), ExtResource("7_yobcn"), ExtResource("8_x3h56")])
 _failedRecipeImage = ExtResource("9_xmwfr")
 
-[node name="SummoningV2" type="Sprite2D" parent="SummonScreen"]
-position = Vector2(365, 218)
-scale = Vector2(1.305, 1.305)
+[node name="ColorRect" type="ColorRect" parent="SummonScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="SummonScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("2_3x7b1")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="IngredientPaths" type="Control" parent="SummonScreen"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -170,103 +199,120 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="Path2D" type="Path2D" parent="SummonScreen/IngredientPaths"]
+[node name="CanvasLayer" type="Node2D" parent="SummonScreen/IngredientPaths"]
+unique_name_in_owner = true
+z_index = 1
+
+[node name="Path2D" type="Path2D" parent="SummonScreen/IngredientPaths/CanvasLayer"]
+position = Vector2(-129.773, -66.026)
+scale = Vector2(1.9012, 1.68925)
 curve = SubResource("Curve2D_k1mdi")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="SummonScreen/IngredientPaths/Path2D"]
+[node name="PathFollow2D" type="PathFollow2D" parent="SummonScreen/IngredientPaths/CanvasLayer/Path2D"]
 position = Vector2(144, 120)
 loop = false
 
-[node name="Sprite2D" type="Sprite2D" parent="SummonScreen/IngredientPaths/Path2D/PathFollow2D"]
+[node name="Sprite2D" type="Sprite2D" parent="SummonScreen/IngredientPaths/CanvasLayer/Path2D/PathFollow2D"]
 position = Vector2(6.7541, -10.8125)
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("30_gy6dw")
 region_rect = Rect2(0, -128, 571, 541)
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="SummonScreen/IngredientPaths/Path2D/PathFollow2D"]
+[node name="GPUParticles2D" type="GPUParticles2D" parent="SummonScreen/IngredientPaths/CanvasLayer/Path2D/PathFollow2D"]
 process_material = SubResource("ParticleProcessMaterial_g622k")
 texture = SubResource("NoiseTexture2D_gy6u4")
 
-[node name="Path2D2" type="Path2D" parent="SummonScreen/IngredientPaths"]
+[node name="Path2D2" type="Path2D" parent="SummonScreen/IngredientPaths/CanvasLayer"]
+position = Vector2(-34.0175, -81.3818)
+scale = Vector2(1.38656, 1.65868)
 curve = SubResource("Curve2D_8kc6t")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="SummonScreen/IngredientPaths/Path2D2"]
+[node name="PathFollow2D" type="PathFollow2D" parent="SummonScreen/IngredientPaths/CanvasLayer/Path2D2"]
 position = Vector2(88, 384)
 rotation = -1.2598
 loop = false
 
-[node name="Sprite2D" type="Sprite2D" parent="SummonScreen/IngredientPaths/Path2D2/PathFollow2D"]
+[node name="Sprite2D" type="Sprite2D" parent="SummonScreen/IngredientPaths/CanvasLayer/Path2D2/PathFollow2D"]
 scale = Vector2(0.15, 0.15)
 texture = SubResource("CompressedTexture2D_saywp")
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="SummonScreen/IngredientPaths/Path2D2/PathFollow2D"]
+[node name="GPUParticles2D" type="GPUParticles2D" parent="SummonScreen/IngredientPaths/CanvasLayer/Path2D2/PathFollow2D"]
 process_material = SubResource("ParticleProcessMaterial_g622k")
 texture = SubResource("NoiseTexture2D_gy6u4")
 
-[node name="Path2D3" type="Path2D" parent="SummonScreen/IngredientPaths"]
+[node name="Path2D3" type="Path2D" parent="SummonScreen/IngredientPaths/CanvasLayer"]
+position = Vector2(-12.2748, -18.1925)
+scale = Vector2(1.25573, 1.40665)
 curve = SubResource("Curve2D_nq5u0")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="SummonScreen/IngredientPaths/Path2D3"]
+[node name="PathFollow2D" type="PathFollow2D" parent="SummonScreen/IngredientPaths/CanvasLayer/Path2D3"]
 position = Vector2(48, 64)
 loop = false
 
-[node name="Sprite2D" type="Sprite2D" parent="SummonScreen/IngredientPaths/Path2D3/PathFollow2D"]
+[node name="Sprite2D" type="Sprite2D" parent="SummonScreen/IngredientPaths/CanvasLayer/Path2D3/PathFollow2D"]
 scale = Vector2(0.15, 0.15)
 texture = SubResource("CompressedTexture2D_hju6o")
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="SummonScreen/IngredientPaths/Path2D3/PathFollow2D"]
+[node name="GPUParticles2D" type="GPUParticles2D" parent="SummonScreen/IngredientPaths/CanvasLayer/Path2D3/PathFollow2D"]
 process_material = SubResource("ParticleProcessMaterial_g622k")
 texture = SubResource("NoiseTexture2D_gy6u4")
 
-[node name="Path2D4" type="Path2D" parent="SummonScreen/IngredientPaths"]
+[node name="Path2D4" type="Path2D" parent="SummonScreen/IngredientPaths/CanvasLayer"]
+position = Vector2(-15.2075, -33.2338)
+scale = Vector2(1.38019, 1.525)
 curve = SubResource("Curve2D_0bjel")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="SummonScreen/IngredientPaths/Path2D4"]
+[node name="PathFollow2D" type="PathFollow2D" parent="SummonScreen/IngredientPaths/CanvasLayer/Path2D4"]
 position = Vector2(40, 160)
 rotation = 0.0996687
 loop = false
 
-[node name="Sprite2D" type="Sprite2D" parent="SummonScreen/IngredientPaths/Path2D4/PathFollow2D"]
+[node name="Sprite2D" type="Sprite2D" parent="SummonScreen/IngredientPaths/CanvasLayer/Path2D4/PathFollow2D"]
 scale = Vector2(0.15, 0.15)
 texture = SubResource("CompressedTexture2D_i31nm")
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="SummonScreen/IngredientPaths/Path2D4/PathFollow2D"]
+[node name="GPUParticles2D" type="GPUParticles2D" parent="SummonScreen/IngredientPaths/CanvasLayer/Path2D4/PathFollow2D"]
 process_material = SubResource("ParticleProcessMaterial_g622k")
 texture = SubResource("NoiseTexture2D_gy6u4")
 
-[node name="Path2D5" type="Path2D" parent="SummonScreen/IngredientPaths"]
+[node name="Path2D5" type="Path2D" parent="SummonScreen/IngredientPaths/CanvasLayer"]
+position = Vector2(-25.6752, -53.8493)
+scale = Vector2(1.80235, 1.69099)
 curve = SubResource("Curve2D_kqdmn")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="SummonScreen/IngredientPaths/Path2D5"]
+[node name="PathFollow2D" type="PathFollow2D" parent="SummonScreen/IngredientPaths/CanvasLayer/Path2D5"]
 position = Vector2(32, 264)
 rotation = -0.665969
 loop = false
 
-[node name="Sprite2D" type="Sprite2D" parent="SummonScreen/IngredientPaths/Path2D5/PathFollow2D"]
+[node name="Sprite2D" type="Sprite2D" parent="SummonScreen/IngredientPaths/CanvasLayer/Path2D5/PathFollow2D"]
 scale = Vector2(0.15, 0.15)
 texture = SubResource("CompressedTexture2D_1b7aa")
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="SummonScreen/IngredientPaths/Path2D5/PathFollow2D"]
+[node name="GPUParticles2D" type="GPUParticles2D" parent="SummonScreen/IngredientPaths/CanvasLayer/Path2D5/PathFollow2D"]
 process_material = SubResource("ParticleProcessMaterial_g622k")
 texture = SubResource("NoiseTexture2D_gy6u4")
 
-[node name="Path2D6" type="Path2D" parent="SummonScreen/IngredientPaths"]
+[node name="Path2D6" type="Path2D" parent="SummonScreen/IngredientPaths/CanvasLayer"]
+position = Vector2(-77.8066, -23.7402)
+scale = Vector2(2.21573, 1.70426)
 curve = SubResource("Curve2D_67em3")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="SummonScreen/IngredientPaths/Path2D6"]
+[node name="PathFollow2D" type="PathFollow2D" parent="SummonScreen/IngredientPaths/CanvasLayer/Path2D6"]
 position = Vector2(64, 112)
 rotation = 0.502843
 loop = false
 
-[node name="Sprite2D" type="Sprite2D" parent="SummonScreen/IngredientPaths/Path2D6/PathFollow2D"]
+[node name="Sprite2D" type="Sprite2D" parent="SummonScreen/IngredientPaths/CanvasLayer/Path2D6/PathFollow2D"]
 scale = Vector2(0.15, 0.15)
 texture = SubResource("CompressedTexture2D_pfaly")
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="SummonScreen/IngredientPaths/Path2D6/PathFollow2D"]
+[node name="GPUParticles2D" type="GPUParticles2D" parent="SummonScreen/IngredientPaths/CanvasLayer/Path2D6/PathFollow2D"]
 process_material = SubResource("ParticleProcessMaterial_g622k")
 texture = SubResource("NoiseTexture2D_gy6u4")
 
 [node name="RecipeContainer" type="Control" parent="SummonScreen"]
+unique_name_in_owner = true
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -276,245 +322,313 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="TextureRect" type="TextureRect" parent="SummonScreen/RecipeContainer"]
-layout_mode = 0
-offset_left = 280.0
-offset_top = 192.0
-offset_right = 448.0
-offset_bottom = 360.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.388889
+anchor_top = 0.493827
+anchor_right = 0.609375
+anchor_bottom = 0.800926
+offset_top = 3.05176e-05
+texture = ExtResource("9_xmwfr")
 expand_mode = 1
 stretch_mode = 5
+metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="SummonScreen/RecipeContainer"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.0223379
-anchor_top = 0.884793
-anchor_right = 0.999623
-anchor_bottom = 0.93318
+anchor_left = 0.0217014
+anchor_top = 0.864198
+anchor_right = 0.979167
+anchor_bottom = 0.933642
 grow_horizontal = 2
 grow_vertical = 0
 text = "Recipe Name"
 horizontal_alignment = 1
+autowrap_mode = 3
 metadata/_edit_use_anchors_ = true
 
 [node name="BookScreen" type="Control" parent="."]
 visible = false
 clip_contents = true
-anchors_preset = 0
-offset_right = 716.27
-offset_bottom = 434.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
+script = ExtResource("12_x1giq")
+_normalBook = ExtResource("3_cnlj8")
+_zoomedBook = ExtResource("2_xijqt")
 
-[node name="SummoningTableOpenedZoom" type="Sprite2D" parent="BookScreen"]
-position = Vector2(375, 219)
-texture = ExtResource("2_xijqt")
-
-[node name="SummoningTableOpened" type="Sprite2D" parent="BookScreen"]
-position = Vector2(375, 224)
+[node name="BookImage" type="TextureRect" parent="BookScreen"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("3_cnlj8")
+expand_mode = 2
+stretch_mode = 6
 
-[node name="SummoningTableClosed" type="Sprite2D" parent="BookScreen"]
-position = Vector2(375, 224)
-texture = ExtResource("4_j2vp0")
+[node name="CurrentRecipe" type="Control" parent="BookScreen/BookImage"]
+unique_name_in_owner = true
+layout_mode = 1
+anchor_left = 0.397895
+anchor_top = 0.329493
+anchor_right = 0.603124
+anchor_bottom = 0.546083
+offset_bottom = -1.52588e-05
+metadata/_edit_use_anchors_ = true
+
+[node name="RecipeImage" type="TextureRect" parent="BookScreen/BookImage/CurrentRecipe"]
+layout_mode = 0
+anchor_right = 0.217687
+anchor_bottom = 0.351064
+expand_mode = 1
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="RecipeName" type="Label" parent="BookScreen/BookImage/CurrentRecipe"]
+layout_mode = 0
+anchor_left = 0.217687
+anchor_right = 0.92517
+anchor_bottom = 0.351064
+label_settings = SubResource("LabelSettings_215dd")
+vertical_alignment = 1
+autowrap_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="RecipeDescription" type="Label" parent="BookScreen/BookImage/CurrentRecipe"]
+layout_mode = 0
+anchor_left = 0.0544218
+anchor_top = 0.43617
+anchor_right = 0.92517
+anchor_bottom = 0.946809
+text = "
+"
+label_settings = SubResource("LabelSettings_4voo4")
+autowrap_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="ZoomedRecipe" type="Control" parent="BookScreen/BookImage"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchor_left = 0.256886
+anchor_top = 0.239631
+anchor_right = 0.748321
+anchor_bottom = 0.774194
+offset_bottom = -1.52588e-05
+metadata/_edit_use_anchors_ = true
+
+[node name="RecipeImage" type="TextureRect" parent="BookScreen/BookImage/ZoomedRecipe"]
+layout_mode = 0
+anchor_right = 0.217687
+anchor_bottom = 0.351064
+expand_mode = 1
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="RecipeName" type="Label" parent="BookScreen/BookImage/ZoomedRecipe"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.217687
+anchor_right = 0.92517
+anchor_bottom = 0.351064
+label_settings = SubResource("LabelSettings_w2uol")
+vertical_alignment = 1
+autowrap_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="RecipeDescription" type="Label" parent="BookScreen/BookImage/ZoomedRecipe"]
+layout_mode = 0
+anchor_left = 0.0544218
+anchor_top = 0.43617
+anchor_right = 0.92517
+anchor_bottom = 0.946809
+label_settings = SubResource("LabelSettings_qa72n")
+autowrap_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="NextButton" type="Button" parent="BookScreen"]
+unique_name_in_owner = true
+layout_mode = 0
+anchor_left = 0.569618
+anchor_top = 0.884793
+anchor_right = 0.681307
+anchor_bottom = 0.942396
+text = "Next"
+metadata/_edit_use_anchors_ = true
+
+[node name="ZoomButton" type="Button" parent="BookScreen"]
+unique_name_in_owner = true
+layout_mode = 0
+anchor_left = 0.43559
+anchor_top = 0.884793
+anchor_right = 0.54728
+anchor_bottom = 0.942396
+text = "Zoom"
+metadata/_edit_use_anchors_ = true
+
+[node name="PreviousButton" type="Button" parent="BookScreen"]
+unique_name_in_owner = true
+layout_mode = 0
+anchor_left = 0.301562
+anchor_top = 0.884793
+anchor_right = 0.413252
+anchor_bottom = 0.942396
+text = "Previous"
+metadata/_edit_use_anchors_ = true
 
 [node name="IngredientScreen" type="Control" parent="."]
 clip_contents = true
-anchors_preset = 0
-offset_right = 716.27
-offset_bottom = 434.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 
-[node name="Arm_Controller" type="Control" parent="IngredientScreen"]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 0.123457
-offset_top = -0.0617284
-offset_right = 716.393
-offset_bottom = 433.938
-mouse_filter = 1
-script = ExtResource("1_4dqch")
+[node name="TextureRect" type="TextureRect" parent="IngredientScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("24_0kxu7")
+expand_mode = 1
+stretch_mode = 6
 
-[node name="Arm" type="Sprite2D" parent="IngredientScreen/Arm_Controller"]
-z_index = 2
-z_as_relative = false
-position = Vector2(1005, 620)
+[node name="ArmController" type="Control" parent="IngredientScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("16_kasba")
+
+[node name="Arm" type="TextureRect" parent="IngredientScreen/ArmController"]
+z_index = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 344.0
+offset_top = -164.0
+offset_right = 671.0
+offset_bottom = 548.0
+grow_horizontal = 2
+grow_vertical = 2
 scale = Vector2(0.682, 0.682)
 texture = ExtResource("1_t612d")
-centered = false
-offset = Vector2(-105.062, -94.5559)
 script = ExtResource("2_ufhw1")
 Textures = [ExtResource("1_t612d"), ExtResource("3_grxld"), ExtResource("4_3vjbr"), ExtResource("5_ntfit"), ExtResource("6_0hf3c"), ExtResource("7_68i1y"), ExtResource("8_08buf"), ExtResource("9_sa5x5"), ExtResource("10_avjsb"), ExtResource("11_tfihr"), ExtResource("12_m27yi"), ExtResource("13_e50o7"), ExtResource("14_8cryd"), ExtResource("15_a3mqw"), ExtResource("16_wov3b"), ExtResource("17_786fl")]
 
-[node name="Goat" type="Node2D" parent="IngredientScreen"]
-z_index = 1
-z_as_relative = false
-position = Vector2(355, 231)
-scale = Vector2(0.745, 0.745)
-script = ExtResource("1_2tg8c")
-RecipeIngredient = ExtResource("28_8vbh8")
-Textures = [ExtResource("19_i6gig"), ExtResource("21_86fys"), ExtResource("22_nxq2y")]
-clicksNeededForState2 = 8
-clicksNeededForState3 = 16
+[node name="Goat" parent="IngredientScreen" instance=ExtResource("34_m55dq")]
+layout_mode = 1
+ClicksNeededForState2 = 8
+ClicksNeededForState3 = 16
 
-[node name="Ingredient_Sprite" type="Sprite2D" parent="IngredientScreen/Goat"]
-position = Vector2(-8, -8.99997)
-scale = Vector2(0.52, 0.52)
-texture = ExtResource("19_i6gig")
-
-[node name="Button" type="Button" parent="IngredientScreen/Goat"]
-modulate = Color(1, 1, 1, 0)
-self_modulate = Color(1, 1, 1, 0)
-offset_left = -74.0
-offset_top = -75.0
-offset_right = -66.0
-offset_bottom = -67.0
-scale = Vector2(17.68, 17.68)
-mouse_filter = 1
-
-[node name="Chilli" type="Node2D" parent="IngredientScreen"]
-z_index = 1
-z_as_relative = false
-position = Vector2(355, 231)
-scale = Vector2(0.45, 0.45)
-script = ExtResource("1_2tg8c")
+[node name="Chili" parent="IngredientScreen" instance=ExtResource("34_m55dq")]
+layout_mode = 1
+anchor_left = 0.0763889
+anchor_top = 0.691358
+anchor_right = 0.1875
+anchor_bottom = 0.888889
+offset_left = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+scale = Vector2(1, 1)
 RecipeIngredient = ExtResource("31_3qcne")
-startSpeed = 120.0
+StartSpeed = 120.0
 Textures = [ExtResource("28_og2in"), ExtResource("28_og2in"), ExtResource("29_cpbmt")]
-clicksNeededForState2 = 5
-clicksNeededForState3 = 8
-speedIncreaseFactor = 1.04
+ClicksNeededForState2 = 5
+ClicksNeededForState3 = 8
+SpeedIncreaseFactor = 1.04
 
-[node name="Ingredient_Sprite" type="Sprite2D" parent="IngredientScreen/Chilli"]
-position = Vector2(-8, -8.99997)
-scale = Vector2(0.52, 0.52)
-texture = ExtResource("28_og2in")
-
-[node name="Button" type="Button" parent="IngredientScreen/Chilli"]
-modulate = Color(1, 1, 1, 0)
-self_modulate = Color(1, 1, 1, 0)
-offset_left = -74.0
-offset_top = -75.0
-offset_right = -66.0
-offset_bottom = -67.0
-scale = Vector2(17.68, 17.68)
-mouse_filter = 1
-
-[node name="Salt" type="Node2D" parent="IngredientScreen"]
-z_index = 1
-z_as_relative = false
-position = Vector2(477, 231)
-scale = Vector2(0.56, 0.56)
-script = ExtResource("1_2tg8c")
+[node name="Salt" parent="IngredientScreen" instance=ExtResource("34_m55dq")]
+layout_mode = 1
+anchor_left = 0.777778
+anchor_top = 0.728395
+anchor_right = 0.888889
+anchor_bottom = 0.925926
+offset_left = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+scale = Vector2(1, 1)
 RecipeIngredient = ExtResource("34_0ndf8")
-startSpeed = 130.0
+StartSpeed = 130.0
 Textures = [ExtResource("30_gy6dw"), ExtResource("33_l5uku"), ExtResource("31_1ynsj")]
-clicksNeededForState2 = 6
-clicksNeededForState3 = 12
+ClicksNeededForState2 = 6
+ClicksNeededForState3 = 12
 
-[node name="Ingredient_Sprite" type="Sprite2D" parent="IngredientScreen/Salt"]
-position = Vector2(-8, -8.99997)
-scale = Vector2(0.52, 0.52)
-texture = ExtResource("30_gy6dw")
-
-[node name="Button" type="Button" parent="IngredientScreen/Salt"]
-modulate = Color(1, 1, 1, 0)
-self_modulate = Color(1, 1, 1, 0)
-offset_left = -74.0
-offset_top = -75.0
-offset_right = -66.0
-offset_bottom = -67.0
-scale = Vector2(17.68, 17.68)
-mouse_filter = 1
-
-[node name="Potatoe" type="Node2D" parent="IngredientScreen"]
-z_index = 1
-z_as_relative = false
-position = Vector2(355, 231)
-scale = Vector2(0.745, 0.745)
-script = ExtResource("1_2tg8c")
+[node name="Potato" parent="IngredientScreen" instance=ExtResource("34_m55dq")]
+layout_mode = 1
+anchor_left = 0.298611
+anchor_top = 0.432099
+anchor_right = 0.409722
+anchor_bottom = 0.62963
+offset_left = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+scale = Vector2(1, 1)
 RecipeIngredient = ExtResource("38_rukhj")
 Textures = [ExtResource("35_3kddf"), ExtResource("36_51ybk"), ExtResource("34_couy2")]
-clicksNeededForState2 = 8
-clicksNeededForState3 = 14
+ClicksNeededForState2 = 8
+ClicksNeededForState3 = 14
 
-[node name="Ingredient_Sprite" type="Sprite2D" parent="IngredientScreen/Potatoe"]
-position = Vector2(-8, -8.99997)
-scale = Vector2(0.52, 0.52)
-texture = ExtResource("35_3kddf")
-
-[node name="Button" type="Button" parent="IngredientScreen/Potatoe"]
-modulate = Color(1, 1, 1, 0)
-self_modulate = Color(1, 1, 1, 0)
-offset_left = -74.0
-offset_top = -75.0
-offset_right = -66.0
-offset_bottom = -67.0
-scale = Vector2(17.68, 17.68)
-mouse_filter = 1
-
-[node name="Onion" type="Node2D" parent="IngredientScreen"]
-z_index = 1
-z_as_relative = false
-position = Vector2(355, 231)
-scale = Vector2(0.545, 0.545)
-script = ExtResource("1_2tg8c")
+[node name="Onion" parent="IngredientScreen" instance=ExtResource("34_m55dq")]
+layout_mode = 1
+anchor_left = 0.479167
+anchor_top = 0.753086
+anchor_right = 0.590278
+anchor_bottom = 0.950617
+offset_left = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+scale = Vector2(1, 1)
 RecipeIngredient = SubResource("Resource_lylnk")
-startSpeed = 180.0
+StartSpeed = 180.0
 Textures = [ExtResource("46_43f6f"), ExtResource("47_fvepb"), ExtResource("48_hj4an")]
-clicksNeededForState2 = 7
-clicksNeededForState3 = 13
-speedIncreaseFactor = 1.06
+ClicksNeededForState2 = 7
+ClicksNeededForState3 = 13
+SpeedIncreaseFactor = 1.06
 
-[node name="Ingredient_Sprite" type="Sprite2D" parent="IngredientScreen/Onion"]
-position = Vector2(-8, -8.99997)
-scale = Vector2(0.52, 0.52)
-texture = ExtResource("46_43f6f")
-
-[node name="Button" type="Button" parent="IngredientScreen/Onion"]
-modulate = Color(1, 1, 1, 0)
-self_modulate = Color(1, 1, 1, 0)
-offset_left = -74.0
-offset_top = -75.0
-offset_right = -66.0
-offset_bottom = -67.0
-scale = Vector2(17.68, 17.68)
-mouse_filter = 1
-
-[node name="Cheese" type="Node2D" parent="IngredientScreen"]
-z_index = 1
-z_as_relative = false
-position = Vector2(355, 231)
-scale = Vector2(0.56, 0.56)
-script = ExtResource("1_2tg8c")
+[node name="Cheese" parent="IngredientScreen" instance=ExtResource("34_m55dq")]
+layout_mode = 1
+anchor_left = 0.118056
+anchor_top = 0.197531
+anchor_right = 0.118056
+anchor_bottom = 0.197531
+offset_left = 768.0
+offset_top = 64.0
+offset_right = 896.0
+offset_bottom = 192.0
+scale = Vector2(1, 1)
 RecipeIngredient = SubResource("Resource_7yvn2")
-startSpeed = 140.0
+StartSpeed = 140.0
 Textures = [ExtResource("51_vdtol"), ExtResource("52_7cfys"), ExtResource("49_7vghy")]
-clicksNeededForState2 = 5
-clicksNeededForState3 = 9
+ClicksNeededForState2 = 5
+ClicksNeededForState3 = 9
 
-[node name="Ingredient_Sprite" type="Sprite2D" parent="IngredientScreen/Cheese"]
-position = Vector2(-8, -8.99997)
-scale = Vector2(0.52, 0.52)
-texture = ExtResource("51_vdtol")
-
-[node name="Button" type="Button" parent="IngredientScreen/Cheese"]
-modulate = Color(1, 1, 1, 0)
-self_modulate = Color(1, 1, 1, 0)
-offset_left = -74.0
-offset_top = -75.0
-offset_right = -66.0
-offset_bottom = -67.0
-scale = Vector2(17.68, 17.68)
-mouse_filter = 1
-
-[node name="Cooking3" type="Sprite2D" parent="IngredientScreen"]
-position = Vector2(357, 218)
-scale = Vector2(0.405, 0.405)
-texture = ExtResource("24_0kxu7")
-
-[connection signal="button_down" from="IngredientScreen/Goat/Button" to="IngredientScreen/Goat" method="Clicked"]
-[connection signal="button_down" from="IngredientScreen/Chilli/Button" to="IngredientScreen/Chilli" method="Clicked"]
-[connection signal="button_down" from="IngredientScreen/Salt/Button" to="IngredientScreen/Salt" method="Clicked"]
-[connection signal="button_down" from="IngredientScreen/Potatoe/Button" to="IngredientScreen/Potatoe" method="Clicked"]
-[connection signal="button_down" from="IngredientScreen/Onion/Button" to="IngredientScreen/Onion" method="Clicked"]
-[connection signal="button_down" from="IngredientScreen/Cheese/Button" to="IngredientScreen/Cheese" method="Clicked"]
+[node name="CurrentIngredients" type="HBoxContainer" parent="IngredientScreen"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(440, 40)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.00694444
+anchor_top = 0.876543
+anchor_right = 0.993056
+anchor_bottom = 0.975309
+alignment = 2
+metadata/_edit_use_anchors_ = true

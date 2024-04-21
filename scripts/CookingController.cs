@@ -4,134 +4,148 @@ using System.Collections.Generic;
 using CookingWithSatan.scripts.resources;
 
 namespace CookingWithSatan.scripts;
+
 public partial class CookingController : Control
 {
-    private List<RecipeIngredient> currentIngredients;
-    private List<RecipeIngredient> allPossibleIngredients;
-    [Export] public Ingredient[] ingredientNodes= new Ingredient[6];
-    
-    
-    enum CookingStates
+    private List<RecipeIngredient> _currentIngredients;
+    [Export] public Ingredient[] IngredientNodes = new Ingredient[6];
+
+
+    private enum CookingStates
     {
         Ingredients,
         Book,
         Summon
     }
 
-    private CookingStates currentState = CookingStates.Ingredients;
-    private bool restoreIngredientScreen = true;
-    private Control IngredientsScreen;
-    private Control BookScreen;
+    private CookingStates _currentState = CookingStates.Ingredients;
+    private bool _restoreIngredientScreen = true;
+    private Control _ingredientsScreen;
+    private HBoxContainer _currentIngredientsContainer;
+    private BookController _bookScreen;
     private SummonController _summonScreen;
 
     public override void _Ready()
     {
-        currentIngredients = new List<RecipeIngredient>();
-        allPossibleIngredients = new List<RecipeIngredient>();
-        
-       
-        
-        IngredientsScreen = GetNode<Control>("IngredientScreen");
-        BookScreen = GetNode<Control>("BookScreen");
+        _currentIngredients = new List<RecipeIngredient>();
+        _currentIngredientsContainer = GetNode<HBoxContainer>("%CurrentIngredients");
+        _ingredientsScreen = GetNode<Control>("IngredientScreen");
+        _bookScreen = GetNode<BookController>("BookScreen");
         _summonScreen = GetNode<SummonController>("SummonScreen");
-
-        int ingrCount = 0;
-        for (int i = 0; i < IngredientsScreen.GetChildCount(); i++)
+        
+        _summonScreen.RecipeSuccess += recipe =>
         {
-            Node child = IngredientsScreen.GetChild(i);
-            if (child is Ingredient ingredient)
+            _bookScreen.AddRecipe(recipe);
+        };
+
+        var ingredientCount = 0;
+        for (var i = 0; i < _ingredientsScreen.GetChildCount(); i++)
+        {
+            var child = _ingredientsScreen.GetChild(i);
+            if (child is not Ingredient ingredient) continue;
+            IngredientNodes[ingredientCount] = ingredient;
+            ingredientCount++;
+            ingredient.IngredientPrepared += recipeIngredient =>
             {
-                ingredientNodes[ingrCount] = ingredient;
-                ingrCount++;
-            }
+                _currentIngredientsContainer.AddChild(recipeIngredient);
+            };
         }
     }
 
     public void ResetIngredients()
     {
-        switch (currentState)
+        switch (_currentState)
         {
             case CookingStates.Book:
             {
-                BookScreen.Visible = false;
-                IngredientsScreen.Visible = true;
+                _bookScreen.Visible = false;
+                _ingredientsScreen.Visible = true;
                 break;
             }
             case CookingStates.Summon:
             {
                 _summonScreen.Visible = false;
-                IngredientsScreen.Visible = true;
+                _ingredientsScreen.Visible = true;
                 break;
             }
             case CookingStates.Ingredients:
             {
                 break;
             }
+            default:
+                throw new ArgumentOutOfRangeException();
         }
+
         SpawnIngredients();
-        currentState = CookingStates.Ingredients;
+        _currentState = CookingStates.Ingredients;
     }
 
     private void SpawnIngredients()
     {
-        currentIngredients = new List<RecipeIngredient>();
-        foreach (Ingredient ingredient in ingredientNodes)
+        _currentIngredients = new List<RecipeIngredient>();
+        foreach (var ingredient in IngredientNodes)
         {
             ingredient.ResetIngredient();
+            if (ingredient.GetParent() != _currentIngredientsContainer) continue;
+            _currentIngredientsContainer.RemoveChild(ingredient);
+            _ingredientsScreen.AddChild(ingredient);
         }
     }
 
     public void StartSummon()
     {
-        currentState = CookingStates.Summon;
-        foreach (Ingredient ingredientNode in ingredientNodes)
+        _currentState = CookingStates.Summon;
+        foreach (var ingredientNode in IngredientNodes)
         {
-            if (ingredientNode.ingredientIsPrepared)
+            if (ingredientNode.IngredientIsPrepared)
             {
-                currentIngredients.Add(ingredientNode.RecipeIngredient);
+                _currentIngredients.Add(ingredientNode.RecipeIngredient);
             }
         }
-        IngredientsScreen.Visible = false;
+
+        _ingredientsScreen.Visible = false;
         _summonScreen.Visible = true;
-        _summonScreen.StartSummon(currentIngredients);
-        //TODO: start summon animation
+        _summonScreen.StartSummon(_currentIngredients);
     }
 
     public void OpenRecipeBook()
     {
-        switch (currentState)
+        switch (_currentState)
         {
             case CookingStates.Book:
             {
-                BookScreen.Visible = false;
-                if (restoreIngredientScreen)
+                _bookScreen.Visible = false;
+                if (_restoreIngredientScreen)
                 {
-                    IngredientsScreen.Visible = true;
-                    currentState = CookingStates.Ingredients;
+                    _ingredientsScreen.Visible = true;
+                    _currentState = CookingStates.Ingredients;
                 }
                 else
                 {
                     _summonScreen.Visible = true;
-                    currentState = CookingStates.Summon;
+                    _currentState = CookingStates.Summon;
                 }
+
                 break;
             }
             case CookingStates.Summon:
             {
                 _summonScreen.Visible = false;
-                BookScreen.Visible = true;
-                restoreIngredientScreen = false;
-                currentState = CookingStates.Book;
+                _bookScreen.Visible = true;
+                _restoreIngredientScreen = false;
+                _currentState = CookingStates.Book;
                 break;
             }
             case CookingStates.Ingredients:
             {
-                IngredientsScreen.Visible = false;
-                BookScreen.Visible = true;
-                restoreIngredientScreen = true;
-                currentState = CookingStates.Book;
+                _ingredientsScreen.Visible = false;
+                _bookScreen.Visible = true;
+                _restoreIngredientScreen = true;
+                _currentState = CookingStates.Book;
                 break;
             }
+            default:
+                throw new ArgumentOutOfRangeException();
         }
     }
 }
